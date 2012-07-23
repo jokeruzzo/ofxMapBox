@@ -13,8 +13,8 @@
 
 
 @implementation mapSubView
-
 @synthesize eagleScrollView;
+
 
 -(id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
@@ -23,12 +23,14 @@
         eagleScrollView = iPhoneGetGLView();
         [self._mapScrollView addSubview:eagleScrollView ];
         [self._mapScrollView bringSubviewToFront:eagleScrollView];
-
-        
+  
     }
     return self;
     
 }
+
+
+
 
 - (id)initWithFrame:(CGRect)frame andTilesource:(id<RMTileSource>)newTilesource
 {
@@ -36,17 +38,22 @@
     if (self) {
         eagleScrollView = iPhoneGetGLView();
         [self._mapScrollView addSubview:eagleScrollView ];
+
         [self._mapScrollView bringSubviewToFront:eagleScrollView];
+      
 
     }
     return self;
 }
 
-   
+
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     // because the gesture events couldn't be subclassed from the RMMview.h, I had to insert them in the scrollView and lock the view on the contentOffset. 
     eagleScrollView.center = CGPointMake(self._mapScrollView.contentOffset.x + ofGetWidth()/2, self._mapScrollView.contentOffset.y + ofGetHeight()/2);  
-       
+    
 }
+
+
 @end

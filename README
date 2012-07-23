@@ -18,7 +18,7 @@ What is going to come:
 Todo:
 
 - touchMoved not possible (both layers are moving then)
-- coortinate <> Pixel translation
+- pauses in GL when updating
 
 
 Related links:

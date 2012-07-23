@@ -15,12 +15,6 @@ What is going to come:
 - cycle map source
 - sea map layers
 
-Todo:
-
-- touchMoved not possible (both layers are moving then)
-- pauses in GL when updating
-
-
 Related links:
 
 https://github.com/mapbox/mapbox-ios-sdk

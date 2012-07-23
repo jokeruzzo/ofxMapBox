@@ -19,3 +19,8 @@ Todo:
 
 - touchMoved not possible (both layers are moving then)
 - coortinate <> Pixel translation
+
+
+Related links:
+
+https://github.com/mapbox/mapbox-ios-sdk

@@ -20,9 +20,7 @@
     self = [super initWithFrame:frame];
     
     if(self){
-        eagleScrollView = iPhoneGetGLView();
-        [self._mapScrollView addSubview:eagleScrollView ];
-        [self._mapScrollView bringSubviewToFront:eagleScrollView];
+
   
     }
     return self;
@@ -36,10 +34,7 @@
 {
     self = [super initWithFrame:frame andTilesource:newTilesource];
     if (self) {
-        eagleScrollView = iPhoneGetGLView();
-        [self._mapScrollView addSubview:eagleScrollView ];
 
-        [self._mapScrollView bringSubviewToFront:eagleScrollView];
       
 
     }
@@ -50,8 +45,6 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    // because the gesture events couldn't be subclassed from the RMMview.h, I had to insert them in the scrollView and lock the view on the contentOffset. 
-    eagleScrollView.center = CGPointMake(self._mapScrollView.contentOffset.x + ofGetWidth()/2, self._mapScrollView.contentOffset.y + ofGetHeight()/2);  
     
 }
 

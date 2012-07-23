@@ -10,6 +10,7 @@
 #include "mapSubView.h"
 
 
+
 static mapController * mapViewController = nil ;
 static mapSubView * mapView = nil ;
 
@@ -68,6 +69,30 @@ void RMMapKit::offlineMap(string map){
     
     
 
+}
+
+void RMMapKit::onlineMap(string urlVal){
+ 
+    offline = true;
+    const char * c =  urlVal.c_str();
+    NSString *NSMap = [NSString stringWithUTF8String:c];
+    NSURL *url = [NSURL URLWithString:NSMap];
+    
+   
+    NSLog(@"loading URL: %@",url);
+    onlineSource = [[RMMapBoxSource alloc] initWithReferenceURL:(url)];
+    
+    mapViewController = [[mapController alloc] initWithFrame: CGRectMake(0, 0, 
+                                                                         ofGetWidth(),
+                                                                         ofGetHeight()) 
+                                               andTilesource:onlineSource ]; 
+
+    
+    mapView = mapViewController.getMapView;
+    [mapView setDelegate :mapViewController]; 
+    [ofxiPhoneGetUIWindow() addSubview:mapView];
+
+    
 }
 
 

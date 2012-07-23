@@ -9,6 +9,7 @@
 
 #include "RMMapView.h"
 #import "RMMBTilesSource.h"
+#import "RMMapBoxSource.h"
 
 // these are the types you can set for the map
 
@@ -27,6 +28,7 @@ public:
 	// open the mapview
 	void open();
 	void offlineMap(string map);
+    void onlineMap(string url);
 	// hide the mapview
 	void close();
 
@@ -110,6 +112,7 @@ public:
 protected:
 	
     RMMBTilesSource *offlineSource;
+    RMMapBoxSource *onlineSource;
     bool offline;
 	
 	CLLocationCoordinate2D makeCLLocation(double latitude, double longitude);

@@ -11,9 +11,20 @@ void testApp::setup() {
     // reads MBTiles
     mapKit.offlineMap("map");
     
+    // online tileSet
+//    if (ofxiPhoneGetOFWindow()->isRetinaSupported()){
+//        mapKit.onlineMap("http://a.tiles.mapbox.com/v3/justin.map-kswgei2n.jsonp"); // see https://tiles.mapbox.com/justin/map/map-kswgei2n
+//        
+//    } else{
+//        mapKit.onlineMap("http://a.tiles.mapbox.com/v3/justin.map-s2effxa8.jsonp"); // see https://tiles.mapbox.com/justin/map/map-s2effxa8)
+//    }
+    
+    
     mapKit.open();
     //Changes center postion.
     mapKit.setCenter(POS2_LATITUDE, POS2_LONGITUDE);
+    
+    
     
     
     

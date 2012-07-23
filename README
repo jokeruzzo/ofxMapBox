@@ -1,7 +1,7 @@
 Mapbox for Openframeworks IOS
 
 I've been struggeling with the limitations of the MapKit library in openframeworks so 
-I was obligated to modify MapBox to work together with Openframeworks. This is an early
+I had  to modify MapBox to work together with Openframeworks. This is an early
 release. 
 
 Wat is possible right now:

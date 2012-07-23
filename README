@@ -14,3 +14,8 @@ What is going to come:
 - route-me navigation (on the openframeworks layer)
 - cycle map source
 - sea map layers
+
+Todo:
+
+- touchMoved not possible (both layers are moving then)
+- coortinate <> Pixel translation

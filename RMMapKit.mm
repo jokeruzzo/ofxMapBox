@@ -62,14 +62,14 @@ void RMMapKit::open() {
 
     
      //   [[[ofxiPhoneGetAppDelegate() glViewController] glView] removeFromSuperview];
-        
+    if (offline  == false){   
     mapViewController =    [[mapController alloc] initWithFrame: CGRectMake(0, 0, 
                                                                             ofGetWidth(),
                                                                             ofGetHeight())]; 
      mapView = mapViewController.getMapView;
     [mapView setDelegate :mapViewController]; 
-    [ ofxiPhoneGetUIWindow() addSubview:mapView];
-   
+    [ofxiPhoneGetUIWindow() addSubview:mapView];
+    }
    
 
 }
@@ -77,10 +77,22 @@ void RMMapKit::open() {
 void RMMapKit::offlineMap(string map){
     const char * c = map.c_str();
     NSString *NSMap = [NSString stringWithUTF8String:c];
-        offlineSource = [[RMMBTilesSource alloc] initWithTileSetURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:NSMap ofType:@"mbtiles"]]];
-        offline = true;
+        
+    offlineSource = [[RMMBTilesSource alloc] initWithTileSetURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:NSMap ofType:@"mbtiles"]]];
+        
+    offline = true;
     
-    [mapViewController   loadSource:offlineSource];
+    mapViewController = [[mapController alloc] initWithFrame: CGRectMake(0, 0, 
+                                                                            ofGetWidth(),
+                                                                            ofGetHeight()) 
+                                                  andTilesource:offlineSource ]; 
+    
+    mapView = mapViewController.getMapView;
+    [mapView setDelegate :mapViewController]; 
+    [ofxiPhoneGetUIWindow() addSubview:mapView];
+    
+    
+
 }
 
 

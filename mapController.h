@@ -26,8 +26,9 @@
 
 @property (nonatomic, retain) IBOutlet mapSubView * mapView;
 
-@property (nonatomic, retain)  RMMBTilesSource * offlineSource;
+
 -(void)loadSource: (RMMBTilesSource *) source;
+- (id)initWithFrame:(CGRect)frame andTilesource:offlineSource;
 - (id)initWithFrame:(CGRect)frame;
 -(mapSubView*) getMapView;
 -(void)viewDidLoad;

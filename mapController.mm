@@ -20,11 +20,9 @@
 
 @implementation mapController{
     
-    RMMBTilesSource  *offlineSource;
+    
 }
 
-
-@synthesize  offlineSource;
 @synthesize mapView;
 
 
@@ -43,7 +41,7 @@
     self = [super init];
    
         
-        if (offlineSource  == NULL){
+       
             NSLog (@"loading online map");
         self.mapView= [[mapSubView  alloc] initWithFrame: frame];
             
@@ -53,16 +51,7 @@
             [self.mapView._mapScrollView bringSubviewToFront:eagleScrollView];
             // for the GLView update
             self.mapView._mapScrollView.delegate = self;
-        }else {
-            self.mapView= [[mapSubView  alloc] initWithFrame: frame  andTilesource:offlineSource]; 
-            eagleScrollView = iPhoneGetGLView();
-            [self.mapView._mapScrollView addSubview:eagleScrollView ];
-            [self.mapView._mapScrollView bringSubviewToFront:eagleScrollView];
-            // for the GLView update
-            self.mapView._mapScrollView.delegate = self;
-            NSLog(@"loading map");
-        }
-  
+
     
         
 
@@ -70,10 +59,28 @@
 }
 
 
+- (id)initWithFrame:(CGRect)frame andTilesource:offlineSource
+{
+    self = [super init];
+
+        self.mapView= [[mapSubView  alloc] initWithFrame: frame  andTilesource:offlineSource]; 
+        eagleScrollView = iPhoneGetGLView();
+        [self.mapView._mapScrollView addSubview:eagleScrollView ];
+        [self.mapView._mapScrollView bringSubviewToFront:eagleScrollView];
+        // for the GLView update
+        self.mapView._mapScrollView.delegate = self;
+        NSLog(@"loading map");
+    
+
+    return self;
+}
+
+
+
 
 -(void)loadSource: (RMMBTilesSource *) source{
     NSLog(@"inserting map");
-    offlineSource = source;
+   
    
 }
 
@@ -91,8 +98,10 @@
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    // updating GLView
+   iPhoneGetOFWindow()->timerLoop(); 
     
-   iPhoneGetOFWindow()->timerLoop();
+    // added to hold GLView into place
      eagleScrollView.center = CGPointMake(mapView._mapScrollView.contentOffset.x + ofGetWidth()/2, mapView._mapScrollView.contentOffset.y + ofGetHeight()/2);  
 }
 

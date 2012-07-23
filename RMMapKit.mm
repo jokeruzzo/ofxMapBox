@@ -34,8 +34,6 @@
 #include "mapSubView.h"
 
 
-#define POS2_LATITUDE		 52.370216 
-#define POS2_LONGITUDE		 4.895168
 
 static mapSubView* mapView = nil;
 
@@ -57,11 +55,7 @@ void RMMapKit::open() {
 	
         [[[ofxiPhoneGetAppDelegate() glViewController] glView] removeFromSuperview];
         
-        CLLocationCoordinate2D startingPoint;
-        
-        startingPoint.latitude  =  POS2_LATITUDE;
-        startingPoint.longitude = POS2_LONGITUDE;
-        
+ 
         
     
         
@@ -77,7 +71,7 @@ void RMMapKit::open() {
         
     }
   
-    [mapView setCenterCoordinate:startingPoint];
+   
 
 
 	[ofxiPhoneGetUIWindow() addSubview:mapView];

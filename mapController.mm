@@ -4,6 +4,11 @@
 //
 //  Created by Martijn Mellema on 23-07-12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+
+//  Created by Martijn Mellema on 20-07-12.
+//  Copyright (c) 2012 www.martijnmellema.com All rights reserved.
+//  Visual conceptual artist / Interaction designer
+
 //
 
 #import "mapController.h"

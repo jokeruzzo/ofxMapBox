@@ -29,6 +29,7 @@ public:
 	void open();
 	void offlineMap(string map);
     void onlineMap(string url);
+    void mapInteraction(bool value);
 	// hide the mapview
 	void close();
 

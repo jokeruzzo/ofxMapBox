@@ -8,8 +8,6 @@
 #import "mapController.h"
 
 @interface mapController (
-
-                          
                           
                           )
 
@@ -29,9 +27,12 @@
 {
     
     [super viewDidLoad];
-    
-    
-    
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
 }
 
 
@@ -51,11 +52,10 @@
             // for the GLView update
             self.mapView._mapScrollView.delegate = self;
 
-    
-        
 
     return self;
 }
+
 
 
 - (id)initWithFrame:(CGRect)frame andTilesource:offlineSource
@@ -70,44 +70,89 @@
         self.mapView._mapScrollView.delegate = self;
         NSLog(@"loading map");
     
-
-    return self;
+    
+//    UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(onPinch:)];
+//    
+//    
+//    [eagleScrollView addGestureRecognizer:pinch];
+  //  [self.mapView._mapScrollView addGestureRecognizer:pinch ];
+    
+        return self;
 }
-
-
-
 
 -(void)loadSource: (RMMBTilesSource *) source{
     NSLog(@"inserting map");
-   
-   
 }
 
+
+-(mapSubView*) getMapView{
+    return mapView;
+}
+
+
+
+
+- (UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView{
+    
+    return mapView._tiledLayersSuperview;
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+   iPhoneGetOFWindow()->timerLoop(); 
+    
+    // added to hold GLView into place
+     eagleScrollView.center = CGPointMake(mapView._mapScrollView.contentOffset.x + ofGetWidth()/2, mapView._mapScrollView.contentOffset.y + ofGetHeight()/2); 
+}
+
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    if (mapView._delegateHasBeforeMapMove)
+        [self.mapView._delegate beforeMapMove:self.mapView];
+        [self.mapView scrollViewWillBeginDecelerating:scrollView];
+}
+
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (!decelerate && self.mapView._delegateHasAfterMapMove)
+        [self.mapView._delegate afterMapMove:self.mapView];
+        [self.mapView scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+}
+
+- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view
+{
+   
+    self.mapView._mapScrollViewIsZooming = YES;
+    
+    if (self.mapView._delegateHasBeforeMapZoom)
+        [self.mapView._delegate beforeMapZoom:self.mapView];
+        [self.mapView scrollViewWillBeginZooming:scrollView withView:view];
+}
+
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale
+{
+    self.mapView._mapScrollViewIsZooming = NO;
+    
+    [self.mapView correctPositionOfAllAnnotations ];
+    [self.mapView scrollViewDidEndZooming:scrollView withView:view atScale:scale];
+}
+
+
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView{
+    
+    [self.mapView correctPositionOfAllAnnotations];
+    
+    if (self.mapView._delegateHasAfterMapZoom)
+        [self.mapView._delegate afterMapZoom:self.mapView];
+    [self.mapView scrollViewDidZoom:scrollView];
+    
+}
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return NO;
-}
-
-
--(mapSubView*) getMapView{
-    
-    return mapView;
-}
-
--(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    // updating GLView
-   iPhoneGetOFWindow()->timerLoop(); 
-    
-    // added to hold GLView into place
-     eagleScrollView.center = CGPointMake(mapView._mapScrollView.contentOffset.x + ofGetWidth()/2, mapView._mapScrollView.contentOffset.y + ofGetHeight()/2);  
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
 }
 
 

@@ -19,7 +19,7 @@
     
 }
 
-@property (nonatomic, retain) IBOutlet EAGLView *eagleScrollView;
+
 
 @end
 

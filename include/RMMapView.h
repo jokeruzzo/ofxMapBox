@@ -55,16 +55,16 @@ enum : NSUInteger {
     RMMapNoMinBound		= 0, // Map can be zoomed out past view limits
     RMMapMinHeightBound	= 1, // Minimum map height when zooming out restricted to view height
     RMMapMinWidthBound	= 2  // Minimum map width when zooming out restricted to view width (default)
-};
-
-// constants for the scrollview deceleration mode
-typedef enum : NSUInteger {
-    RMMapDecelerationNormal = 0, // default
-    RMMapDecelerationFast   = 1,
-    RMMapDecelerationOff    = 2
-} RMMapDecelerationMode;
-
-
+    };
+    
+    // constants for the scrollview deceleration mode
+    typedef enum : NSUInteger {
+        RMMapDecelerationNormal = 0, // default
+        RMMapDecelerationFast   = 1,
+        RMMapDecelerationOff    = 2
+    } RMMapDecelerationMode;
+    
+    
     @interface RMMapView : UIView <UIScrollViewDelegate, UIGestureRecognizerDelegate, RMMapScrollViewDelegate>{
         
         
@@ -73,7 +73,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) id <RMMapViewDelegate> delegate;
 
 #pragma mark - View properties
- 
+
 @property (nonatomic, assign) BOOL enableDragging;
 @property (nonatomic, assign) BOOL enableBouncing;
 @property (nonatomic, assign) BOOL zoomingInPivotsAroundCenter;
@@ -135,10 +135,19 @@ typedef enum : NSUInteger {
 //
 @property (nonatomic,assign) RMMapScrollView* _mapScrollView;
 @property (nonatomic, assign) RMMapOverlayView *_overlayView;
-@property (nonatomic, assign)  float offsetDifferenceY ;
+@property (nonatomic, assign)  float offsetDifferenceY;
 @property (nonatomic, assign)  float offsetDifferenceX;
 @property (nonatomic, assign) CGPoint _accumulatedDelta;
 @property (nonatomic, assign) CGPoint  _lastContentOffset;
+@property (nonatomic, assign)     UIView *_tiledLayersSuperview;
+@property (nonatomic, assign)  BOOL _delegateHasBeforeMapMove;
+@property (nonatomic, assign)  BOOL _delegateHasAfterMapMove;
+@property (nonatomic, assign) BOOL _delegateHasBeforeMapZoom;
+@property (nonatomic, assign) BOOL _delegateHasAfterMapZoom;
+@property (nonatomic, assign) BOOL _delegateHasMapViewRegionDidChange;
+@property (nonatomic, assign) BOOL _mapScrollViewIsZooming;
+- (void)correctPositionOfAllAnnotations;
+@property (nonatomic, assign) id <RMMapViewDelegate> _delegate;
 
 ///
 @property (nonatomic, assign) RMProjectedRect projectedBounds;

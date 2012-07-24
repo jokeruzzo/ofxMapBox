@@ -77,8 +77,6 @@ void RMMapKit::onlineMap(string urlVal){
     const char * c =  urlVal.c_str();
     NSString *NSMap = [NSString stringWithUTF8String:c];
     NSURL *url = [NSURL URLWithString:NSMap];
-    
-   
     NSLog(@"loading URL: %@",url);
     onlineSource = [[RMMapBoxSource alloc] initWithReferenceURL:(url)];
     
@@ -94,6 +92,8 @@ void RMMapKit::onlineMap(string urlVal){
 
     
 }
+
+
 
 
 void RMMapKit::close() {
@@ -180,6 +180,7 @@ ofPoint RMMapKit::getScreenCoordinatesForLocation(double latitude, double longit
 ofxMapKitLocation RMMapKit::getLocationForScreenCoordinates(float x, float y) {
 	return [mapView pixelToCoordinate:CGPointMake(x, y) ];
 }
+
 
 
 

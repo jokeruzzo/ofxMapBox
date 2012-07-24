@@ -8,12 +8,13 @@ Wat is possible right now:
 
 - top layer EaglView
 - add custom MBTiles with offlineMap(string map)
-- online / offline maps
+- online maps offlineMap("URL")
+
 
 What is going to come:
 
 - route-me navigation (on the openframeworks layer)
-offline chaching of maps.
+- offline chaching of maps.
 - cycle map source
 - sea map layers
 

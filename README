@@ -2,13 +2,13 @@ Mapbox for Openframeworks IOS
 
 I've been struggeling with the limitations of the MapKit library in openframeworks so 
 I had  to modify MapBox to work together with Openframeworks. This is an early
-release. 
+release. See the testMap.mm for examples.
 
 Wat is possible right now:
 
 - top layer EaglView
 - add custom MBTiles with offlineMap(string map)
-- online maps offlineMap("URL")
+- online maps onlineMap("URL")
 
 
 What is going to come:

@@ -27,38 +27,25 @@ public:
 	
 	// open the mapview
 	void open();
-	void offlineMap(string map);
-    void onlineMap(string url);
-    void mapInteraction(bool value);
-	// hide the mapview
+    // hide the mapview
 	void close();
-
+    
+    // offline map
+    
+	void offlineMap(string map);
+    // MBtiles map. If you can host your own map do it with: https://github.com/mapbox/tilestream
+    void onlineMap(string url);
+    
+    float metersPerPixel();
+    // returns .longitude .latitude
+    CLLocationCoordinate2D projectedPointToCoordinate(ofPoint projectedPoint);
 	
 	// latitude is south/north (-90...90)
 	// longitude is east/west (-180...180)
 	
 	// set center (latitude,longitude) of map
 	void setCenter(double latitude, double longitude, bool animated = true);
-	
-	// set span of map (in degrees)
-	void setSpan(double latitudeDelta, double longitudeDelta, bool animated = true);
-	
-	// set span of map (in meters)
-	void setSpanWithMeters(double metersLatitude, double metersLongitude, bool animated = true);
 
-	// set center (latidude, longitude) and span (in degrees)
-	void setRegion(double latitude, double longitude, double latitudeDelta, double longitudeDelta, bool animated = true);
-	
-    void _setRegion(CLLocationCoordinate2D center, RMProjectedSize span, bool animated);
-    
-	// set center (latidude, longitude) and span (in meters)
-	void setRegionWithMeters(double latitude, double longitude, double metersLatitude, double metersLongitude, bool animated = true);
-	
-	// set the map type (see RMMapKitType above)
-	void setType(RMMapKit type );
-	
-	// set whether user location is visible on the map (as a blue dot)
-	void setShowUserLocation(bool b);
 	
 	// enable/disable user interaction
 	// if user interaction is not allowed, setAllowZoom / setAllowScroll are ignored
@@ -66,7 +53,10 @@ public:
 	void setAllowUserInteraction(bool b);
 
 	// set whether user is allowed to zoom in or not
-	void setAllowZoom(bool b);
+	void setZoom(float zoomLevel);
+    
+    void setMinZoom (float minZoom);
+    void setMaxZoom (float maxZoom);
 
 	// set whether user is allowed to scroll the view or not
 	void setAllowScroll(bool b);

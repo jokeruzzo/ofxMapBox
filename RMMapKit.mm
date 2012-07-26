@@ -9,6 +9,16 @@
 #include "mapController.h"
 #include "mapSubView.h"
 
+#import "RMOpenStreetMapSource.h"
+#import "RMOpenSeaMapLayer.h"
+#import "RMMapView.h"
+#import "RMMarker.h"
+#import "RMCircle.h"
+#import "RMProjection.h"
+#import "RMAnnotation.h"
+#import "RMQuadTree.h"
+#import "RMCoordinateGridSource.h"
+#import "RMOpenCycleMapSource.h"
 
 
 static mapController * mapViewController = nil ;
@@ -34,14 +44,8 @@ void RMMapKit::open() {
 	ofLog(OF_LOG_VERBOSE, "RMMapKit::open()");
         //removes main view.. or else it's double
     
-
-
-    
-     //   [[[ofxiPhoneGetAppDelegate() glViewController] glView] removeFromSuperview];
     if (offline  == false){   
-    mapViewController =    [[mapController alloc] initWithFrame: CGRectMake(0, 0, 
-                                                                            ofGetWidth(),
-                                                                            ofGetHeight())]; 
+    mapViewController =    [[mapController alloc] initWithFrame: CGRectMake(0, 0,                     ofGetWidth(),                  ofGetHeight())]; 
      mapView = mapViewController.getMapView;
     [mapView setDelegate :mapViewController]; 
     [ofxiPhoneGetUIWindow() addSubview:mapView];
@@ -93,77 +97,50 @@ void RMMapKit::onlineMap(string urlVal){
     
 }
 
-
-
-
 void RMMapKit::close() {
 	ofLog(OF_LOG_VERBOSE, "RMMapKit::close()");
 	[[mapView superview] removeFromSuperview];
 }
-
-
 
 void RMMapKit::setCenter(double latitude, double longitude, bool animated) {
 	CLLocationCoordinate2D center = makeCLLocation(latitude, longitude);
 	[mapView setCenterCoordinate:center animated:animated]; 
 }
 
-//
-//void RMMapKit::setSpan(double latitudeDelta, double longitudeDelta, bool animated) {
-//	_setRegion(mapView.center, makeMKCoordinateSpan(latitudeDelta, longitudeDelta), animated);
-//}
+float RMMapKit::metersPerPixel(){
+    
+    return [mapView metersPerPixel] ;   
 
-void RMMapKit::setSpanWithMeters(double metersLatitude, double metersLongitude, bool animated) {
-	CGPoint currentCenter	= mapView.center;
-	//_setRegion(currentCenter, MKCoordinateRegionMakeWithDistance(currentCenter, metersLatitude, metersLongitude).span, animated);
-}
-//
-//void RMMapKit::setRegion(double latitude, double longitude, double latitudeDelta, double longitudeDelta, bool animated) {
-//	_setRegion( makeCLLocation(latitude, longitude), makeMKCoordinateSpan(latitudeDelta, longitudeDelta), animated);
-//}
-
-
-void RMMapKit::setRegionWithMeters(double latitude, double longitude, double metersLatitude, double metersLongitude, bool animated) {
-	CLLocationCoordinate2D newCenter = makeCLLocation(latitude, longitude);
-//	_setRegion(newCenter,
-//               RMProjectedSizeMake(metersLatitude, metersLongitude), animated);
 }
 
-
-void RMMapKit::_setRegion(CLLocationCoordinate2D center, RMProjectedSize span, bool animated) {
-    ///RMProjectedRect = 
-    //	RMProjectedPoint origin;
-	//RMProjectedSize size;
-    //CLLocationCoordinate2D centerProjection
-	//RMProjectedRect currentRegion = { center, span };
-	//[mapView setProjectedBounds:currentRegion animated:animated];
-}
-
-//void RMMapKit::setType(RMMapKitType type) {
-//	ofLog(OF_LOG_VERBOSE, "RMMapKit::setType");
-//	mapView.mapType = type;
-//}
-
-void RMMapKit::setShowUserLocation(bool b) {
-//	mapView.showsUserLocation = b;
+CLLocationCoordinate2D RMMapKit::projectedPointToCoordinate(ofPoint projectedPoint){
+    RMProjectedPoint aPoint;
+    aPoint.x = projectedPoint.x;
+    aPoint.y = projectedPoint.y;
+    return [[mapView projection] projectedPointToCoordinate:aPoint];
+    
 }
 
 void RMMapKit::setAllowUserInteraction(bool b) {
 	mapView.userInteractionEnabled = b;
 }
 
-void RMMapKit::setAllowZoom(bool b) {
-//	mapView.zoomEnabled = b;
+void RMMapKit::setZoom(float zoomLevel) {
+	mapView.zoom = zoomLevel;
 }
 
+
+void RMMapKit::setMinZoom (float minZoom){
+    mapView.minZoom=minZoom;
+    
+}
+void RMMapKit::setMaxZoom (float maxZoom){
+    mapView.maxZoom = maxZoom;
+    
+}
 void RMMapKit::setAllowScroll(bool b) {
 	mapView._mapScrollView.scrollEnabled = b;
 }
-
-bool RMMapKit::isUserOnScreen() {
-//	return mapView.userLocationVisible;
-}
-
 
 CLLocationCoordinate2D RMMapKit::getCenterLocation() {
 	return mapView.centerCoordinate;
@@ -182,26 +159,6 @@ ofxMapKitLocation RMMapKit::getLocationForScreenCoordinates(float x, float y) {
 }
 
 
-
-
-// convert location (latitude, longitude) and span (in degrees) to screen coordinates (i.e. pixels)
-ofRectangle RMMapKit::getScreenRectForRegion(double latitude, double latitudeDelta, double longitudeDelta) {
-	ofRectangle r;
-	//	- (CGRect)convertRegion:(MKCoordinateRegion)region toRectToView:(UIView *)view
-	//	CGRect	cgRect = [mapView convertRegion:
-	return r;
-}
-
-
-// convert location (latitude, longitude) and span (in meters) to screen coordinates (i.e. pixels)
-ofRectangle RMMapKit::getScreenRectForRegionWithMeters(double latitude, double longitude, double metersLatitude, double metersLongitude) {
-	ofRectangle r;
-	return r;
-}
-
-
-
-
 #define MAX_LATITUDE	89.999
 #define MAX_LONGITUDE	179.999
 
@@ -212,10 +169,5 @@ CLLocationCoordinate2D RMMapKit::makeCLLocation(double latitude, double longitud
 	};
 	return center;
 }
-
-//MKCoordinateSpan RMMapKit::makeMKCoordinateSpan(double latitudeDelta, double longitudeDelta) {
-//	//MKCoordinateSpan span = { latitudeDelta, longitudeDelta };
-//	//return span;
-//}
 
 

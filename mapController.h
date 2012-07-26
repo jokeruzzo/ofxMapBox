@@ -17,6 +17,7 @@
 
 
 
+
 @interface mapController : UIViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate, RMMapScrollViewDelegate, RMMapViewDelegate> {
     
     mapSubView * mapView;

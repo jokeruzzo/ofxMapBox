@@ -148,6 +148,8 @@ enum : NSUInteger {
 @property (nonatomic, assign) BOOL _mapScrollViewIsZooming;
 - (void)correctPositionOfAllAnnotations;
 @property (nonatomic, assign) id <RMMapViewDelegate> _delegate;
+@property (nonatomic, assign)    double _metersPerPixel;
+@property (nonatomic, assign)     RMProjection *_projection;
 
 ///
 @property (nonatomic, assign) RMProjectedRect projectedBounds;

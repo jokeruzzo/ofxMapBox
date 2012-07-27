@@ -1,3 +1,14 @@
+//  *
+//   \
+//    \
+//     \
+//      \
+//       \
+//        *
+// made by Martijn Mellema
+// Interaction Designer from Arnhem, The Netherlands
+
+
 #include "testApp.h"
 
 #define POS2_LATITUDE		 52.370216 
@@ -32,6 +43,15 @@ void testApp::setup() {
 
 //--------------------------------------------------------------
 void testApp::update(){
+    // checks if route thread came back
+    if ( mapKit.finishRoute()){
+        // stores
+        data =   mapKit.routeData();
+        
+        mapKit.cleanRoute();
+        
+    }
+
     
 }
 
@@ -64,6 +84,15 @@ void testApp::exit() {
 //--------------------------------------------------------------
 void testApp::touchDown(ofTouchEventArgs &touch){
     
+    // can add maximum of 2 positions for now.
+    CLLocationCoordinate2D pos1 =     CLLocationCoordinate2DMake(52.3762,  4.90642);
+    CLLocationCoordinate2D pos2 = CLLocationCoordinate2DMake(52.369 , 4.90642);
+    
+    
+    mapKit.addRoute(pos1);
+    mapKit.addRoute(pos2);
+    
+    mapKit.startRoute();
     
     
     

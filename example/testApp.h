@@ -1,3 +1,14 @@
+//  *
+//   \
+//    \
+//     \
+//      \
+//       \
+//        *
+// made by Martijn Mellema
+// Interaction Designer from Arnhem, The Netherlands 
+
+
 #pragma once
 
 #include "ofMain.h"
@@ -33,7 +44,7 @@ public:
     RMMapKit mapKit;
     
     
-   
+   vector <CLLocationCoordinate2D> data;
     
     
 

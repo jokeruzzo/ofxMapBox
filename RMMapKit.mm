@@ -1,7 +1,12 @@
-
-//  Created by Martijn Mellema on 20-07-12.
-//  Copyright (c) 2012 www.martijnmellema.com All rights reserved.
-//  Visual conceptual artist / Interaction designer
+//  *
+//   \
+//    \
+//     \
+//      \
+//       \
+//        *
+// made by Martijn Mellema
+// Interaction Designer from Arnhem, The Netherlands
 
 
 #include "RMMapKit.h"
@@ -21,6 +26,12 @@
 #import "RMOpenCycleMapSource.h"
 
 
+
+#include "readJSON.h"
+
+
+
+
 static mapController * mapViewController = nil ;
 static mapSubView * mapView = nil ;
 
@@ -31,6 +42,7 @@ static mapSubView * mapView = nil ;
 RMMapKit::RMMapKit() {
 	mapView = NULL;
     offline = false;
+  
    }
 
 RMMapKit::~RMMapKit() {
@@ -42,10 +54,12 @@ RMMapKit::~RMMapKit() {
 
 void RMMapKit::open() {
 	ofLog(OF_LOG_VERBOSE, "RMMapKit::open()");
-        //removes main view.. or else it's double
+    cout<<"Welcome! visit my website: www.martijnmellema.com"<<endl;
     
     if (offline  == false){   
-    mapViewController =    [[mapController alloc] initWithFrame: CGRectMake(0, 0,                     ofGetWidth(),                  ofGetHeight())]; 
+    mapViewController =    [[mapController alloc] initWithFrame: CGRectMake(0, 0,                     
+                                                                            ofGetWidth(),                  
+                                                                            ofGetHeight())]; 
      mapView = mapViewController.getMapView;
     [mapView setDelegate :mapViewController]; 
     [ofxiPhoneGetUIWindow() addSubview:mapView];
@@ -65,7 +79,8 @@ void RMMapKit::offlineMap(string map){
     mapViewController = [[mapController alloc] initWithFrame: CGRectMake(0, 0, 
                                                                             ofGetWidth(),
                                                                             ofGetHeight()) 
-                                                  andTilesource:offlineSource ]; 
+                                                  
+                                               andTilesource:offlineSource ]; 
     
     mapView = mapViewController.getMapView;
     [mapView setDelegate :mapViewController]; 
@@ -97,6 +112,16 @@ void RMMapKit::onlineMap(string urlVal){
     
 }
 
+void RMMapKit::addMarker(string name, CLLocationCoordinate2D coord, string image){
+    const char * c =  image.c_str();
+    NSString *NSimage = [NSString stringWithUTF8String:c];
+    const char * d =  name.c_str();
+    NSString *NSname = [NSString stringWithUTF8String:d];
+    [mapViewController addMarker:NSname coordinates:coord image:NSimage];
+    
+    
+}
+
 void RMMapKit::close() {
 	ofLog(OF_LOG_VERBOSE, "RMMapKit::close()");
 	[[mapView superview] removeFromSuperview];
@@ -123,6 +148,11 @@ CLLocationCoordinate2D RMMapKit::projectedPointToCoordinate(ofPoint projectedPoi
 
 void RMMapKit::setAllowUserInteraction(bool b) {
 	mapView.userInteractionEnabled = b;
+}
+
+void RMMapKit::stopZoom(bool b){
+    mapViewController.stopZoom = b;
+    
 }
 
 void RMMapKit::setZoom(float zoomLevel) {
@@ -171,3 +201,50 @@ CLLocationCoordinate2D RMMapKit::makeCLLocation(double latitude, double longitud
 }
 
 
+
+void RMMapKit::retinaDisplay(bool b){
+    mapView.adjustTilesForRetinaDisplay = b;
+    
+}
+
+ 
+void RMMapKit::addRoute(CLLocationCoordinate2D value){
+    locationData.push_back(value);
+    
+}
+
+
+void RMMapKit::startRoute(){
+    // loads a thread, so no delays in the script.
+    
+    jsonRoute = [[readJSON alloc] init];
+
+    [jsonRoute addLocation:locationData instruct:false];
+      
+    initRoute = true;
+    
+    
+    
+}
+
+bool RMMapKit::finishRoute(){
+    
+    if(initRoute){
+      return  [jsonRoute receivedData];
+    }
+    return false;
+
+   
+    
+}
+
+void RMMapKit::cleanRoute(){
+    jsonRoute = nil;
+}
+
+
+vector<CLLocationCoordinate2D> RMMapKit::routeData(){
+    cout<<"found points"<<[jsonRoute dataValues].size()<<endl;
+    return  [jsonRoute dataValues];
+    
+}

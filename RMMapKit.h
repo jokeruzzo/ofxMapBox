@@ -1,15 +1,30 @@
-
-//  Created by Martijn Mellema on 20-07-12.
-//  Copyright (c) 2012 www.martijnmellema.com All rights reserved.
-//  Visual conceptual artist / Interaction designer
-
+//  *
+//   \
+//    \
+//     \
+//      \
+//       \
+//        *
+// made by Martijn Mellema
+// Interaction Designer from Arnhem, The Netherlands
 
 
 #include "ofMain.h"
-
 #include "RMMapView.h"
 #import "RMMBTilesSource.h"
 #import "RMMapBoxSource.h"
+
+
+#include <list>
+
+
+
+// 
+
+#include "ofxJSONElement.h"
+
+
+@class readJSON;
 
 // these are the types you can set for the map
 
@@ -36,6 +51,8 @@ public:
     // MBtiles map. If you can host your own map do it with: https://github.com/mapbox/tilestream
     void onlineMap(string url);
     
+    void retinaDisplay(bool b);
+    
     float metersPerPixel();
     // returns .longitude .latitude
     CLLocationCoordinate2D projectedPointToCoordinate(ofPoint projectedPoint);
@@ -60,6 +77,8 @@ public:
 
 	// set whether user is allowed to scroll the view or not
 	void setAllowScroll(bool b);
+    
+    void stopZoom(bool b);
 	
 	// returns whether the user location is visible in the current map region
 	bool isUserOnScreen();
@@ -82,33 +101,44 @@ public:
 	
 	// convert location (latitude, longitude) and span (in meters) to screen coordinates (i.e. pixels)
 	ofRectangle getScreenRectForRegionWithMeters(double latitude, double longitude, double metersLatitude, double metersLongitude); 
+    
+    
+    void geoJSON(double fromLatitude, double fromLongitude, double toLatitude, double toLongitude, bool instructions);
 
 	
 	// returns whether the map is open or not
 	bool isOpen();
 	
-//	void addListener(RMMapKitListener* l);	
-//	void removeListener(RMMapKitListener* l);
+// listeners
+    
+   	RMMapView	*getMKMapView();
+    
+     
+    void addMarker(string name, CLLocationCoordinate2D coord, string image);
+    
+    void addRoute(CLLocationCoordinate2D value);
+    void startRoute();
+    bool finishRoute();
+    vector<CLLocationCoordinate2D> routeData();
+    void cleanRoute();
 
-	void regionWillChange(bool animated);
-	void regionDidChange(bool animated);
-	void willStartLoadingMap();
-	void didFinishLoadingMap();
-	void errorLoadingMap(string errorDescription);
-	
-
-	// return instance to MKMapView
-	RMMapView	*getMKMapView();
-	
+    
 protected:
-	
+    
+    vector <CLLocationCoordinate2D> locationData;
+      
+    readJSON *jsonRoute;
     RMMBTilesSource *offlineSource;
     RMMapBoxSource *onlineSource;
     bool offline;
+    bool initRoute; 
+    
+    
+    ofxJSONElement result;
+    
 	
 	CLLocationCoordinate2D makeCLLocation(double latitude, double longitude);
-	//MKCoordinateSpan makeMKCoordinateSpan(double latitudeDelta, double longitudeDelta);
-	
-	//void _setRegion(CLLocationCoordinate2D center, MKCoordinateSpan span, bool animated);
+    
+  
 };
 

@@ -1,9 +1,12 @@
-
-//  Created by Martijn Mellema on 20-07-12.
-//  Copyright (c) 2012 www.martijnmellema.com All rights reserved.
-//  Visual conceptual artist / Interaction designer
-
-//
+//  *
+//   \
+//    \
+//     \
+//      \
+//       \
+//        *
+// made by Martijn Mellema
+// Interaction Designer from Arnhem, The Netherlands
 
 #import <UIKit/UIKit.h>
 #import "RMMapView.h"

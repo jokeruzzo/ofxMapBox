@@ -1,15 +1,24 @@
-
-//  Created by Martijn Mellema on 20-07-12.
-//  Copyright (c) 2012 www.martijnmellema.com All rights reserved.
-//  Visual conceptual artist / Interaction designer
-
-//
+//  *
+//   \
+//    \
+//     \
+//      \
+//       \
+//        *
+// made by Martijn Mellema
+// Interaction Designer from Arnhem, The Netherlands
 
 #import "mapController.h"
 #import "RMFoundation.h"
 
 
+
+#import "RMAnnotation.h"
+
+
 @interface mapController (
+               
+           
                           
                           )
 
@@ -18,15 +27,17 @@
 
 
 @implementation mapController{
-    
-    
-}
 
+  
+}
+@synthesize stopZoom;
 @synthesize mapView;
+
 
 
 - (void)viewDidLoad
 {
+    NSLog(@"viewDidLoad");
      // VIEWLOAD any retained subviews of the main view
     [super viewDidLoad];
 }
@@ -41,7 +52,7 @@
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super init];
-   
+    stopZoom = false;
     NSLog (@"loading online map");
      [[[ofxiPhoneGetAppDelegate() glViewController] glView] removeFromSuperview];    
     self.mapView= [[mapSubView  alloc] initWithFrame: frame];
@@ -50,19 +61,19 @@
     
     [self.mapView._mapScrollView addSubview:eagleScrollView ];
     [self.mapView._mapScrollView bringSubviewToFront:eagleScrollView];
-        // for the GLView update
+    // for the GLView update
     self.mapView._mapScrollView.delegate = self;
-
 
     return self;
 }
 
 
 
+
 - (id)initWithFrame:(CGRect)frame andTilesource:offlineSource
 {
     self = [super init];
-        
+    stopZoom = false;    
     [[[ofxiPhoneGetAppDelegate() glViewController] glView] removeFromSuperview];
     self.mapView= [[mapSubView  alloc] initWithFrame: frame  andTilesource:offlineSource]; 
     eagleScrollView = iPhoneGetGLView();
@@ -70,6 +81,7 @@
     [self.mapView._mapScrollView bringSubviewToFront:eagleScrollView];
         // for the GLView update
     self.mapView._mapScrollView.delegate = self;
+   
     NSLog(@"loading map");
     
     return self;
@@ -79,13 +91,24 @@
     return mapView;
 }
 
-
-
-
-- (UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView{
+-(void) addMarker: (NSString*) name coordinates:(CLLocationCoordinate2D) coord image: (NSString *) image
+{
+    RMAnnotation *Annotation = [RMAnnotation annotationWithMapView:mapView coordinate:coord andTitle: name];
+     Annotation.annotationIcon = [UIImage imageNamed: image];
+    [mapView addAnnotation:Annotation];
     
-    return mapView._tiledLayersSuperview;
 }
+
+
+// zooming sollution
+- (UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView{
+    // for zoom stop
+    if (stopZoom == false){
+        return mapView._tiledLayersSuperview;   
+    } else{
+      return  nil;
+    }
+   }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
    iPhoneGetOFWindow()->timerLoop(); 

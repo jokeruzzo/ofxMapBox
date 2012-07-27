@@ -1,5 +1,4 @@
 
-
 Mapbox for Openframeworks IOS
 
 I've been struggeling with the limitations of the MapKit library in openframeworks so 
@@ -10,12 +9,12 @@ Wat is possible right now:
 
 - top layer EaglView
 - add custom MBTiles with offlineMap(string map)
-- online maps onlineMap("URL")
+- online maps onlineMap("URL") // tilemap server reccomended.. see tilestream for your own map.
 - YOUR route system from Open Steet Maps
 
 What is going to come:
 
-- cycle map source
+- cycle map layer
 - sea map layers
 - other stuff
 
@@ -23,7 +22,7 @@ Related links:
 
 https://github.com/mapbox/mapbox-ios-sdk
 http://www.openframeworks.cc
-
+martijnmellema.com
 
 //  *
 //   \
@@ -34,4 +33,3 @@ http://www.openframeworks.cc
 //        *
 // made by Martijn Mellema
 // Interaction Designer from The Netherlands
-martijnmellema.com

@@ -78,7 +78,7 @@ public:
 	// set whether user is allowed to scroll the view or not
 	void setAllowScroll(bool b);
     
-    void stopZoom(bool b);
+    void setZoom(bool b);
 	
 	// returns whether the user location is visible in the current map region
 	bool isUserOnScreen();

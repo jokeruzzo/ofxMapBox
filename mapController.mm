@@ -14,6 +14,7 @@
 
 
 #import "RMAnnotation.h"
+#import "RMMBTilesSource.h"
 
 
 @interface mapController (
@@ -30,7 +31,7 @@
 
   
 }
-@synthesize stopZoom;
+@synthesize setZoom;
 @synthesize mapView;
 
 
@@ -52,7 +53,7 @@
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super init];
-    stopZoom = false;
+    setZoom = true;
     NSLog (@"loading online map");
      [[[ofxiPhoneGetAppDelegate() glViewController] glView] removeFromSuperview];    
     self.mapView= [[mapSubView  alloc] initWithFrame: frame];
@@ -68,12 +69,17 @@
 }
 
 
+-(bool)setZoom:(bool) value
+{
+    setZoom = value;
+    
+}
 
 
 - (id)initWithFrame:(CGRect)frame andTilesource:offlineSource
 {
     self = [super init];
-    stopZoom = false;    
+    setZoom = true;    
     [[[ofxiPhoneGetAppDelegate() glViewController] glView] removeFromSuperview];
     self.mapView= [[mapSubView  alloc] initWithFrame: frame  andTilesource:offlineSource]; 
     eagleScrollView = iPhoneGetGLView();
@@ -82,6 +88,27 @@
         // for the GLView update
     self.mapView._mapScrollView.delegate = self;
    
+    NSLog(@"loading map");
+    
+    return self;
+}
+
+
+
+- (id)initWithFrame:(CGRect)frame andOnlineTilesource:onlineSource
+{
+    self = [super init];
+    setZoom = true;    
+    [[[ofxiPhoneGetAppDelegate() glViewController] glView] removeFromSuperview];
+    RMMBTilesSource *source;
+   
+    self.mapView= [[mapSubView  alloc] initWithFrame: frame  andTilesource:onlineSource]; 
+    eagleScrollView = iPhoneGetGLView();
+    [self.mapView._mapScrollView addSubview:eagleScrollView ];
+    [self.mapView._mapScrollView bringSubviewToFront:eagleScrollView];
+    // for the GLView update
+    self.mapView._mapScrollView.delegate = self;
+    
     NSLog(@"loading map");
     
     return self;
@@ -103,7 +130,7 @@
 // zooming sollution
 - (UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView{
     // for zoom stop
-    if (stopZoom == false){
+    if (setZoom == true){
         return mapView._tiledLayersSuperview;   
     } else{
       return  nil;

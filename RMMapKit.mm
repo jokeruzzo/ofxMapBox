@@ -24,7 +24,7 @@
 #import "RMQuadTree.h"
 #import "RMCoordinateGridSource.h"
 #import "RMOpenCycleMapSource.h"
-
+#import "RMAbstractWebMapSource.h"
 
 
 #include "readJSON.h"
@@ -97,7 +97,9 @@ void RMMapKit::onlineMap(string urlVal){
     NSString *NSMap = [NSString stringWithUTF8String:c];
     NSURL *url = [NSURL URLWithString:NSMap];
     NSLog(@"loading URL: %@",url);
-    onlineSource = [[RMMapBoxSource alloc] initWithReferenceURL:(url)];
+ 
+    RMMapBoxSource   *onlineSource =    [[RMMapBoxSource alloc] initWithReferenceURL:url ];
+    
     
     mapViewController = [[mapController alloc] initWithFrame: CGRectMake(0, 0, 
                                                                          ofGetWidth(),
@@ -112,6 +114,7 @@ void RMMapKit::onlineMap(string urlVal){
     
 }
 
+// not yet working
 void RMMapKit::addMarker(string name, CLLocationCoordinate2D coord, string image){
     const char * c =  image.c_str();
     NSString *NSimage = [NSString stringWithUTF8String:c];
@@ -150,8 +153,8 @@ void RMMapKit::setAllowUserInteraction(bool b) {
 	mapView.userInteractionEnabled = b;
 }
 
-void RMMapKit::stopZoom(bool b){
-    mapViewController.stopZoom = b;
+void RMMapKit::setZoom(bool b){
+    [mapViewController setZoom:b];
     
 }
 
@@ -240,6 +243,7 @@ bool RMMapKit::finishRoute(){
 
 void RMMapKit::cleanRoute(){
     jsonRoute = nil;
+    
 }
 
 

@@ -32,19 +32,19 @@
 }
 
 @property (nonatomic, retain) IBOutlet mapSubView * mapView;
-@property (nonatomic) bool stopZoom;
+@property (nonatomic) bool setZoom;
 // adds key
 -(void) cloudeMadeAPIKey:(NSString *) key;
 -(void) addMarker: (NSString*) name coordinates:(CLLocationCoordinate2D) coord image: (NSString *) image;
 //-(void) searchIsFinished:(NSArray*) results inBounds:(BBox*) bounds;
 
 -(void ) searchPlace : (NSString *) place;
-
+- (id)initWithFrame:(CGRect)frame andOnlineTilesource:onlineSource;
 -(void)loadSource: (RMMBTilesSource *) source;
 - (id)initWithFrame:(CGRect)frame andTilesource:offlineSource;
 - (id)initWithFrame:(CGRect)frame;
 -(mapSubView*) getMapView;
-
+-(bool)setZoom:(bool) value;
 -(void) searchName : (NSString*) name;
 -(void)viewDidLoad;
 @end

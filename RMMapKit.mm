@@ -97,7 +97,7 @@ void RMMapKit::onlineMap(string urlVal){
     NSString *NSMap = [NSString stringWithUTF8String:c];
     NSURL *url = [NSURL URLWithString:NSMap];
     NSLog(@"loading URL: %@",url);
- 
+   
     RMMapBoxSource   *onlineSource =    [[RMMapBoxSource alloc] initWithReferenceURL:url ];
     
     
@@ -110,8 +110,7 @@ void RMMapKit::onlineMap(string urlVal){
     mapView = mapViewController.getMapView;
     [mapView setDelegate :mapViewController]; 
     [ofxiPhoneGetUIWindow() addSubview:mapView];
-
-    
+      
 }
 
 // not yet working
@@ -153,12 +152,12 @@ void RMMapKit::setAllowUserInteraction(bool b) {
 	mapView.userInteractionEnabled = b;
 }
 
-void RMMapKit::setZoom(bool b){
+void RMMapKit::allowZoom(bool b){
     [mapViewController setZoom:b];
     
 }
 
-void RMMapKit::setZoom(float zoomLevel) {
+void RMMapKit::setMapZoom(float zoomLevel) {
 	mapView.zoom = zoomLevel;
 }
 

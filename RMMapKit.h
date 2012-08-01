@@ -70,7 +70,7 @@ public:
 	void setAllowUserInteraction(bool b);
 
 	// set whether user is allowed to zoom in or not
-	void setZoom(float zoomLevel);
+	void setMapZoom(float zoomLevel);
     
     void setMinZoom (float minZoom);
     void setMaxZoom (float maxZoom);
@@ -78,7 +78,7 @@ public:
 	// set whether user is allowed to scroll the view or not
 	void setAllowScroll(bool b);
     
-    void setZoom(bool b);
+    void allowZoom(bool b);
 	
 	// returns whether the user location is visible in the current map region
 	bool isUserOnScreen();

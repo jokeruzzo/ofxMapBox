@@ -36,7 +36,7 @@ static mapController * mapViewController = nil ;
 static mapSubView * mapView = nil ;
 
 
-
+#pragma mark -  Setup
 
 
 RMMapKit::RMMapKit() {
@@ -129,31 +129,11 @@ void RMMapKit::close() {
 	[[mapView superview] removeFromSuperview];
 }
 
-void RMMapKit::setCenter(double latitude, double longitude, bool animated) {
-	CLLocationCoordinate2D center = makeCLLocation(latitude, longitude);
-	[mapView setCenterCoordinate:center animated:animated]; 
-}
-
-float RMMapKit::metersPerPixel(){
-    
-    return [mapView metersPerPixel] ;   
-
-}
-
-CLLocationCoordinate2D RMMapKit::projectedPointToCoordinate(ofPoint projectedPoint){
-    RMProjectedPoint aPoint;
-    aPoint.x = projectedPoint.x;
-    aPoint.y = projectedPoint.y;
-    return [[mapView projection] projectedPointToCoordinate:aPoint];
-    
-}
-
-void RMMapKit::setAllowUserInteraction(bool b) {
-	mapView.userInteractionEnabled = b;
-}
+#pragma mark -  Zoom
 
 void RMMapKit::allowZoom(bool b){
     [mapViewController setZoom:b];
+    mapViewController.setZoom = b;
     
 }
 
@@ -170,9 +150,14 @@ void RMMapKit::setMaxZoom (float maxZoom){
     mapView.maxZoom = maxZoom;
     
 }
+
+#pragma mark - Scroll
+
 void RMMapKit::setAllowScroll(bool b) {
 	mapView._mapScrollView.scrollEnabled = b;
 }
+
+#pragma mark - Location
 
 CLLocationCoordinate2D RMMapKit::getCenterLocation() {
 	return mapView.centerCoordinate;
@@ -191,6 +176,15 @@ ofxMapKitLocation RMMapKit::getLocationForScreenCoordinates(float x, float y) {
 }
 
 
+CLLocationCoordinate2D RMMapKit::projectedPointToCoordinate(ofPoint projectedPoint){
+    RMProjectedPoint aPoint;
+    aPoint.x = projectedPoint.x;
+    aPoint.y = projectedPoint.y;
+    return [[mapView projection] projectedPointToCoordinate:aPoint];
+    
+}
+
+
 #define MAX_LATITUDE	89.999
 #define MAX_LONGITUDE	179.999
 
@@ -204,12 +198,38 @@ CLLocationCoordinate2D RMMapKit::makeCLLocation(double latitude, double longitud
 
 
 
+void RMMapKit::setCenter(double latitude, double longitude, bool animated) {
+	CLLocationCoordinate2D center = makeCLLocation(latitude, longitude);
+	[mapView setCenterCoordinate:center animated:animated]; 
+}
+
+
+
+float RMMapKit::metersPerPixel(){
+    
+    return [mapView metersPerPixel] ;   
+    
+}
+
+
+
+#pragma mark - Display
+
 void RMMapKit::retinaDisplay(bool b){
     mapView.adjustTilesForRetinaDisplay = b;
     
 }
 
- 
+
+void RMMapKit::setAllowUserInteraction(bool b) {
+	mapView.userInteractionEnabled = b;
+}
+
+
+#pragma mark - route
+
+
+
 void RMMapKit::addRoute(CLLocationCoordinate2D value){
     locationData.push_back(value);
     
@@ -244,7 +264,6 @@ void RMMapKit::cleanRoute(){
     jsonRoute = nil;
     
 }
-
 
 vector<CLLocationCoordinate2D> RMMapKit::routeData(){
     cout<<"found points"<<[jsonRoute dataValues].size()<<endl;

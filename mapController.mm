@@ -100,8 +100,7 @@
     self = [super init];
     setZoom = true;    
     [[[ofxiPhoneGetAppDelegate() glViewController] glView] removeFromSuperview];
-    RMMBTilesSource *source;
-   
+     
     self.mapView= [[mapSubView  alloc] initWithFrame: frame  andTilesource:onlineSource]; 
     eagleScrollView = iPhoneGetGLView();
     [self.mapView._mapScrollView addSubview:eagleScrollView ];
@@ -130,6 +129,8 @@
 // zooming sollution
 - (UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView{
     // for zoom stop
+    
+    cout<<setZoom<<endl;
     if (setZoom == true){
         return mapView._tiledLayersSuperview;   
     } else{

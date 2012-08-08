@@ -19,9 +19,7 @@
 
 
 
-// 
 
-#include "ofxJSONElement.h"
 
 
 @class readJSON;
@@ -115,9 +113,11 @@ public:
     
      
     void addMarker(string name, CLLocationCoordinate2D coord, string image);
-    
+    // add locations first
     void addRoute(CLLocationCoordinate2D value);
+    // start search
     void startRoute();
+    
     bool finishRoute();
     vector<CLLocationCoordinate2D> routeData();
     void cleanRoute();
@@ -134,7 +134,7 @@ protected:
     bool initRoute; 
     
     
-    ofxJSONElement result;
+  
     
 	
 	CLLocationCoordinate2D makeCLLocation(double latitude, double longitude);

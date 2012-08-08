@@ -15,6 +15,7 @@
 #include "ofxiPhone.h"
 #include "ofxiPhoneExtras.h"
 #include "RMMapKit.h"
+#include "OSMRoute.h"
 
 
 class testApp : public ofxiPhoneApp {
@@ -43,8 +44,8 @@ public:
     
     RMMapKit mapKit;
     
-    
-   vector <CLLocationCoordinate2D> data;
+        OSMRoute route;
+        vector <CLLocationCoordinate2D> data;
     
     
 

@@ -18,8 +18,8 @@
 
 
 @interface mapController (
-               
-           
+                          
+                          
                           
                           )
 
@@ -28,8 +28,8 @@
 
 
 @implementation mapController{
-
-  
+    
+    
 }
 @synthesize setZoom;
 @synthesize mapView;
@@ -39,7 +39,7 @@
 - (void)viewDidLoad
 {
     NSLog(@"viewDidLoad");
-     // VIEWLOAD any retained subviews of the main view
+    // VIEWLOAD any retained subviews of the main view
     [super viewDidLoad];
 }
 
@@ -55,16 +55,16 @@
     self = [super init];
     setZoom = true;
     NSLog (@"loading online map");
-     [[[ofxiPhoneGetAppDelegate() glViewController] glView] removeFromSuperview];    
+    [[[ofxiPhoneGetAppDelegate() glViewController] glView] removeFromSuperview];
     self.mapView= [[mapSubView  alloc] initWithFrame: frame];
-            
+    
     eagleScrollView = iPhoneGetGLView();
     
     [self.mapView._mapScrollView addSubview:eagleScrollView ];
     [self.mapView._mapScrollView bringSubviewToFront:eagleScrollView];
     // for the GLView update
     self.mapView._mapScrollView.delegate = self;
-
+    
     return self;
 }
 
@@ -79,15 +79,15 @@
 - (id)initWithFrame:(CGRect)frame andTilesource:offlineSource
 {
     self = [super init];
-    setZoom = true;    
+    setZoom = true;
     [[[ofxiPhoneGetAppDelegate() glViewController] glView] removeFromSuperview];
-    self.mapView= [[mapSubView  alloc] initWithFrame: frame  andTilesource:offlineSource]; 
+    self.mapView= [[mapSubView  alloc] initWithFrame: frame  andTilesource:offlineSource];
     eagleScrollView = iPhoneGetGLView();
-    [self.mapView._mapScrollView addSubview:eagleScrollView ];
-    [self.mapView._mapScrollView bringSubviewToFront:eagleScrollView];
-        // for the GLView update
+    [self.mapView._mapScrollView addSubview: eagleScrollView ];
+    [self.mapView._mapScrollView bringSubviewToFront: eagleScrollView];
+    // for the GLView update
     self.mapView._mapScrollView.delegate = self;
-   
+    
     NSLog(@"loading map");
     
     return self;
@@ -98,10 +98,10 @@
 - (id)initWithFrame:(CGRect)frame andOnlineTilesource:onlineSource
 {
     self = [super init];
-    setZoom = true;    
+    setZoom = true;
     [[[ofxiPhoneGetAppDelegate() glViewController] glView] removeFromSuperview];
-     
-    self.mapView= [[mapSubView  alloc] initWithFrame: frame  andTilesource:onlineSource]; 
+    
+    self.mapView= [[mapSubView  alloc] initWithFrame: frame  andTilesource:onlineSource];
     eagleScrollView = iPhoneGetGLView();
     [self.mapView._mapScrollView addSubview:eagleScrollView ];
     [self.mapView._mapScrollView bringSubviewToFront:eagleScrollView];
@@ -120,7 +120,7 @@
 -(void) addMarker: (NSString*) name coordinates:(CLLocationCoordinate2D) coord image: (NSString *) image
 {
     RMAnnotation *Annotation = [RMAnnotation annotationWithMapView:mapView coordinate:coord andTitle: name];
-     Annotation.annotationIcon = [UIImage imageNamed: image];
+    Annotation.annotationIcon = [UIImage imageNamed: image];
     [mapView addAnnotation:Annotation];
     
 }
@@ -131,56 +131,26 @@
     // for zoom stop
     
     cout<<setZoom<<endl;
+    
+    // allow zooming
     if (setZoom == true){
-        return mapView._tiledLayersSuperview;   
+        return mapView._tiledLayersSuperview;
     } else{
-      return  nil;
+        return  nil;
     }
-   }
+}
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-   iPhoneGetOFWindow()->timerLoop(); 
+    iPhoneGetOFWindow()->timerLoop();
     
     // added to hold GLView into place
-     eagleScrollView.center = CGPointMake(mapView._mapScrollView.contentOffset.x + ofGetWidth()/2, mapView._mapScrollView.contentOffset.y + ofGetHeight()/2); 
+    eagleScrollView.center = CGPointMake(mapView._mapScrollView.contentOffset.x + ofGetWidth()/2, mapView._mapScrollView.contentOffset.y + ofGetHeight()/2);
     
     RMProjectedRect planetBounds = self.mapView._projection.planetBounds;
     self.mapView._metersPerPixel = planetBounds.size.width / self.mapView._mapScrollView.contentSize.width;
 }
 
 
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-    if (mapView._delegateHasBeforeMapMove)
-        [self.mapView._delegate beforeMapMove:self.mapView];
-        [self.mapView scrollViewWillBeginDecelerating:scrollView];
-}
-
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-{
-    if (!decelerate && self.mapView._delegateHasAfterMapMove)
-        [self.mapView._delegate afterMapMove:self.mapView];
-        [self.mapView scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
-}
-
-- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view
-{
-   
-    self.mapView._mapScrollViewIsZooming = YES;
-    
-    if (self.mapView._delegateHasBeforeMapZoom)
-        [self.mapView._delegate beforeMapZoom:self.mapView];
-        [self.mapView scrollViewWillBeginZooming:scrollView withView:view];
-}
-
-- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale
-{
-    self.mapView._mapScrollViewIsZooming = NO;
-    
-    [self.mapView correctPositionOfAllAnnotations ];
-    [self.mapView scrollViewDidEndZooming:scrollView withView:view atScale:scale];
-}
 
 
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView{

@@ -42,13 +42,13 @@ static mapSubView * mapView = nil ;
 RMMapKit::RMMapKit() {
 	mapView = NULL;
     offline = false;
-  
-   }
+    
+}
 
 RMMapKit::~RMMapKit() {
 	[mapView release];
 	
-  
+    
 }
 
 
@@ -56,61 +56,61 @@ void RMMapKit::open() {
 	ofLog(OF_LOG_VERBOSE, "RMMapKit::open()");
     cout<<"Welcome! visit my website: www.martijnmellema.com"<<endl;
     
-    if (offline  == false){   
-    mapViewController =    [[mapController alloc] initWithFrame: CGRectMake(0, 0,                     
-                                                                            ofGetWidth(),                  
-                                                                            ofGetHeight())]; 
-     mapView = mapViewController.getMapView;
-    [mapView setDelegate :mapViewController]; 
-    [ofxiPhoneGetUIWindow() addSubview:mapView];
+    if (offline  == false){
+        mapViewController =    [[mapController alloc] initWithFrame: CGRectMake(0, 0,
+                                                                                ofGetWidth(),
+                                                                                ofGetHeight())];
+        mapView = mapViewController.getMapView;
+        [mapView setDelegate :mapViewController];
+        [ofxiPhoneGetUIWindow() addSubview:mapView];
     }
-   
-
+    
+    
 }
 
 void RMMapKit::offlineMap(string map){
     const char * c = map.c_str();
     NSString *NSMap = [NSString stringWithUTF8String:c];
-        
+    
     offlineSource = [[RMMBTilesSource alloc] initWithTileSetURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:NSMap ofType:@"mbtiles"]]];
-        
+    
     offline = true;
     
-    mapViewController = [[mapController alloc] initWithFrame: CGRectMake(0, 0, 
-                                                                            ofGetWidth(),
-                                                                            ofGetHeight()) 
-                                                  
-                                               andTilesource:offlineSource ]; 
+    mapViewController = [[mapController alloc] initWithFrame: CGRectMake(0, 0,
+                                                                         ofGetWidth(),
+                                                                         ofGetHeight())
+                         
+                                               andTilesource:offlineSource ];
     
     mapView = mapViewController.getMapView;
-    [mapView setDelegate :mapViewController]; 
+  //  [mapView setDelegate :mapViewController];
     [ofxiPhoneGetUIWindow() addSubview:mapView];
     
     
-
+    
 }
 
 void RMMapKit::onlineMap(string urlVal){
- 
+    
     offline = true;
     const char * c =  urlVal.c_str();
     NSString *NSMap = [NSString stringWithUTF8String:c];
     NSURL *url = [NSURL URLWithString:NSMap];
     NSLog(@"loading URL: %@",url);
-   
+    
     RMMapBoxSource   *onlineSource =    [[RMMapBoxSource alloc] initWithReferenceURL:url ];
     
     
-    mapViewController = [[mapController alloc] initWithFrame: CGRectMake(0, 0, 
+    mapViewController = [[mapController alloc] initWithFrame: CGRectMake(0, 0,
                                                                          ofGetWidth(),
-                                                                         ofGetHeight()) 
-                                               andTilesource:onlineSource ]; 
-
+                                                                         ofGetHeight())
+                                               andTilesource:onlineSource ];
+    
     
     mapView = mapViewController.getMapView;
-    [mapView setDelegate :mapViewController]; 
+    [mapView setDelegate :mapViewController];
     [ofxiPhoneGetUIWindow() addSubview:mapView];
-      
+    
 }
 
 // not yet working
@@ -189,9 +189,9 @@ CLLocationCoordinate2D RMMapKit::projectedPointToCoordinate(ofPoint projectedPoi
 #define MAX_LONGITUDE	179.999
 
 CLLocationCoordinate2D RMMapKit::makeCLLocation(double latitude, double longitude) {
-	CLLocationCoordinate2D center = { 
+	CLLocationCoordinate2D center = {
 		CLAMP(latitude, -MAX_LATITUDE, MAX_LATITUDE),
-		CLAMP(longitude, -MAX_LONGITUDE, MAX_LONGITUDE)		
+		CLAMP(longitude, -MAX_LONGITUDE, MAX_LONGITUDE)
 	};
 	return center;
 }
@@ -200,14 +200,14 @@ CLLocationCoordinate2D RMMapKit::makeCLLocation(double latitude, double longitud
 
 void RMMapKit::setCenter(double latitude, double longitude, bool animated) {
 	CLLocationCoordinate2D center = makeCLLocation(latitude, longitude);
-	[mapView setCenterCoordinate:center animated:animated]; 
+	[mapView setCenterCoordinate:center animated:animated];
 }
 
 
 
 float RMMapKit::metersPerPixel(){
     
-    return [mapView metersPerPixel] ;   
+    return [mapView metersPerPixel] ;
     
 }
 
@@ -226,47 +226,5 @@ void RMMapKit::setAllowUserInteraction(bool b) {
 }
 
 
-#pragma mark - route
 
 
-
-void RMMapKit::addRoute(CLLocationCoordinate2D value){
-    locationData.push_back(value);
-    
-}
-
-
-void RMMapKit::startRoute(){
-    // loads a thread, so no delays in the script.
-    
-    jsonRoute = [[readJSON alloc] init];
-
-    [jsonRoute addLocation:locationData instruct:false];
-      
-    initRoute = true;
-    
-    
-    
-}
-
-bool RMMapKit::finishRoute(){
-    
-    if(initRoute){
-      return  [jsonRoute receivedData];
-    }
-    return false;
-
-   
-    
-}
-
-void RMMapKit::cleanRoute(){
-    jsonRoute = nil;
-    
-}
-
-vector<CLLocationCoordinate2D> RMMapKit::routeData(){
-    cout<<"found points"<<[jsonRoute dataValues].size()<<endl;
-    return  [jsonRoute dataValues];
-    
-}

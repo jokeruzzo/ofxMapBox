@@ -44,11 +44,11 @@ void testApp::setup() {
 //--------------------------------------------------------------
 void testApp::update(){
     // checks if route thread came back
-    if ( mapKit.finishRoute()){
+    if ( route.finishRoute()){ // if data is received of 2 point route
         // stores
-        data =   mapKit.routeData();
+        data =   route.routeData();
         
-        mapKit.cleanRoute();
+        route.cleanRoute();
         
     }
 
@@ -84,15 +84,14 @@ void testApp::exit() {
 //--------------------------------------------------------------
 void testApp::touchDown(ofTouchEventArgs &touch){
     
-    // can add maximum of 2 positions for now.
-    CLLocationCoordinate2D pos1 =     CLLocationCoordinate2DMake(52.3762,  4.90642);
+    CLLocationCoordinate2D pos1 =     CLLocationCoordinate2DMake(52.3762,  4.90642); // begin position (
     CLLocationCoordinate2D pos2 = CLLocationCoordinate2DMake(52.369 , 4.90642);
     
     
-    mapKit.addRoute(pos1);
-    mapKit.addRoute(pos2);
+    route.addRoute(pos1);
+    route.addRoute(pos2);
     
-    mapKit.startRoute();
+    route.startRoute();
     
     
     

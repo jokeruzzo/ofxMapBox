@@ -79,7 +79,7 @@
         
         
     }else {
-      url = "http://www.yournavigation.org/api/1.0/gosmore.php?format=geojson&flat="+pos0lat+"&flon="+pos0lon+"&tlat="+pos1lat+"&tlon="+pos1lon+"&v=motorcar&fast=1&layer=mapnik";
+          url = "http://www.yournavigation.org/api/1.0/gosmore.php?format=geojson&flat="+pos0lat+"&flon="+pos0lon+"&tlat="+pos1lat+"&tlon="+pos1lon+"&v=motorcar&fast=1&layer=mapnik";
         
     }
     

@@ -1,4 +1,3 @@
-
 Mapbox for Openframeworks IOS
 
 I've been struggeling with the limitations of the MapKit library in openframeworks so 
@@ -22,7 +21,7 @@ Related links:
 
 https://github.com/mapbox/mapbox-ios-sdk
 http://www.openframeworks.cc
-martijnmellema.com
+martijnmellema.nl
 
 //  *
 //   \

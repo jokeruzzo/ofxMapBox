@@ -33,6 +33,7 @@
 
 @property (nonatomic, retain) IBOutlet mapSubView * mapView;
 @property (nonatomic) bool setZoom;
+@property (nonatomic) bool freeze;
 // adds key
 -(void) cloudeMadeAPIKey:(NSString *) key;
 -(void) addMarker: (NSString*) name coordinates:(CLLocationCoordinate2D) coord image: (NSString *) image;
@@ -47,5 +48,6 @@
 -(bool)setZoom:(bool) value;
 -(void) searchName : (NSString*) name;
 -(void)viewDidLoad;
+-(float)getZoom;
 @end
 

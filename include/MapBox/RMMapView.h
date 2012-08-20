@@ -27,7 +27,6 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreGraphics/CGGeometry.h>
-#import <UIKit/UIGestureRecognizerSubclass.h>
 
 #import "RMGlobalConstants.h"
 #import "RMFoundation.h"
@@ -39,6 +38,10 @@
 #import "RMMapScrollView.h"
 #import "RMTileSourcesContainer.h"
 
+#define kRMUserLocationAnnotationTypeName   @"RMUserLocationAnnotation"
+#define kRMTrackingHaloAnnotationTypeName   @"RMTrackingHaloAnnotation"
+#define kRMAccuracyCircleAnnotationTypeName @"RMAccuracyCircleAnnotation"
+
 @class RMProjection;
 @class RMFractalTileProjection;
 @class RMTileCache;
@@ -48,6 +51,7 @@
 @class RMMarker;
 @class RMAnnotation;
 @class RMQuadTree;
+@class RMUserLocation;
 
 
 // constants for boundingMask
@@ -65,15 +69,29 @@ typedef enum : NSUInteger {
 } RMMapDecelerationMode;
 
 
-    @interface RMMapView : UIView <UIScrollViewDelegate, UIGestureRecognizerDelegate, RMMapScrollViewDelegate>{
-        
-        
-    }
+@interface RMMapView : UIView <UIScrollViewDelegate, UIGestureRecognizerDelegate, RMMapScrollViewDelegate, CLLocationManagerDelegate>
 
 @property (nonatomic, assign) id <RMMapViewDelegate> delegate;
 
 #pragma mark - View properties
- 
+
+#pragma mark - mod
+
+@property (nonatomic, assign) RMMapScrollView *_mapScrollView;
+@property (nonatomic, assign) RMMapOverlayView *_overlayView;
+@property (nonatomic, assign) UIView *_tiledLayersSuperview;
+@property (nonatomic, assign) BOOL _delegateHasBeforeMapZoom;
+@property (nonatomic, assign) bool _delegateHasAfterMapZoom;
+@property (nonatomic) id <RMMapViewDelegate> _delegate;
+
+
+
+///
+
+
+
+
+
 @property (nonatomic, assign) BOOL enableDragging;
 @property (nonatomic, assign) BOOL enableBouncing;
 @property (nonatomic, assign) BOOL zoomingInPivotsAroundCenter;
@@ -87,6 +105,8 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign)   BOOL adjustTilesForRetinaDisplay;
 @property (nonatomic, readonly) float adjustedZoomForRetinaDisplay; // takes adjustTilesForRetinaDisplay and screen scale into account
 
+@property (nonatomic, assign) UIViewController *viewControllerPresentingAttribution;
+
 // take missing tiles from lower zoom levels, up to #missingTilesDepth zoom levels (defaults to 0, which disables this feature)
 @property (nonatomic, assign) NSUInteger missingTilesDepth;
 
@@ -96,35 +116,6 @@ typedef enum : NSUInteger {
 @property (nonatomic, retain) UIView *backgroundView;
 
 @property (nonatomic, assign) BOOL debugTiles;
-
-
-/////////////////////////////////////
-
-
-
-@property (nonatomic)BOOL _delegateHasBeforeMapMove;
-@property (nonatomic)BOOL _delegateHasAfterMapMove;
-@property (nonatomic, assign)BOOL _delegateHasBeforeMapZoom;
-@property (nonatomic)BOOL _delegateHasAfterMapZoom;
-@property (nonatomic, assign)BOOL _delegateHasMapViewRegionDidChange;
-@property (nonatomic, assign)BOOL _delegateHasDoubleTapOnMap;
-@property (nonatomic, assign)BOOL _delegateHasDoubleTapTwoFingersOnMap;
-@property (nonatomic, assign)BOOL _delegateHasSingleTapOnMap;
-@property (nonatomic, assign)BOOL _delegateHasSingleTapTwoFingersOnMap;
-@property (nonatomic, assign)BOOL _delegateHasLongSingleTapOnMap;
-@property (nonatomic, assign)BOOL _delegateHasTapOnAnnotation;
-@property (nonatomic, assign)BOOL _delegateHasDoubleTapOnAnnotation;
-@property (nonatomic, assign)BOOL _delegateHasTapOnLabelForAnnotation;
-@property (nonatomic, assign)BOOL _delegateHasDoubleTapOnLabelForAnnotation;
-@property (nonatomic, assign)BOOL _delegateHasShouldDragMarker;
-@property (nonatomic, assign)BOOL _delegateHasDidDragMarker;
-@property (nonatomic, assign)BOOL _delegateHasDidEndDragMarker;
-@property (nonatomic, assign)BOOL _delegateHasLayerForAnnotation;
-@property (nonatomic, assign)BOOL _delegateHasWillHideLayerForAnnotation;
-@property (nonatomic, assign)BOOL _delegateHasDidHideLayerForAnnotation;
-
-
-//////////////////////////
 
 #pragma mark - Initializers
 
@@ -161,27 +152,9 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) float minZoom;
 @property (nonatomic, assign) float maxZoom;
 
-//
-@property (nonatomic,assign) RMMapScrollView* _mapScrollView;
-@property (nonatomic, assign) RMMapOverlayView *_overlayView;
-@property (nonatomic, assign)  float offsetDifferenceY ;
-@property (nonatomic, assign)  float offsetDifferenceX;
-@property (nonatomic, assign) CGPoint _accumulatedDelta;
-@property (nonatomic, assign) CGPoint  _lastContentOffset;
-@property (nonatomic, assign) UIView *_tiledLayersSuperview;
-
- @property (nonatomic, assign) double _metersPerPixel;
- @property (nonatomic, assign)  id <RMMapViewDelegate> _delegate;
-@property   (nonatomic,assign)   BOOL _mapScrollViewIsZooming;
-
- 
-///
 @property (nonatomic, assign) RMProjectedRect projectedBounds;
-@property (nonatomic) RMProjectedPoint projectedOrigin;
-@property (nonatomic) RMProjectedSize projectedViewSize;
-@property (nonatomic, assign)  RMProjection *_projection;
-
-
+@property (nonatomic, readonly) RMProjectedPoint projectedOrigin;
+@property (nonatomic, readonly) RMProjectedSize projectedViewSize;
 
 // recenter the map on #boundsRect, expressed in projected meters
 - (void)setProjectedBounds:(RMProjectedRect)boundsRect animated:(BOOL)animated;
@@ -285,5 +258,16 @@ typedef enum : NSUInteger {
 - (RMTile)tileWithCoordinate:(CLLocationCoordinate2D)coordinate andZoom:(int)zoom;
 
 - (RMSphericalTrapezium)latitudeLongitudeBoundingBoxForTile:(RMTile)aTile;
+
+#pragma mark -
+#pragma mark User Location
+
+@property (nonatomic, assign)   BOOL showsUserLocation;
+@property (nonatomic, readonly) RMUserLocation *userLocation;
+@property (nonatomic, readonly, getter=isUserLocationVisible) BOOL userLocationVisible;
+@property (nonatomic, assign)   RMUserTrackingMode userTrackingMode;
+@property (nonatomic, assign)   BOOL displayHeadingCalibration;
+
+- (void)setUserTrackingMode:(RMUserTrackingMode)mode animated:(BOOL)animated;
 
 @end

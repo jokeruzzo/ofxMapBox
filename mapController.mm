@@ -33,6 +33,7 @@
 }
 @synthesize setZoom;
 @synthesize mapView;
+@synthesize freeze;
 
 
 
@@ -75,6 +76,12 @@
     
 }
 
+-(float)getZoom
+{
+  return  self.mapView.zoom;
+    
+}
+
 
 - (id)initWithFrame:(CGRect)frame andTilesource:offlineSource
 {
@@ -105,10 +112,14 @@
     eagleScrollView = iPhoneGetGLView();
     [self.mapView._mapScrollView addSubview:eagleScrollView ];
     [self.mapView._mapScrollView bringSubviewToFront:eagleScrollView];
+   
     // for the GLView update
     self.mapView._mapScrollView.delegate = self;
+
+
     
     NSLog(@"loading map");
+    
     
     return self;
 }
@@ -125,12 +136,31 @@
     
 }
 
+-(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    
+    [eagleScrollView touchesBegan:touches withEvent:event];
+}
+
+-(void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+
+{
+    
+    [eagleScrollView touchesMoved:touches withEvent:event];
+}
+
+-(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+    [eagleScrollView touchesEnded:touches withEvent:event];
+    
+}
+
 
 // zooming sollution
 - (UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView{
     // for zoom stop
     
-    cout<<setZoom<<endl;
+  //  cout<<setZoom<<endl;
     
     // allow zooming
     if (setZoom == true){
@@ -140,14 +170,32 @@
     }
 }
 
+
+
+
+
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     iPhoneGetOFWindow()->timerLoop();
+  
+
+
+    if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]
+        && [[UIScreen mainScreen] scale] == 2.0) {
+         eagleScrollView.center = CGPointMake(roundf(mapView._mapScrollView.contentOffset.x + ofGetWidth()/4), roundf(mapView._mapScrollView.contentOffset.y + ofGetHeight()/4));
+    } else {
+         eagleScrollView.center = CGPointMake(roundf(mapView._mapScrollView.contentOffset.x + ofGetWidth()/2), roundf(mapView._mapScrollView.contentOffset.y + ofGetHeight()/2));
+    }
     
-    // added to hold GLView into place
-    eagleScrollView.center = CGPointMake(mapView._mapScrollView.contentOffset.x + ofGetWidth()/2, mapView._mapScrollView.contentOffset.y + ofGetHeight()/2);
+
+   
     
-    RMProjectedRect planetBounds = self.mapView._projection.planetBounds;
-    self.mapView._metersPerPixel = planetBounds.size.width / self.mapView._mapScrollView.contentSize.width;
+//    RMProjectedRect planetBounds = self.mapView._projection.planetBounds;
+//    self.mapView._metersPerPixel = planetBounds.size.width / self.mapView._mapScrollView.contentSize.width;
+    
+    
+    
+    
+  
 }
 
 

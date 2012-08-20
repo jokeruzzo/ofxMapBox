@@ -29,6 +29,13 @@
 @class RMMapLayer;
 @class RMMarker;
 @class RMAnnotation;
+@class RMUserLocation;
+
+typedef enum : NSUInteger {
+    RMUserTrackingModeNone              = 0,
+    RMUserTrackingModeFollow            = 1,
+    RMUserTrackingModeFollowWithHeading = 2
+} RMUserTrackingMode;
 
 // Use this for notifications of map panning, zooming, and taps on the RMMapView.
 @protocol RMMapViewDelegate <NSObject>
@@ -38,11 +45,11 @@
 - (void)mapView:(RMMapView *)mapView willHideLayerForAnnotation:(RMAnnotation *)annotation;
 - (void)mapView:(RMMapView *)mapView didHideLayerForAnnotation:(RMAnnotation *)annotation;
 
-- (void)beforeMapMove:(RMMapView *)map;
-- (void)afterMapMove:(RMMapView *)map;
+- (void)beforeMapMove:(RMMapView *)map byUser:(BOOL)wasUserAction;
+- (void)afterMapMove:(RMMapView *)map byUser:(BOOL)wasUserAction;
 
-- (void)beforeMapZoom:(RMMapView *)map;
-- (void)afterMapZoom:(RMMapView *)map;
+- (void)beforeMapZoom:(RMMapView *)map byUser:(BOOL)wasUserAction;
+- (void)afterMapZoom:(RMMapView *)map byUser:(BOOL)wasUserAction;
 
 /*
  \brief Tells the delegate that the region displayed by the map view just changed.
@@ -50,10 +57,9 @@
  During scrolling and zooming, this method may be called many times to report updates to the map position.
  Therefore, your implementation of this method should be as lightweight as possible to avoid affecting scrolling and zooming performance.
  */
-- (void)mapViewRegionDidChange:(RMMapView *)mapView;
+- (void)mapViewRegionDidChange:(RMMapView *)mapView byUser:(BOOL)wasUserAction;
 
 - (void)doubleTapOnMap:(RMMapView *)map at:(CGPoint)point;
-- (void)doubleTapTwoFingersOnMap:(RMMapView *)map at:(CGPoint)point;
 - (void)singleTapOnMap:(RMMapView *)map at:(CGPoint)point;
 - (void)singleTapTwoFingersOnMap:(RMMapView *)map at:(CGPoint)point;
 - (void)longSingleTapOnMap:(RMMapView *)map at:(CGPoint)point;
@@ -66,5 +72,11 @@
 - (BOOL)mapView:(RMMapView *)map shouldDragAnnotation:(RMAnnotation *)annotation;
 - (void)mapView:(RMMapView *)map didDragAnnotation:(RMAnnotation *)annotation withDelta:(CGPoint)delta;
 - (void)mapView:(RMMapView *)map didEndDragAnnotation:(RMAnnotation *)annotation;
+
+- (void)mapViewWillStartLocatingUser:(RMMapView *)mapView;
+- (void)mapViewDidStopLocatingUser:(RMMapView *)mapView;
+- (void)mapView:(RMMapView *)mapView didUpdateUserLocation:(RMUserLocation *)userLocation;
+- (void)mapView:(RMMapView *)mapView didFailToLocateUserWithError:(NSError *)error;
+- (void)mapView:(RMMapView *)mapView didChangeUserTrackingMode:(RMUserTrackingMode)mode animated:(BOOL)animated;
 
 @end

@@ -23,7 +23,7 @@
 #import "RMAnnotation.h"
 #import "RMQuadTree.h"
 #import "RMCoordinateGridSource.h"
-#import "RMOpenCycleMapSource.h"
+
 #import "RMAbstractWebMapSource.h"
 
 
@@ -137,6 +137,12 @@ void RMMapKit::allowZoom(bool b){
     
 }
 
+float RMMapKit::getZoom(){
+  return  [mapViewController getZoom];
+    
+
+}
+
 void RMMapKit::setMapZoom(float zoomLevel) {
 	mapView.zoom = zoomLevel;
 }
@@ -222,9 +228,15 @@ void RMMapKit::retinaDisplay(bool b){
 
 
 void RMMapKit::setAllowUserInteraction(bool b) {
+   
 	mapView.userInteractionEnabled = b;
 }
 
+
+void RMMapKit::setScrollEnabled(bool b){
+    
+     mapView._mapScrollView.scrollEnabled = b;
+}
 
 
 

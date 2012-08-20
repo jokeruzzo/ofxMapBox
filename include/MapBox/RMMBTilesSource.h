@@ -2,7 +2,7 @@
 //  RMMBTilesSource.h
 //
 //  Created by Justin R. Miller on 6/18/10.
-//  Copyright 2010, Code Sorcery Workshop, LLC and Development Seed, Inc.
+//  Copyright 2012 MapBox.
 //  All rights reserved.
 //  
 //  Redistribution and use in source and binary forms, with or without
@@ -15,10 +15,9 @@
 //        notice, this list of conditions and the following disclaimer in the
 //        documentation and/or other materials provided with the distribution.
 //  
-//      * Neither the names of Code Sorcery Workshop, LLC or Development Seed,
-//        Inc., nor the names of its contributors may be used to endorse or
-//        promote products derived from this software without specific prior
-//        written permission.
+//      * Neither the name of MapBox, nor the names of its contributors may be
+//        used to endorse or promote products derived from this software
+//        without specific prior written permission.
 //  
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 //  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -33,12 +32,12 @@
 //
 //  http://mbtiles.org
 //
-//  See samples/MBTilesDemo for example usage
-//
 
 #import <Foundation/Foundation.h>
 
 #import "RMTileSource.h"
+
+@class FMDatabaseQueue;
 
 #define kMBTilesDefaultTileSize 256
 #define kMBTilesDefaultMinTileZoom 0
@@ -46,6 +45,9 @@
 #define kMBTilesDefaultLatLonBoundingBox ((RMSphericalTrapezium){.northEast = {.latitude = 90, .longitude = 180}, .southWest = {.latitude = -90, .longitude = -180}})
 
 @interface RMMBTilesSource : NSObject <RMTileSource>
+{
+    FMDatabaseQueue *queue;
+}
 
 - (id)initWithTileSetURL:(NSURL *)tileSetURL;
 

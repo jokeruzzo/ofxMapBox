@@ -33,14 +33,18 @@
 //  This source supports both tiles from MapBox Hosting as well as the open source,
 //  self-hosted TileStream software.
 //
-//  When initializing an instance, pass in valid TileJSON 2.0.0[1] as returned by
+//  When initializing an instance, pass in valid TileJSON[1] as returned by
 //  the MapBox Hosting API[2] or TileStream software[3].
+//
+//  Also supports simplestyle[4] data for TileJSON 2.1.0+[5].
 //
 //  Example app at https://github.com/mapbox/mapbox-ios-example
 //
-//  [1] https://github.com/mapbox/TileJSON/tree/master/2.0.0
+//  [1] https://github.com/mapbox/tilejson-spec
 //  [2] http://mapbox.com/hosting/api/
 //  [3] https://github.com/mapbox/tilestream
+//  [4] https://github.com/mapbox/simplestyle-spec
+//  [5] https://github.com/mapbox/tilejson-spec/tree/v2.1.0/
 //
 //  This class also supports initialization via the deprecated info dictionary
 //  for backwards compatibility and for iOS < 5.0 where JSON serialization isn't
@@ -54,19 +58,34 @@
 #define kMapBoxDefaultLatLonBoundingBox ((RMSphericalTrapezium){ .northEast = { .latitude =  90, .longitude =  180 }, \
                                                                  .southWest = { .latitude = -90, .longitude = -180 } })
 
+@class RMMapView;
+
 @interface RMMapBoxSource : RMAbstractWebMapSource
 
-- (id)initWithReferenceURL:(NSURL *)referenceURL; // Designated initializer. Point to either a remote TileJSON spec or a local TileJSON or property list.
+// Designated initializer. Point to either a remote TileJSON spec or a local TileJSON or property list.
+- (id)initWithReferenceURL:(NSURL *)referenceURL;
 
-//
-// You may also use just `init` to get MapBox Streets by default.
-//
+// Initialize source with TileJSON.
+- (id)initWithTileJSON:(NSString *)tileJSON;
 
-- (id)initWithTileJSON:(NSString *)tileJSON;      // Initialize source with TileJSON.
-- (id)initWithInfo:(NSDictionary *)info;          // Initialize source with properly list (deprecated).
+// For TileJSON 2.1.0+ layers, look for and auto-add annotations from simplestyle data.
+- (id)initWithTileJSON:(NSString *)tileJSON enablingDataOnMapView:(RMMapView *)mapView;
+- (id)initWithReferenceURL:(NSURL *)referenceURL enablingDataOnMapView:(RMMapView *)mapView;
 
-- (NSString *)legend;                             // HTML-formatted legend for this source, if any
-- (BOOL)coversFullWorld;                          // Regional or global coverage?
+// Initialize source with properly list (deprecated; use TileJSON).
+- (id)initWithInfo:(NSDictionary *)info __attribute__ ((deprecated));
+
+// HTML-formatted legend for this source, if any
+- (NSString *)legend;
+
+// Suggested starting center coordinate
+- (CLLocationCoordinate2D)centerCoordinate;
+
+// Suggested starting center zoom
+- (float)centerZoom;
+
+// Regional or global coverage?
+- (BOOL)coversFullWorld;
 
 @property (nonatomic, readonly, retain) NSDictionary *infoDictionary;
 

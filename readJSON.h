@@ -24,7 +24,11 @@
 
 -(id) init;
 -(bool) receivedData;
--(vector<CLLocationCoordinate2D> ) dataValues;
+-(vector< vector <CLLocationCoordinate2D > > ) dataValues;
+-(void)personLocation : (CLLocationCoordinate2D) coordinates;
+-(void) changeLayer : (string)lay;
+-(void) transport : (string) way;
 @property (nonatomic)  vector < vector <CLLocationCoordinate2D > > value;
+
 
 @end

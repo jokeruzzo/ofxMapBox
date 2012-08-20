@@ -121,7 +121,8 @@ public:
     bool finishRoute();
     vector<CLLocationCoordinate2D> routeData();
     void cleanRoute();
-
+    float getZoom();
+    void setScrollEnabled(bool b);
     
 protected:
     

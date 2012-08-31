@@ -34,6 +34,7 @@
 @synthesize setZoom;
 @synthesize mapView;
 @synthesize freeze;
+@synthesize bMovingMap;
 
 
 
@@ -66,6 +67,10 @@
     // for the GLView update
     self.mapView._mapScrollView.delegate = self;
     
+    [self.mapView._mapScrollView release] ;
+
+    
+    
     return self;
 }
 
@@ -94,6 +99,8 @@
     [self.mapView._mapScrollView bringSubviewToFront: eagleScrollView];
     // for the GLView update
     self.mapView._mapScrollView.delegate = self;
+      
+    [self.mapView._mapScrollView release] ;
     
     NSLog(@"loading map");
     
@@ -115,12 +122,8 @@
    
     // for the GLView update
     self.mapView._mapScrollView.delegate = self;
-
-
     
     NSLog(@"loading map");
-    
-    
     return self;
 }
 
@@ -163,6 +166,8 @@
   //  cout<<setZoom<<endl;
     
     // allow zooming
+  
+    
     if (setZoom == true){
         return mapView._tiledLayersSuperview;
     } else{
@@ -175,18 +180,27 @@
 
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+   
     iPhoneGetOFWindow()->timerLoop();
   
 
-
-    if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]
-        && [[UIScreen mainScreen] scale] == 2.0) {
-         eagleScrollView.center = CGPointMake(roundf(mapView._mapScrollView.contentOffset.x + ofGetWidth()/4), roundf(mapView._mapScrollView.contentOffset.y + ofGetHeight()/4));
-    } else {
-         eagleScrollView.center = CGPointMake(roundf(mapView._mapScrollView.contentOffset.x + ofGetWidth()/2), roundf(mapView._mapScrollView.contentOffset.y + ofGetHeight()/2));
-    }
+//
+//    if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]
+//        && [[UIScreen mainScreen] scale] == 2.0) {
+//         eagleScrollView.center = CGPointMake(roundf(mapView._mapScrollView.contentOffset.x + ofGetWidth()/4), roundf(mapView._mapScrollView.contentOffset.y + ofGetHeight()/4));
+//    } else {
+//         eagleScrollView.center = CGPointMake(roundf(mapView._mapScrollView.contentOffset.x + ofGetWidth()/2), roundf(mapView._mapScrollView.contentOffset.y + ofGetHeight()/2));
+//    }
     
 
+    
+    if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]
+        && [[UIScreen mainScreen] scale] == 2.0) {
+        eagleScrollView.center = CGPointMake(mapView._mapScrollView.contentOffset.x + ofGetWidth()/4, mapView._mapScrollView.contentOffset.y + ofGetHeight()/4);
+    } else {
+        eagleScrollView.center = CGPointMake(mapView._mapScrollView.contentOffset.x + ofGetWidth()/2, mapView._mapScrollView.contentOffset.y + ofGetHeight()/2);
+    }
+    
    
     
 //    RMProjectedRect planetBounds = self.mapView._projection.planetBounds;
@@ -202,12 +216,40 @@
 
 
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView{
-    
+      ofSendMessage("isZooming");
     [self.mapView correctPositionOfAllAnnotations];
     
     if (self.mapView._delegateHasAfterMapZoom)
         [self.mapView._delegate afterMapZoom:self.mapView];
     [self.mapView scrollViewDidZoom:scrollView];
+    
+    
+    
+}
+
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    
+     ofSendMessage("scrollViewStop");
+}
+
+
+-(void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale
+
+{
+    ofSendMessage("scrollViewStop");
+    
+}
+
+-(bool)isMoving{
+    
+    return bMovingMap;
+}
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    bMovingMap = false;
     
 }
 

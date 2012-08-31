@@ -123,6 +123,7 @@ public:
     void cleanRoute();
     float getZoom();
     void setScrollEnabled(bool b);
+     bool isMoving();
     
 protected:
     
@@ -132,13 +133,19 @@ protected:
     RMMBTilesSource *offlineSource;
     RMMapBoxSource *onlineSource;
     bool offline;
-    bool initRoute; 
+    bool initRoute;
+    void designatedMap(string map,CLLocationCoordinate2D centerCoordinate, float zoomLevel,
+                       float setMaxZoomLevel,
+                       float setMinZoomLevel,
+                       UIImage * backgroundImage);
     
     
   
     
 	
 	CLLocationCoordinate2D makeCLLocation(double latitude, double longitude);
+    
+   
     
   
 };

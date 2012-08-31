@@ -112,6 +112,30 @@ void RMMapKit::onlineMap(string urlVal){
     [ofxiPhoneGetUIWindow() addSubview:mapView];
     
 }
+void RMMapKit::designatedMap(string map,CLLocationCoordinate2D centerCoordinate, float zoomLevel, float  
+                             
+                       setMaxZoomLevel,float setMinZoomLevel,UIImage * backgroundImage){
+    
+    
+    const char * c =  map.c_str();
+    
+    NSString *NSMap = [NSString stringWithUTF8String:c];
+    
+    NSURL *url = [NSURL URLWithString:NSMap];
+    NSLog(@"loading URL: %@",url);
+    
+    offlineSource = [[RMMBTilesSource alloc] initWithTileSetURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:NSMap ofType:@"mbtiles"]]];
+    
+    
+    mapViewController = [[mapController alloc] initWithFrame:
+                                                CGRectMake(0, 0,ofGetWidth(),ofGetHeight())
+                                               andTilesource:offlineSource
+                                            centerCoordinate:centerCoordinate
+                                                   zoomLevel:zoomLevel
+                                                maxZoomLevel:setMaxZoomLevel
+                                                minZoomLevel:setMinZoomLevel
+                                             backgroundImage:backgroundImage];
+}
 
 // not yet working
 void RMMapKit::addMarker(string name, CLLocationCoordinate2D coord, string image){
@@ -144,23 +168,34 @@ float RMMapKit::getZoom(){
 }
 
 void RMMapKit::setMapZoom(float zoomLevel) {
-	mapView.zoom = zoomLevel;
+//	[mapViewController zoom:zoomLevel];
+   // mapViewController.zoom = zoomLevel;
 }
 
 
 void RMMapKit::setMinZoom (float minZoom){
-    mapView.minZoom=minZoom;
+    [mapViewController setMinZoom:minZoom];
+	
+ 
     
 }
 void RMMapKit::setMaxZoom (float maxZoom){
-    mapView.maxZoom = maxZoom;
+    [mapViewController setMaxZoom:maxZoom];
+  
     
 }
+
 
 #pragma mark - Scroll
 
 void RMMapKit::setAllowScroll(bool b) {
 	mapView._mapScrollView.scrollEnabled = b;
+}
+
+bool RMMapKit::isMoving(){
+    
+    return [mapViewController isMoving];
+    
 }
 
 #pragma mark - Location
@@ -205,7 +240,7 @@ CLLocationCoordinate2D RMMapKit::makeCLLocation(double latitude, double longitud
 
 
 void RMMapKit::setCenter(double latitude, double longitude, bool animated) {
-	CLLocationCoordinate2D center = makeCLLocation(latitude, longitude);
+	CLLocationCoordinate2D center = CLLocationCoordinate2DMake(latitude, longitude);
 	[mapView setCenterCoordinate:center animated:animated];
 }
 

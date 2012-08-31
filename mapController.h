@@ -30,10 +30,11 @@
     
     
 }
-
+@property (nonatomic, retain) RMTileCache *tileCache;
 @property (nonatomic, retain) IBOutlet mapSubView * mapView;
 @property (nonatomic) bool setZoom;
 @property (nonatomic) bool freeze;
+@property (nonatomic) bool bMovingMap;
 // adds key
 -(void) cloudeMadeAPIKey:(NSString *) key;
 -(void) addMarker: (NSString*) name coordinates:(CLLocationCoordinate2D) coord image: (NSString *) image;
@@ -49,5 +50,7 @@
 -(void) searchName : (NSString*) name;
 -(void)viewDidLoad;
 -(float)getZoom;
+
+-(bool)isMoving;
 @end
 

@@ -33,7 +33,7 @@
     {
         received = false;
         layer = "mapnik";
-        trans = "motorcar";
+        trans = "foot";
         
         //NSThread *t = [[NSThread alloc] initWithTarget:self selector:@selector(start) object:nil];
         //[t start];
@@ -94,8 +94,8 @@
     
     ofxJSONElement result;
     
-    string personlat = [self toString:personCoordinates.latitude];
-    string personlon = [self toString:personCoordinates.longitude];
+    string personlat = ofToString( personCoordinates.latitude);
+    string personlon = ofToString(personCoordinates.longitude);
 
     
    
@@ -117,7 +117,7 @@
         
         
     }else {
-          url = "http://www.yournavigation.org/api/1.0/gosmore.php?format=geojson&flat="+personlat+"&flon="+personlon+"&tlat="+pos1lat+"&tlon="+pos1lon+"&v=motorcar&fast=1&layer=mapnik";
+          url = "http://www.yournavigation.org/api/1.0/gosmore.php?format=geojson&flat="+personlat+"&flon="+personlon+"&tlat="+pos1lat+"&tlon="+pos1lon+"&v="+trans+"&fast=1&layer="+layer;
         
     }
     cout<<url<<endl;

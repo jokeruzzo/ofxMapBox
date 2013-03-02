@@ -30,21 +30,6 @@ RMMapKit::~RMMapKit() {
 }
 
 
-void RMMapKit::open() {
-	ofLog(OF_LOG_VERBOSE, "RMMapKit::open()");
-    cout<<"Welcome! visit my website: www.martijnmellema.com"<<endl;
-    detectRetina();
-    if (offline  == false){
-        mapViewController =    [[mapController alloc] initWithFrame: CGRectMake(0, 0,
-                                                                                ofGetWidth(),
-                                                                                ofGetHeight())];
-        mapView = mapViewController.getMapView;
-        [mapView setDelegate :mapViewController];
-        [ofxiPhoneGetUIWindow() addSubview:mapView];
-
-
-    }
-}
 
 
 
@@ -290,6 +275,44 @@ void RMMapKit::setAllowUserInteraction(bool b) {
 
 
 void RMMapKit::setScrollEnabled(bool b){
+  //  cout<<"setScrollEnabled(bool b)"<<b<<endl;
+     mapView._mapScrollView.scrollEnabled = b;
+}
+
+bool tapOnce = false;
+
+bool RMMapKit::isTapping(){
+    
+    if ( tapOnce){
+        mapViewController.tapping = FALSE;
+        tapOnce = false;
+        return false;
+        
+    }
+    
+    
+    if (mapViewController.tapping ){
+        
+        tapOnce = true;
+        return true;
+    }
+    
+    return  false;
+}
+
+CGPoint RMMapKit::tapPosition(){
+   
+  return  mapViewController.startLocation;
+   
+}
+
+
+void RMMapKit::artPartLogin(string token){
+    [mapViewController artpartLogin: token];
+}
+
+
+it::setScrollEnabled(bool b){
   //  cout<<"setScrollEnabled(bool b)"<<b<<endl;
      mapView._mapScrollView.scrollEnabled = b;
 }

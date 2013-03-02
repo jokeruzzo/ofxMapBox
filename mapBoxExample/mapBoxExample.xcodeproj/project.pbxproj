@@ -15,6 +15,7 @@
 		53F323EB10A20EDB00E0DAE4 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F323EA10A20EDB00E0DAE4 /* OpenAL.framework */; };
 		6e463de882372a0c94e26f83dcdab6ff /* MapBoxAppViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = d6e099cc42bfd340c5443385a6446439 /* MapBoxAppViewController.mm */; };
 		961F308116E28CCC00C22676 /* map.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = 961F308016E28CCC00C22676 /* map.mbtiles */; };
+		961F308516E2923000C22676 /* testApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 961F308416E2923000C22676 /* testApp.mm */; };
 		966A39D816E2832A00A55F82 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 966A37BA16E2832600A55F82 /* NSObject+SBJson.m */; };
 		966A39D916E2832A00A55F82 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 966A37BD16E2832600A55F82 /* SBJsonParser.m */; };
 		966A39DA16E2832A00A55F82 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 966A37BF16E2832600A55F82 /* SBJsonStreamParser.m */; };
@@ -57,7 +58,6 @@
 		E41D421413B3A95300A75A5D /* libofxiPhone_iphoneos_Debug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E41D410213B3A0D800A75A5D /* libofxiPhone_iphoneos_Debug.a */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E4A823A412561BE3002F86A2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4A823A312561BE3002F86A2 /* CoreGraphics.framework */; };
 		E4D8936E11527B74007E1F53 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4D8936B11527B74007E1F53 /* main.mm */; };
-		E4D8936F11527B74007E1F53 /* testApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4D8936D11527B74007E1F53 /* testApp.mm */; };
 		a174c6d42676e95effe6cf975bd859f8 /* MapBoxApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = c6fb3183fe800241a844e5b8f108096e /* MapBoxApp.mm */; };
 		a55613c24c4db9a6dc49d77252278811 /* MyAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8627beb34192f6eb415db55d1218034b /* MyAppDelegate.mm */; };
 /* End PBXBuildFile section */
@@ -91,6 +91,7 @@
 		8627beb34192f6eb415db55d1218034b /* MyAppDelegate.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 30; name = MyAppDelegate.mm; path = src/UI/MyAppDelegate.mm; sourceTree = SOURCE_ROOT; };
 		88f12646afb7384dd5ab6fddc7399c69 /* MapBoxApp.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = MapBoxApp.h; path = src/Apps/MapBoxApp.h; sourceTree = SOURCE_ROOT; };
 		961F308016E28CCC00C22676 /* map.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; path = map.mbtiles; sourceTree = "<group>"; };
+		961F308416E2923000C22676 /* testApp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = testApp.mm; sourceTree = "<group>"; };
 		966A378116E2832600A55F82 /* MapBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapBox.h; sourceTree = "<group>"; };
 		966A378216E2832600A55F82 /* RMAbstractMercatorTileSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMAbstractMercatorTileSource.h; sourceTree = "<group>"; };
 		966A378316E2832600A55F82 /* RMAbstractWebMapSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMAbstractWebMapSource.h; sourceTree = "<group>"; };
@@ -217,7 +218,6 @@
 		E4A823A312561BE3002F86A2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		E4D8936B11527B74007E1F53 /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = main.mm; path = src/main.mm; sourceTree = SOURCE_ROOT; };
 		E4D8936C11527B74007E1F53 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = testApp.h; path = src/testApp.h; sourceTree = SOURCE_ROOT; };
-		E4D8936D11527B74007E1F53 /* testApp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = testApp.mm; path = src/testApp.mm; sourceTree = SOURCE_ROOT; };
 		c6fb3183fe800241a844e5b8f108096e /* MapBoxApp.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 30; name = MapBoxApp.mm; path = src/Apps/MapBoxApp.mm; sourceTree = SOURCE_ROOT; };
 		d6e099cc42bfd340c5443385a6446439 /* MapBoxAppViewController.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 30; name = MapBoxAppViewController.mm; path = src/AppViewControllers/MapBoxAppViewController.mm; sourceTree = SOURCE_ROOT; };
 		e82e754d65a932f2df8b1a0f7c4bfe75 /* MapBoxAppViewController.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = MapBoxAppViewController.h; path = src/AppViewControllers/MapBoxAppViewController.h; sourceTree = SOURCE_ROOT; };
@@ -572,7 +572,7 @@
 			isa = PBXGroup;
 			children = (
 				E4D8936B11527B74007E1F53 /* main.mm */,
-				E4D8936D11527B74007E1F53 /* testApp.mm */,
+				961F308416E2923000C22676 /* testApp.mm */,
 				E4D8936C11527B74007E1F53 /* testApp.h */,
 				93f84dd1123fb4b01e0b3b30b02968dd /* AppViewControllers */,
 				d1cfea8461b96256b1b8c57d5973712c /* Apps */,
@@ -706,7 +706,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4D8936E11527B74007E1F53 /* main.mm in Sources */,
-				E4D8936F11527B74007E1F53 /* testApp.mm in Sources */,
 				6e463de882372a0c94e26f83dcdab6ff /* MapBoxAppViewController.mm in Sources */,
 				a174c6d42676e95effe6cf975bd859f8 /* MapBoxApp.mm in Sources */,
 				27a862d478af45e4ceed1b6e0e02b163 /* MyAppViewController.mm in Sources */,
@@ -730,6 +729,7 @@
 				966A3B6516E283AC00A55F82 /* json_value.cpp in Sources */,
 				966A3B6716E283AC00A55F82 /* json_writer.cpp in Sources */,
 				966A3B6916E283AC00A55F82 /* ofxJSONElement.cpp in Sources */,
+				961F308516E2923000C22676 /* testApp.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

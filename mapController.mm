@@ -179,8 +179,7 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     [eagleScrollView  drawView];
-    iPhoneGetOFWindow()->timerLoop();
-    
+   
     BOOL isRetina, isiPad;
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
@@ -303,5 +302,8 @@
 
 
 #pragma mark - Facebook API Calls
+
+@end
+pragma mark - Facebook API Calls
 
 @end

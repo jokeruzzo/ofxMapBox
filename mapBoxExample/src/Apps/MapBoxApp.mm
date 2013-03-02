@@ -41,9 +41,9 @@ void MapBoxApp::setup() {
 	ofxiPhoneSetGLViewTransparent(true);
     mapKit.setMapZoom(20);
     mapKit.retinaDisplay(true);
-    mapKit.onlineMap("URL");
+    mapKit.onlineMap("http://api.tiles.mapbox.com/v3/examples.map-zr0njcqy.jsonp");
     mapKit.setCenter(POS2_LATITUDE, POS2_LONGITUDE);
-    mapKit.open();
+  
     //  ofxiPhoneSendGLViewToFront();
 
 }

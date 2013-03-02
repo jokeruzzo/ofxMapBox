@@ -40,8 +40,7 @@ public:
 	virtual ~RMMapKit();
 	
 	
-	// open the mapview
-	void open();
+
     // hide the mapview
 	void close();
     
@@ -158,6 +157,13 @@ protected:
     UIWebView * webView;
     
     bool bIsRetina;
+    
+   
+    
+  
+};
+
+l bIsRetina;
     
    
     

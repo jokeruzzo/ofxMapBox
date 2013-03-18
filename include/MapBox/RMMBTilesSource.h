@@ -30,8 +30,6 @@
 //  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
-//  http://mbtiles.org
-//
 
 #import <Foundation/Foundation.h>
 
@@ -44,14 +42,38 @@
 #define kMBTilesDefaultMaxTileZoom 22
 #define kMBTilesDefaultLatLonBoundingBox ((RMSphericalTrapezium){.northEast = {.latitude = 90, .longitude = 180}, .southWest = {.latitude = -90, .longitude = -180}})
 
+/** An RMMBTilesSource provides for a fast, offline-capable set of map tile images served from a local database. [MBTiles](http://mbtiles.org) is an open standard for map tile image transport. */
 @interface RMMBTilesSource : NSObject <RMTileSource>
 {
     FMDatabaseQueue *queue;
 }
 
+/** @name Creating Tile Sources */
+
+/** Initialize and return a newly allocated MBTiles tile source based on a given bundle resource.
+*   @param name The name of the resource file. If name is an empty string or `nil`, uses the first file encountered of the supplied type.
+*   @param extension If extension is an empty string or `nil`, the extension is assumed not to exist and the file is the first file encountered that exactly matches name. */
+- (id)initWithTileSetResource:(NSString *)name ofType:(NSString *)extension;
+
+/** Initialize and return a newly allocated MBTiles tile source based on a given local database URL.
+*   @param tileSetURL Local file path URL to an MBTiles file.
+*   @return An initialized MBTiles tile source. */
 - (id)initWithTileSetURL:(NSURL *)tileSetURL;
 
-- (BOOL)coversFullWorld;
+/** @name Querying Tile Source Information */
+
+/** Any available HTML-formatted map legend data for the tile source, suitable for display in a UIWebView. */
 - (NSString *)legend;
+
+/** A suggested starting center coordinate for the map layer. */
+- (CLLocationCoordinate2D)centerCoordinate;
+
+/** A suggested starting center zoom level for the map layer. */
+- (float)centerZoom;
+
+/** Returns YES if the tile source provides full-world coverage; otherwise, returns NO. */
+- (BOOL)coversFullWorld;
+
+
 
 @end

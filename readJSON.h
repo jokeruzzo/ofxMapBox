@@ -7,6 +7,7 @@
 //        *
 // made by Martijn Mellema
 // Interaction Designer from Arnhem, The Netherlands
+// www.martijnmellema.nl
 
 #include "ofMain.h"
 #import <Foundation/Foundation.h>

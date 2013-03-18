@@ -7,44 +7,55 @@
 //        *
 // made by Martijn Mellema
 // Interaction Designer from Arnhem, The Netherlands
+// www.martijnmellema.nl
 
-
+#pragma once
 #include "ofMain.h"
-#include "RMMapView.h"
-#import "RMMBTilesSource.h"
-#import "RMMapBoxSource.h"
+#include "MapBox.h"
+#include "ofxiPhone.h"
+#include "ofxiPhoneExtras.h"
+
+#include "mapController.h"
 
 
-#include <list>
+#define CLCOORDINATES_EQUAL( coord1, coord2 ) ((coord1.latitude == coord2.latitude && coord1.longitude == coord2.longitude))
 
+#define CLCOORDINATES_LARGE( coord ) ((coord.latitude > 3  && coord.longitude < 55)
 
-
-
+static mapController * mapViewController = nil ;
+static RMMapView * mapView = nil ;
 
 
 @class readJSON;
 
 // these are the types you can set for the map
-
-
-
 // this is a type, similar to ofPoint, but with better precision for storing latitude and longitude
 typedef CLLocationCoordinate2D ofxMapKitLocation;
+
+typedef enum : NSUInteger {
+    UserTrackingModeNone              = 0,
+    UserTrackingModeFollow            = 1,
+    UserTrackingModeFollowWithHeading = 2
+} UserTrackingMode;
+
+
+
 
 class RMMapKit  {
 public:
 	
 	RMMapKit();
 	virtual ~RMMapKit();
+    
+    
 	
 	
-	// open the mapview
-	void open();
+
     // hide the mapview
 	void close();
     
     // offline map
-    
+
 	void offlineMap(string map);
     // MBtiles map. If you can host your own map do it with: https://github.com/mapbox/tilestream
     void onlineMap(string url);
@@ -61,16 +72,12 @@ public:
 	// set center (latitude,longitude) of map
 	void setCenter(double latitude, double longitude, bool animated = true);
 
-	
-	// enable/disable user interaction
-	// if user interaction is not allowed, setAllowZoom / setAllowScroll are ignored
-	// if user interaction is allowed, testApp::touchXXXX events will not be called
-	void setAllowUserInteraction(bool b);
-
 	// set whether user is allowed to zoom in or not
 	void setMapZoom(float zoomLevel);
     
+    // needs to be fixed
     void setMinZoom (float minZoom);
+    // needs to be fixed
     void setMaxZoom (float maxZoom);
 
 	// set whether user is allowed to scroll the view or not
@@ -112,7 +119,6 @@ public:
    	RMMapView	*getMKMapView();
     
      
-    void addMarker(string name, CLLocationCoordinate2D coord, string image);
     // add locations first
     void addRoute(CLLocationCoordinate2D value);
     // start search
@@ -124,6 +130,18 @@ public:
     float getZoom();
     void setScrollEnabled(bool b);
      bool isMoving();
+    void detectRetina();
+    double distance(double lat1, double lon1, double lat2, double lon2, char unit);
+    
+   
+    
+    
+    // projectionPoint converter
+    CLLocationCoordinate2D customProjectionPoint(string EPSG,  ofPoint location);
+    // rotates 
+    void rotateUser(UserTrackingMode mode);
+    void rotateMap(double degrees);
+    
     
 protected:
     
@@ -144,6 +162,11 @@ protected:
     
 	
 	CLLocationCoordinate2D makeCLLocation(double latitude, double longitude);
+    
+    UIWebView * webView;
+    
+    bool bIsRetina;
+ 
     
    
     

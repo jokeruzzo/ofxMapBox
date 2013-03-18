@@ -7,46 +7,127 @@
 //        *
 // made by Martijn Mellema
 // Interaction Designer from Arnhem, The Netherlands
-
+// www.martijnmellema.nl
+#pragma once
 #include "ofxJSONElement.h"
 #include "ofMain.h"
 #include "readJSON.h"
 #include "ofxiPhoneExtras.h"
+#include "ofxXmlSettings.h"
+
+#include "map.h"
 
 #pragma mark - route
-class OSMRoute : public ofThread {
+class OSMRoute : public ofThread  {
 public:
     
-    vector <CLLocationCoordinate2D> locationData;
-    vector <CLLocationCoordinate2D> values; // cpp
+    vector <routeData> locationData;
+    vector <routeData> values; // cpp
    // vector <CLLocationCoordinate2D> receivedData; //cpp
     string layer; //cpp
-    vector< vector <CLLocationCoordinate2D > > receivedData; //cpp
+    vector< vector < routeData > > receivedData; //cpp
+  
     
     string trans;
     readJSON *jsonRoute;
+   
+    
+    vector<CLLocationCoordinate2D> RouteVenue2D;
+    vector < int> httpID;
+    ofURLFileLoader routeLoader;
     CLLocationCoordinate2D personData;
     CLLocationCoordinate2D personCoordinates;
     bool initRoute ;
     bool getRoutes;
+    int index;
+    
+    
+    
     
     OSMRoute(){
         initRoute = false;
         getRoutes = false;
+        
+        ofRegisterURLNotification(this);
     }
     
-    void addRoute( vector <CLLocationCoordinate2D> value){
+    bool ofxStringStartsWith(string &str, string &key) {
+        return str.find(key) == 0;
+    }
+    
+    void urlResponse(ofHttpResponse &httpResponse){
+        string name = httpResponse.request.name;
+            if(httpResponse.status==200  && (name.find("route") != string::npos) ){  // i.e is it ok
+                ofRemoveURLRequest(httpResponse.request.getID());
+                string result ;
+                ofxXmlSettings XML;
+                
+                
+                if(XML.loadFromBuffer(httpResponse.data.getText())){
+                    
+                    cout<<"RESPONSE-----"<<endl;
+                    XML.copyXmlToString(result);
+                    
+                   // cout<<result <<endl;
+                    XML.pushTag("xml");
+                    XML.pushTag("kml");
+                    XML.pushTag("Document");
+                    XML.pushTag("Folder");
+                    XML.pushTag("Placemark");
+                    XML.pushTag("LineString");
+                    
+                    string coordinates = XML.getValue("coordinates", "0",0);
+                    
+                    vector <string> coordSplit = ofSplitString(coordinates, " ");
+                    vector <string> nameSplit = ofSplitString(httpResponse.request.name,":route");
+                    int index = ofToInt(nameSplit[0]);
+                    if (RouteVenue2D.size() == index) ofRemoveAllURLRequests();
+                    receivedData[index].clear();
+                    receivedData[index].resize(coordSplit.size());
+                
+                    
+                    for(int x=0; x<coordSplit.size(); x++){
+                        
+                        vector<string >  latLon = ofSplitString(coordSplit[x], ",");
+                        if (latLon.size() > 0){
+                        double longitude = ofToDouble(latLon[0]);
+                        double latitude = ofToDouble(latLon[1]);
+                            cout<<latitude<<endl;
+                        
+                        CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(latitude, longitude);
+                        receivedData[index][x].location  = coordinates;
+                        }
+                        
+                    }
+                    cout<<coordinates<<endl;
+                    
+                    
+                }
+               
+            }
+        }
+
+
+
+
+    void addRoute( vector <routeData> value){
         locationData = value;
         values = value;
         
     }
     
     void addPerson(CLLocationCoordinate2D value){
+        lock();
         personData = value;
         personCoordinates = value;
+        unlock();
+    }
+    void RouteVenueData(vector <CLLocationCoordinate2D> data){
+        lock();
+         RouteVenue2D = data;
+        unlock();
         
     }
-    
     bool gettingRoutes(){
         return getRoutes;
         
@@ -65,105 +146,145 @@ public:
     //motorcar, bicycle or foot
     void transport (string way){
         trans  = way;
-        [jsonRoute transport:way];
+      //  [jsonRoute transport:way];
     
     }
     
     void stopRoute(){
+      
         getRoutes = false;
+      
         
     }
     
     void closeRoute(){
         
-        stopThread(true);
+       // stopThread(true);
     }
     
     // loads a thread
-    void OSMRoute::threadedFunction(){ //cpp
-        while(isThreadRunning()) {
+    void start(){ //cpp
+        startThread(true,false);
+    }
     
-          layer = "mapnik";
+   void threadedFunction() {
+        
+        // ofRemoveAllURLRequests();
+       while(isThreadRunning()){
+        layer = "mapnik";
         trans  = "foot";
         bool instruct;
         instruct = false;
         
-   
+        
         ofxJSONElement result;
         string personlat;
         string personlon;
         
-        if (personCoordinates.latitude > 0  &&  values.size() > 0){
-      
-        personlat =  ofToString(personCoordinates.latitude);
-        personlon = ofToString(personCoordinates.longitude);
-   
-        
-        
-        // maxium of two values
-        
-        for(int  x=0; x< values.size(); x++){
-            int counter;
+        if (personCoordinates.latitude > 0  &&  RouteVenue2D.size() > 0){
             
-            counter = 0;
-            receivedData.resize(values.size());
-            string pos1lat = ofToString(values[x].latitude);
-            string pos1lon = ofToString(values[x].longitude);
+            personlat =  ofToString(personCoordinates.latitude);
+            personlon = ofToString(personCoordinates.longitude);
             
-            string url;
-            if(instruct){
-                url = "http://www.yournavigation.org/api/1.0/gosmore.php?format=geojson&flat="+personlat+"&flon="+personlon+"&tlat="+pos1lat+"&tlon="+pos1lon+"&v="+trans+"&fast=1&layer="+layer+"&instructions=1";
-                
-                // Provide cn for using bicycle routing using cycle route
-                
-                
-            }else {
-                url = "http://www.yournavigation.org/api/1.0/gosmore.php?format=geojson&flat="+personlat+"&flon="+personlon+"&tlat="+pos1lat+"&tlon="+pos1lon+"&v="+trans+"&fast=1&layer="+layer;
-                
-            }
-            cout<<url<<endl;
-            bool parsingSuccessful;
-            parsingSuccessful = result.open(url);
             
-            int numCoordinates = result["coordinates"].size();
-            if(numCoordinates != counter){
-                if ( parsingSuccessful  )
-                {
-                    receivedData[x].resize(numCoordinates);
-                    for(int i=0; i<numCoordinates; i++)
-                    {
+            
+            // maxium of two values
+            
+            for(int  x=0; x< RouteVenue2D.size(); x++){
+                index = x;
+                receivedData.resize(RouteVenue2D.size());
+                string pos1lat = ofToString(RouteVenue2D[x].latitude);
+                string pos1lon = ofToString(RouteVenue2D[x].longitude);
+                string pos2lat = ofToString(RouteVenue2D[x+1].latitude);
+                string pos2lon = ofToString(RouteVenue2D[x+1].longitude);
+                string url;
+                
+                
+                
+                
+                // http://yours.ah.waag.org/gosmore.php?format=geojson&flat=52.215676&flon=5.963946&tlat=52.2573&tlon=6.1799&v=motorcar&fast=1&layer=mapnik
+                if ( x == 0){
+                    url=  "http://yours.ah.waag.org/gosmore.php?format=geoJSON&flat="+personlat+"&flon="+personlon+"&tlat="+pos1lat+"&tlon="+pos1lon+"&v=foot&fast=1&layer=mapnik";
+                    cout<<"from person to venue"<<endl;
+                } else if (x <  RouteVenue2D.size()-1){
+                    url=  "http://yours.ah.waag.org/gosmore.php?format=geoJSON&flat="+pos1lat+"&flon="+pos1lon+"&tlat="+pos2lat+"&tlon="+pos2lon+"&v=foot&fast=1&layer=mapnik";
+                }
+                
+                cout<< "URL : "<<url<<endl;
+                
+                ofURLFileLoader loader;
+                ofxXmlSettings XML;
+             
+                ofBuffer xmlFromServer = loader.get(url);
+                   ofSleepMillis(2000);
+                
+                string result ;
+                
+                
+                
+                if(XML.loadFromBuffer(xmlFromServer.getText())){
+                    
+                    cout<<"RESPONSE-----"<<endl;
+                    XML.copyXmlToString(result);
+                    
+                    // cout<<result <<endl;
+                    XML.pushTag("xml");
+                    XML.pushTag("kml");
+                    XML.pushTag("Document");
+                    XML.pushTag("Folder");
+                    XML.pushTag("Placemark");
+                    XML.pushTag("LineString");
+                    
+                    string coordinates = XML.getValue("coordinates", "0",0);
+                    
+                    vector <string> coordSplit = ofSplitString(coordinates, " ");
+                    
+                    
+                    if (RouteVenue2D.size() == index) ofRemoveAllURLRequests();
+                    receivedData[index].clear();
+                    receivedData[index].resize(coordSplit.size());
+                    
+                    
+                    for(int x=0; x<coordSplit.size(); x++){
                         
-                        int position = 0;
-                        double longitude = result["coordinates"][i][position++].asDouble();
-                        double latitude = result["coordinates"][i][position].asDouble();
-                        
-                        CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(latitude, longitude);
-                        receivedData[x][i]  = coordinates;
+                        vector<string >  latLon = ofSplitString(coordSplit[x], ",");
+                        if (latLon.size() > 0){
+                            double longitude = ofToDouble(latLon[0]);
+                            double latitude = ofToDouble(latLon[1]);
+                            cout<<latitude<<endl;
+                            
+                            CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(latitude, longitude);
+                            receivedData[index][x].location  = coordinates;
+                        }
                         
                     }
+                    //cout<<coordinates<<endl;
+                    
+                    
                 }
-                else
-                {
-                    cout  << "Failed to parse COORDINATES" << endl;
-                }
+                
+                
             }
         }
-            getRoutes = true;
-             }
-        
-        }
+       stopThread();
+       }
+       
         
     }
+
     
     bool finishRoute(){
         
-        // if started routing and 
+        // if started routing and
        
+          // if values received then send finished
+        if (values.size() == index){
         
-        return getRoutes;
+            return getRoutes = true;
+          
+        }
         
-        
-        
+        return false;
     }
     
     void cleanRoute(){
@@ -174,10 +295,11 @@ public:
     }
     
     
-    vector<vector < CLLocationCoordinate2D > > routeData(){
+    vector<vector < routeData > > routeData(){
       //  cout<<"found points"<<receivedData.size()<<endl;
+        lock();
         return  receivedData;
-        
+        unlock();
     }
 
     

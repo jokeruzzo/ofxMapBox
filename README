@@ -1,10 +1,5 @@
+
 Mapbox for Openframeworks IOS
-
-
-I'm aware that this library isn't supported by 0074 yet. It is now! Look in the development branch.
-
-
-
 
 I've been struggeling with the limitations of the MapKit library in openframeworks so 
 I had  to modify MapBox to work together with Openframeworks. This is an early
@@ -14,12 +9,14 @@ Wat is possible right now:
 
 - top layer EaglView
 - add custom MBTiles with offlineMap(string map)
-- online maps onlineMap("URL") 
-    look at the tileStream github to stream a map from your own (VPS)server.
-    When you are hosting, use http://[host name]/v2/[map name].json as URL.
-    Here's a tutorial for a Ubuntu server: https://github.com/mapbox/tilestream/issues/50
-- YOURS route system from Open Steet Maps
+- online maps onlineMap("URL") // tilemap server reccomended.. see tilestream for your own map.
+- YOUR route system from Open Steet Maps
 
+What is going to come:
+
+- cycle map layer
+- sea map layers
+- other stuff
 
 Related links:
 

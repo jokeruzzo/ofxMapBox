@@ -36,11 +36,13 @@ void MapRouteApp::setup() {
     // transparency
     ofxiPhoneSendGLViewToFront();
 	ofxiPhoneSetGLViewTransparent(true);
-    mapKit.setMapZoom(20);
+    mapKit.setMapZoom(20,true);
     mapKit.retinaDisplay(true);
     mapKit.onlineMap("http://api.tiles.mapbox.com/v3/examples.map-zr0njcqy.jsonp");
     mapKit.setCenter(POS2_LATITUDE, POS2_LONGITUDE);
-    mapKit.rotateUser(UserTrackingModeFollowWithHeading);
+    
+    // when rotation modified manually, set rotate to UserTrackingModeNone 
+    mapKit.rotateUser(UserTrackingModeNone);
      ofxiPhoneSendGLViewToFront();
 
 }
@@ -49,7 +51,7 @@ void MapRouteApp::setup() {
 void MapRouteApp::update(){
 
     userGPSLocation = CLLocationCoordinate2DMake( coreLocation->getLatitude(), coreLocation->getLongitude());
-
+   
 }
 
 //--------------------------------------------------------------

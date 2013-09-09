@@ -11,34 +11,30 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		27a862d478af45e4ceed1b6e0e02b163 /* myAppViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9d72247cca22d4bc4b743aaba3d84492 /* myAppViewController.mm */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		480AE96817DDD5C00033CEC7 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 480AE94717DDD5C00033CEC7 /* NSObject+SBJson.m */; };
+		480AE96917DDD5C00033CEC7 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 480AE94A17DDD5C00033CEC7 /* SBJsonParser.m */; };
+		480AE96A17DDD5C00033CEC7 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 480AE94C17DDD5C00033CEC7 /* SBJsonStreamParser.m */; };
+		480AE96B17DDD5C00033CEC7 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 480AE94E17DDD5C00033CEC7 /* SBJsonStreamParserAccumulator.m */; };
+		480AE96C17DDD5C00033CEC7 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 480AE95017DDD5C00033CEC7 /* SBJsonStreamParserAdapter.m */; };
+		480AE96D17DDD5C00033CEC7 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = 480AE95217DDD5C00033CEC7 /* SBJsonStreamParserState.m */; };
+		480AE96E17DDD5C00033CEC7 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 480AE95417DDD5C00033CEC7 /* SBJsonStreamWriter.m */; };
+		480AE96F17DDD5C00033CEC7 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 480AE95617DDD5C00033CEC7 /* SBJsonStreamWriterAccumulator.m */; };
+		480AE97017DDD5C00033CEC7 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 480AE95817DDD5C00033CEC7 /* SBJsonStreamWriterState.m */; };
+		480AE97117DDD5C00033CEC7 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 480AE95A17DDD5C00033CEC7 /* SBJsonTokeniser.m */; };
+		480AE97217DDD5C00033CEC7 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 480AE95C17DDD5C00033CEC7 /* SBJsonUTF8Stream.m */; };
+		480AE97317DDD5C00033CEC7 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 480AE95E17DDD5C00033CEC7 /* SBJsonWriter.m */; };
+		480AE97417DDD5C00033CEC7 /* libMapBox.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 480AE96117DDD5C00033CEC7 /* libMapBox.a */; };
+		480AE97617DDD5C00033CEC7 /* libMapBox-sim.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 480AE96417DDD5C00033CEC7 /* libMapBox-sim.a */; };
+		480AE97817DDD5C00033CEC7 /* libProj4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 480AE96617DDD5C00033CEC7 /* libProj4.a */; };
+		480AE97917DDD5C00033CEC7 /* MapBox.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 480AE96717DDD5C00033CEC7 /* MapBox.bundle */; };
 		5326AEA810A23A0500278DE6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5326AEA710A23A0500278DE6 /* CoreLocation.framework */; };
 		53F323EB10A20EDB00E0DAE4 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F323EA10A20EDB00E0DAE4 /* OpenAL.framework */; };
 		6e463de882372a0c94e26f83dcdab6ff /* MapRouteAppViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = d6e099cc42bfd340c5443385a6446439 /* MapRouteAppViewController.mm */; };
 		961F308116E28CCC00C22676 /* map.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = 961F308016E28CCC00C22676 /* map.mbtiles */; };
 		961F308516E2923000C22676 /* testApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 961F308416E2923000C22676 /* testApp.mm */; };
-		966A39D816E2832A00A55F82 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 966A37BA16E2832600A55F82 /* NSObject+SBJson.m */; };
-		966A39D916E2832A00A55F82 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 966A37BD16E2832600A55F82 /* SBJsonParser.m */; };
-		966A39DA16E2832A00A55F82 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 966A37BF16E2832600A55F82 /* SBJsonStreamParser.m */; };
-		966A39DB16E2832A00A55F82 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 966A37C116E2832600A55F82 /* SBJsonStreamParserAccumulator.m */; };
-		966A39DC16E2832A00A55F82 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 966A37C316E2832600A55F82 /* SBJsonStreamParserAdapter.m */; };
-		966A39DD16E2832A00A55F82 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = 966A37C516E2832600A55F82 /* SBJsonStreamParserState.m */; };
-		966A39DE16E2832A00A55F82 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 966A37C716E2832600A55F82 /* SBJsonStreamWriter.m */; };
-		966A39DF16E2832A00A55F82 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 966A37C916E2832600A55F82 /* SBJsonStreamWriterAccumulator.m */; };
-		966A39E016E2832A00A55F82 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 966A37CB16E2832600A55F82 /* SBJsonStreamWriterState.m */; };
-		966A39E116E2832A00A55F82 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 966A37CD16E2832600A55F82 /* SBJsonTokeniser.m */; };
-		966A39E216E2832A00A55F82 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 966A37CF16E2832600A55F82 /* SBJsonUTF8Stream.m */; };
-		966A39E316E2832A00A55F82 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 966A37D116E2832700A55F82 /* SBJsonWriter.m */; };
 		966A3B2216E2832A00A55F82 /* mapController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 966A39D116E2832A00A55F82 /* mapController.mm */; };
-		966A3B2316E2832A00A55F82 /* readJSON.mm in Sources */ = {isa = PBXBuildFile; fileRef = 966A39D416E2832A00A55F82 /* readJSON.mm */; };
 		966A3B2416E2832A00A55F82 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 966A39D516E2832A00A55F82 /* README */; };
 		966A3B2516E2832A00A55F82 /* RMMapKit.mm in Sources */ = {isa = PBXBuildFile; fileRef = 966A39D716E2832A00A55F82 /* RMMapKit.mm */; };
-		966A3B6216E283AC00A55F82 /* json_internalarray.inl in Resources */ = {isa = PBXBuildFile; fileRef = 966A3B5716E283AC00A55F82 /* json_internalarray.inl */; };
-		966A3B6316E283AC00A55F82 /* json_internalmap.inl in Resources */ = {isa = PBXBuildFile; fileRef = 966A3B5816E283AC00A55F82 /* json_internalmap.inl */; };
-		966A3B6416E283AC00A55F82 /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 966A3B5916E283AC00A55F82 /* json_reader.cpp */; };
-		966A3B6516E283AC00A55F82 /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 966A3B5A16E283AC00A55F82 /* json_value.cpp */; };
-		966A3B6616E283AC00A55F82 /* json_valueiterator.inl in Resources */ = {isa = PBXBuildFile; fileRef = 966A3B5B16E283AC00A55F82 /* json_valueiterator.inl */; };
-		966A3B6716E283AC00A55F82 /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 966A3B5C16E283AC00A55F82 /* json_writer.cpp */; };
-		966A3B6916E283AC00A55F82 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 966A3B5F16E283AC00A55F82 /* ofxJSONElement.cpp */; };
 		BB16EBD20F2B2A9500518274 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB16EBD10F2B2A9500518274 /* OpenGLES.framework */; };
 		BB16EBD90F2B2AB500518274 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB16EBD80F2B2AB500518274 /* QuartzCore.framework */; };
 		BB24DDCA10DA781C00E9C588 /* ofxiphone-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB24DDC910DA781C00E9C588 /* ofxiphone-Info.plist */; };
@@ -53,10 +49,8 @@
 		E4A823A412561BE3002F86A2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4A823A312561BE3002F86A2 /* CoreGraphics.framework */; };
 		E4D8936E11527B74007E1F53 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4D8936B11527B74007E1F53 /* main.mm */; };
 		FB14BC1616F0EBC70005C91D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB14BC1516F0EBC70005C91D /* Default-568h@2x.png */; };
-		FB17E0AE16F0EAFD00C416B4 /* libMapBox.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB17E0AD16F0EAFD00C416B4 /* libMapBox.a */; };
 		FBC3CF4216F0E1A60053E385 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FBC3CF4116F0E1A60053E385 /* libsqlite3.dylib */; };
 		FBC3CF4416F0E1AF0053E385 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FBC3CF4316F0E1AF0053E385 /* libz.dylib */; };
-		FBC3CF4916F0E2BC0053E385 /* MapBox.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FBC3CF4816F0E2BC0053E385 /* MapBox.bundle */; };
 		a174c6d42676e95effe6cf975bd859f8 /* MapRouteApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = c6fb3183fe800241a844e5b8f108096e /* MapRouteApp.mm */; };
 		a55613c24c4db9a6dc49d77252278811 /* MyAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8627beb34192f6eb415db55d1218034b /* MyAppDelegate.mm */; };
 /* End PBXBuildFile section */
@@ -85,118 +79,164 @@
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* iPhone_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPhone_Prefix.pch; sourceTree = "<group>"; };
 		3342984c510e960b5253ae789de2e83c /* MyAppDelegate.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = MyAppDelegate.h; path = src/UI/MyAppDelegate.h; sourceTree = SOURCE_ROOT; };
+		480AE8CD17DDD5C00033CEC7 /* MapBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapBox.h; sourceTree = "<group>"; };
+		480AE8CE17DDD5C00033CEC7 /* RMAbstractMercatorTileSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMAbstractMercatorTileSource.h; sourceTree = "<group>"; };
+		480AE8CF17DDD5C00033CEC7 /* RMAbstractWebMapSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMAbstractWebMapSource.h; sourceTree = "<group>"; };
+		480AE8D017DDD5C00033CEC7 /* RMAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMAnnotation.h; sourceTree = "<group>"; };
+		480AE8D117DDD5C00033CEC7 /* RMAttributionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMAttributionViewController.h; sourceTree = "<group>"; };
+		480AE8D217DDD5C00033CEC7 /* RMBingSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBingSource.h; sourceTree = "<group>"; };
+		480AE8D317DDD5C00033CEC7 /* RMCacheObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCacheObject.h; sourceTree = "<group>"; };
+		480AE8D417DDD5C00033CEC7 /* RMCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCircle.h; sourceTree = "<group>"; };
+		480AE8D517DDD5C00033CEC7 /* RMCompositeSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCompositeSource.h; sourceTree = "<group>"; };
+		480AE8D617DDD5C00033CEC7 /* RMConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMConfiguration.h; sourceTree = "<group>"; };
+		480AE8D717DDD5C00033CEC7 /* RMCoordinateGridSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCoordinateGridSource.h; sourceTree = "<group>"; };
+		480AE8D817DDD5C00033CEC7 /* RMDatabaseCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDatabaseCache.h; sourceTree = "<group>"; };
+		480AE8D917DDD5C00033CEC7 /* RMDBMapSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDBMapSource.h; sourceTree = "<group>"; };
+		480AE8DA17DDD5C00033CEC7 /* RMFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMFoundation.h; sourceTree = "<group>"; };
+		480AE8DB17DDD5C00033CEC7 /* RMFractalTileProjection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMFractalTileProjection.h; sourceTree = "<group>"; };
+		480AE8DC17DDD5C00033CEC7 /* RMGenericMapSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMGenericMapSource.h; sourceTree = "<group>"; };
+		480AE8DD17DDD5C00033CEC7 /* RMGlobalConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMGlobalConstants.h; sourceTree = "<group>"; };
+		480AE8DE17DDD5C00033CEC7 /* RMInteractiveSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMInteractiveSource.h; sourceTree = "<group>"; };
+		480AE8DF17DDD5C00033CEC7 /* RMLoadingTileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMLoadingTileView.h; sourceTree = "<group>"; };
+		480AE8E017DDD5C00033CEC7 /* RMMapBoxSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapBoxSource.h; sourceTree = "<group>"; };
+		480AE8E117DDD5C00033CEC7 /* RMMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapLayer.h; sourceTree = "<group>"; };
+		480AE8E217DDD5C00033CEC7 /* RMMapOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapOverlayView.h; sourceTree = "<group>"; };
+		480AE8E317DDD5C00033CEC7 /* RMMapQuestOpenAerialSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapQuestOpenAerialSource.h; sourceTree = "<group>"; };
+		480AE8E417DDD5C00033CEC7 /* RMMapQuestOSMSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapQuestOSMSource.h; sourceTree = "<group>"; };
+		480AE8E517DDD5C00033CEC7 /* RMMapScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapScrollView.h; sourceTree = "<group>"; };
+		480AE8E617DDD5C00033CEC7 /* RMMapTiledLayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapTiledLayerView.h; sourceTree = "<group>"; };
+		480AE8E717DDD5C00033CEC7 /* RMMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapView.h; sourceTree = "<group>"; };
+		480AE8E817DDD5C00033CEC7 /* RMMapViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapViewDelegate.h; sourceTree = "<group>"; };
+		480AE8E917DDD5C00033CEC7 /* RMMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMarker.h; sourceTree = "<group>"; };
+		480AE8EA17DDD5C00033CEC7 /* RMMBTilesSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMBTilesSource.h; sourceTree = "<group>"; };
+		480AE8EB17DDD5C00033CEC7 /* RMMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMemoryCache.h; sourceTree = "<group>"; };
+		480AE8EC17DDD5C00033CEC7 /* RMNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMNotifications.h; sourceTree = "<group>"; };
+		480AE8ED17DDD5C00033CEC7 /* RMOpenCycleMapSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMOpenCycleMapSource.h; sourceTree = "<group>"; };
+		480AE8EE17DDD5C00033CEC7 /* RMOpenSeaMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMOpenSeaMapLayer.h; sourceTree = "<group>"; };
+		480AE8EF17DDD5C00033CEC7 /* RMOpenSeaMapSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMOpenSeaMapSource.h; sourceTree = "<group>"; };
+		480AE8F017DDD5C00033CEC7 /* RMOpenStreetMapSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMOpenStreetMapSource.h; sourceTree = "<group>"; };
+		480AE8F117DDD5C00033CEC7 /* RMPixel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMPixel.h; sourceTree = "<group>"; };
+		480AE8F217DDD5C00033CEC7 /* RMPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMPointAnnotation.h; sourceTree = "<group>"; };
+		480AE8F317DDD5C00033CEC7 /* RMPolygonAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMPolygonAnnotation.h; sourceTree = "<group>"; };
+		480AE8F417DDD5C00033CEC7 /* RMPolylineAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMPolylineAnnotation.h; sourceTree = "<group>"; };
+		480AE8F517DDD5C00033CEC7 /* RMProjection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMProjection.h; sourceTree = "<group>"; };
+		480AE8F617DDD5C00033CEC7 /* RMQuadTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMQuadTree.h; sourceTree = "<group>"; };
+		480AE8F717DDD5C00033CEC7 /* RMShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMShape.h; sourceTree = "<group>"; };
+		480AE8F817DDD5C00033CEC7 /* RMShapeAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMShapeAnnotation.h; sourceTree = "<group>"; };
+		480AE8F917DDD5C00033CEC7 /* RMStaticMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStaticMapView.h; sourceTree = "<group>"; };
+		480AE8FA17DDD5C00033CEC7 /* RMTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTile.h; sourceTree = "<group>"; };
+		480AE8FB17DDD5C00033CEC7 /* RMTileCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTileCache.h; sourceTree = "<group>"; };
+		480AE8FC17DDD5C00033CEC7 /* RMTileCacheDownloadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTileCacheDownloadOperation.h; sourceTree = "<group>"; };
+		480AE8FD17DDD5C00033CEC7 /* RMTileImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTileImage.h; sourceTree = "<group>"; };
+		480AE8FE17DDD5C00033CEC7 /* RMTileMillSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTileMillSource.h; sourceTree = "<group>"; };
+		480AE8FF17DDD5C00033CEC7 /* RMTileSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTileSource.h; sourceTree = "<group>"; };
+		480AE90017DDD5C00033CEC7 /* RMTileSourcesContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTileSourcesContainer.h; sourceTree = "<group>"; };
+		480AE90117DDD5C00033CEC7 /* RMUserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMUserLocation.h; sourceTree = "<group>"; };
+		480AE90217DDD5C00033CEC7 /* RMUserTrackingBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMUserTrackingBarButtonItem.h; sourceTree = "<group>"; };
+		480AE90317DDD5C00033CEC7 /* MapBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapBox.h; sourceTree = "<group>"; };
+		480AE90517DDD5C00033CEC7 /* emess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = emess.h; sourceTree = "<group>"; };
+		480AE90617DDD5C00033CEC7 /* geocent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = geocent.h; sourceTree = "<group>"; };
+		480AE90717DDD5C00033CEC7 /* geodesic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = geodesic.h; sourceTree = "<group>"; };
+		480AE90817DDD5C00033CEC7 /* nad_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nad_list.h; sourceTree = "<group>"; };
+		480AE90917DDD5C00033CEC7 /* org_proj4_Projections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = org_proj4_Projections.h; sourceTree = "<group>"; };
+		480AE90A17DDD5C00033CEC7 /* pj_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pj_list.h; sourceTree = "<group>"; };
+		480AE90B17DDD5C00033CEC7 /* Proj4_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Proj4_Prefix.pch; sourceTree = "<group>"; };
+		480AE90C17DDD5C00033CEC7 /* proj_api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = proj_api.h; sourceTree = "<group>"; };
+		480AE90D17DDD5C00033CEC7 /* proj_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = proj_config.h; sourceTree = "<group>"; };
+		480AE90E17DDD5C00033CEC7 /* projects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = projects.h; sourceTree = "<group>"; };
+		480AE90F17DDD5C00033CEC7 /* RMAbstractMercatorTileSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMAbstractMercatorTileSource.h; sourceTree = "<group>"; };
+		480AE91017DDD5C00033CEC7 /* RMAbstractWebMapSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMAbstractWebMapSource.h; sourceTree = "<group>"; };
+		480AE91117DDD5C00033CEC7 /* RMAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMAnnotation.h; sourceTree = "<group>"; };
+		480AE91217DDD5C00033CEC7 /* RMAttributionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMAttributionViewController.h; sourceTree = "<group>"; };
+		480AE91317DDD5C00033CEC7 /* RMBingSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBingSource.h; sourceTree = "<group>"; };
+		480AE91417DDD5C00033CEC7 /* RMCacheObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCacheObject.h; sourceTree = "<group>"; };
+		480AE91517DDD5C00033CEC7 /* RMCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCircle.h; sourceTree = "<group>"; };
+		480AE91617DDD5C00033CEC7 /* RMCompositeSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCompositeSource.h; sourceTree = "<group>"; };
+		480AE91717DDD5C00033CEC7 /* RMConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMConfiguration.h; sourceTree = "<group>"; };
+		480AE91817DDD5C00033CEC7 /* RMCoordinateGridSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCoordinateGridSource.h; sourceTree = "<group>"; };
+		480AE91917DDD5C00033CEC7 /* RMDatabaseCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDatabaseCache.h; sourceTree = "<group>"; };
+		480AE91A17DDD5C00033CEC7 /* RMDBMapSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDBMapSource.h; sourceTree = "<group>"; };
+		480AE91B17DDD5C00033CEC7 /* RMFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMFoundation.h; sourceTree = "<group>"; };
+		480AE91C17DDD5C00033CEC7 /* RMFractalTileProjection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMFractalTileProjection.h; sourceTree = "<group>"; };
+		480AE91D17DDD5C00033CEC7 /* RMGenericMapSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMGenericMapSource.h; sourceTree = "<group>"; };
+		480AE91E17DDD5C00033CEC7 /* RMGlobalConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMGlobalConstants.h; sourceTree = "<group>"; };
+		480AE91F17DDD5C00033CEC7 /* RMInteractiveSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMInteractiveSource.h; sourceTree = "<group>"; };
+		480AE92017DDD5C00033CEC7 /* RMLoadingTileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMLoadingTileView.h; sourceTree = "<group>"; };
+		480AE92117DDD5C00033CEC7 /* RMMapBoxSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapBoxSource.h; sourceTree = "<group>"; };
+		480AE92217DDD5C00033CEC7 /* RMMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapLayer.h; sourceTree = "<group>"; };
+		480AE92317DDD5C00033CEC7 /* RMMapOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapOverlayView.h; sourceTree = "<group>"; };
+		480AE92417DDD5C00033CEC7 /* RMMapQuestOpenAerialSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapQuestOpenAerialSource.h; sourceTree = "<group>"; };
+		480AE92517DDD5C00033CEC7 /* RMMapQuestOSMSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapQuestOSMSource.h; sourceTree = "<group>"; };
+		480AE92617DDD5C00033CEC7 /* RMMapScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapScrollView.h; sourceTree = "<group>"; };
+		480AE92717DDD5C00033CEC7 /* RMMapTiledLayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapTiledLayerView.h; sourceTree = "<group>"; };
+		480AE92817DDD5C00033CEC7 /* RMMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapView.h; sourceTree = "<group>"; };
+		480AE92917DDD5C00033CEC7 /* RMMapViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapViewDelegate.h; sourceTree = "<group>"; };
+		480AE92A17DDD5C00033CEC7 /* RMMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMarker.h; sourceTree = "<group>"; };
+		480AE92B17DDD5C00033CEC7 /* RMMBTilesSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMBTilesSource.h; sourceTree = "<group>"; };
+		480AE92C17DDD5C00033CEC7 /* RMMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMemoryCache.h; sourceTree = "<group>"; };
+		480AE92D17DDD5C00033CEC7 /* RMNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMNotifications.h; sourceTree = "<group>"; };
+		480AE92E17DDD5C00033CEC7 /* RMOpenCycleMapSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMOpenCycleMapSource.h; sourceTree = "<group>"; };
+		480AE92F17DDD5C00033CEC7 /* RMOpenSeaMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMOpenSeaMapLayer.h; sourceTree = "<group>"; };
+		480AE93017DDD5C00033CEC7 /* RMOpenSeaMapSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMOpenSeaMapSource.h; sourceTree = "<group>"; };
+		480AE93117DDD5C00033CEC7 /* RMOpenStreetMapSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMOpenStreetMapSource.h; sourceTree = "<group>"; };
+		480AE93217DDD5C00033CEC7 /* RMPixel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMPixel.h; sourceTree = "<group>"; };
+		480AE93317DDD5C00033CEC7 /* RMPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMPointAnnotation.h; sourceTree = "<group>"; };
+		480AE93417DDD5C00033CEC7 /* RMPolygonAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMPolygonAnnotation.h; sourceTree = "<group>"; };
+		480AE93517DDD5C00033CEC7 /* RMPolylineAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMPolylineAnnotation.h; sourceTree = "<group>"; };
+		480AE93617DDD5C00033CEC7 /* RMProjection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMProjection.h; sourceTree = "<group>"; };
+		480AE93717DDD5C00033CEC7 /* RMQuadTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMQuadTree.h; sourceTree = "<group>"; };
+		480AE93817DDD5C00033CEC7 /* RMShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMShape.h; sourceTree = "<group>"; };
+		480AE93917DDD5C00033CEC7 /* RMShapeAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMShapeAnnotation.h; sourceTree = "<group>"; };
+		480AE93A17DDD5C00033CEC7 /* RMStaticMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStaticMapView.h; sourceTree = "<group>"; };
+		480AE93B17DDD5C00033CEC7 /* RMTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTile.h; sourceTree = "<group>"; };
+		480AE93C17DDD5C00033CEC7 /* RMTileCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTileCache.h; sourceTree = "<group>"; };
+		480AE93D17DDD5C00033CEC7 /* RMTileCacheDownloadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTileCacheDownloadOperation.h; sourceTree = "<group>"; };
+		480AE93E17DDD5C00033CEC7 /* RMTileImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTileImage.h; sourceTree = "<group>"; };
+		480AE93F17DDD5C00033CEC7 /* RMTileMillSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTileMillSource.h; sourceTree = "<group>"; };
+		480AE94017DDD5C00033CEC7 /* RMTileSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTileSource.h; sourceTree = "<group>"; };
+		480AE94117DDD5C00033CEC7 /* RMTileSourcesContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTileSourcesContainer.h; sourceTree = "<group>"; };
+		480AE94217DDD5C00033CEC7 /* RMUserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMUserLocation.h; sourceTree = "<group>"; };
+		480AE94317DDD5C00033CEC7 /* RMUserTrackingBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMUserTrackingBarButtonItem.h; sourceTree = "<group>"; };
+		480AE94617DDD5C00033CEC7 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
+		480AE94717DDD5C00033CEC7 /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
+		480AE94817DDD5C00033CEC7 /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
+		480AE94917DDD5C00033CEC7 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		480AE94A17DDD5C00033CEC7 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		480AE94B17DDD5C00033CEC7 /* SBJsonStreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParser.h; sourceTree = "<group>"; };
+		480AE94C17DDD5C00033CEC7 /* SBJsonStreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParser.m; sourceTree = "<group>"; };
+		480AE94D17DDD5C00033CEC7 /* SBJsonStreamParserAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAccumulator.h; sourceTree = "<group>"; };
+		480AE94E17DDD5C00033CEC7 /* SBJsonStreamParserAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAccumulator.m; sourceTree = "<group>"; };
+		480AE94F17DDD5C00033CEC7 /* SBJsonStreamParserAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAdapter.h; sourceTree = "<group>"; };
+		480AE95017DDD5C00033CEC7 /* SBJsonStreamParserAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAdapter.m; sourceTree = "<group>"; };
+		480AE95117DDD5C00033CEC7 /* SBJsonStreamParserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserState.h; sourceTree = "<group>"; };
+		480AE95217DDD5C00033CEC7 /* SBJsonStreamParserState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserState.m; sourceTree = "<group>"; };
+		480AE95317DDD5C00033CEC7 /* SBJsonStreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriter.h; sourceTree = "<group>"; };
+		480AE95417DDD5C00033CEC7 /* SBJsonStreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriter.m; sourceTree = "<group>"; };
+		480AE95517DDD5C00033CEC7 /* SBJsonStreamWriterAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterAccumulator.h; sourceTree = "<group>"; };
+		480AE95617DDD5C00033CEC7 /* SBJsonStreamWriterAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterAccumulator.m; sourceTree = "<group>"; };
+		480AE95717DDD5C00033CEC7 /* SBJsonStreamWriterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterState.h; sourceTree = "<group>"; };
+		480AE95817DDD5C00033CEC7 /* SBJsonStreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterState.m; sourceTree = "<group>"; };
+		480AE95917DDD5C00033CEC7 /* SBJsonTokeniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonTokeniser.h; sourceTree = "<group>"; };
+		480AE95A17DDD5C00033CEC7 /* SBJsonTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonTokeniser.m; sourceTree = "<group>"; };
+		480AE95B17DDD5C00033CEC7 /* SBJsonUTF8Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonUTF8Stream.h; sourceTree = "<group>"; };
+		480AE95C17DDD5C00033CEC7 /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
+		480AE95D17DDD5C00033CEC7 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		480AE95E17DDD5C00033CEC7 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		480AE96117DDD5C00033CEC7 /* libMapBox.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMapBox.a; sourceTree = "<group>"; };
+		480AE96417DDD5C00033CEC7 /* libMapBox-sim.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libMapBox-sim.a"; sourceTree = "<group>"; };
+		480AE96617DDD5C00033CEC7 /* libProj4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libProj4.a; sourceTree = "<group>"; };
+		480AE96717DDD5C00033CEC7 /* MapBox.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MapBox.bundle; sourceTree = "<group>"; };
 		5326AEA710A23A0500278DE6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		53F323EA10A20EDB00E0DAE4 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		8627beb34192f6eb415db55d1218034b /* MyAppDelegate.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 30; name = MyAppDelegate.mm; path = src/UI/MyAppDelegate.mm; sourceTree = SOURCE_ROOT; };
 		88f12646afb7384dd5ab6fddc7399c69 /* MapRouteApp.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = MapRouteApp.h; path = src/Apps/MapRouteApp.h; sourceTree = SOURCE_ROOT; };
 		961F308016E28CCC00C22676 /* map.mbtiles */ = {isa = PBXFileReference; lastKnownFileType = file; path = map.mbtiles; sourceTree = "<group>"; };
 		961F308416E2923000C22676 /* testApp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = testApp.mm; sourceTree = "<group>"; };
-		966A378116E2832600A55F82 /* MapBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapBox.h; sourceTree = "<group>"; };
-		966A378216E2832600A55F82 /* RMAbstractMercatorTileSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMAbstractMercatorTileSource.h; sourceTree = "<group>"; };
-		966A378316E2832600A55F82 /* RMAbstractWebMapSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMAbstractWebMapSource.h; sourceTree = "<group>"; };
-		966A378416E2832600A55F82 /* RMAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMAnnotation.h; sourceTree = "<group>"; };
-		966A378516E2832600A55F82 /* RMAttributionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMAttributionViewController.h; sourceTree = "<group>"; };
-		966A378616E2832600A55F82 /* RMBingSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBingSource.h; sourceTree = "<group>"; };
-		966A378716E2832600A55F82 /* RMCacheObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCacheObject.h; sourceTree = "<group>"; };
-		966A378816E2832600A55F82 /* RMCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCircle.h; sourceTree = "<group>"; };
-		966A378916E2832600A55F82 /* RMCompositeSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCompositeSource.h; sourceTree = "<group>"; };
-		966A378A16E2832600A55F82 /* RMConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMConfiguration.h; sourceTree = "<group>"; };
-		966A378B16E2832600A55F82 /* RMCoordinateGridSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCoordinateGridSource.h; sourceTree = "<group>"; };
-		966A378C16E2832600A55F82 /* RMDatabaseCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDatabaseCache.h; sourceTree = "<group>"; };
-		966A378D16E2832600A55F82 /* RMDBMapSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDBMapSource.h; sourceTree = "<group>"; };
-		966A378E16E2832600A55F82 /* RMFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMFoundation.h; sourceTree = "<group>"; };
-		966A378F16E2832600A55F82 /* RMFractalTileProjection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMFractalTileProjection.h; sourceTree = "<group>"; };
-		966A379016E2832600A55F82 /* RMGenericMapSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMGenericMapSource.h; sourceTree = "<group>"; };
-		966A379116E2832600A55F82 /* RMGlobalConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMGlobalConstants.h; sourceTree = "<group>"; };
-		966A379216E2832600A55F82 /* RMInteractiveSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMInteractiveSource.h; sourceTree = "<group>"; };
-		966A379316E2832600A55F82 /* RMLoadingTileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMLoadingTileView.h; sourceTree = "<group>"; };
-		966A379416E2832600A55F82 /* RMMapBoxSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapBoxSource.h; sourceTree = "<group>"; };
-		966A379516E2832600A55F82 /* RMMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapLayer.h; sourceTree = "<group>"; };
-		966A379616E2832600A55F82 /* RMMapOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapOverlayView.h; sourceTree = "<group>"; };
-		966A379716E2832600A55F82 /* RMMapQuestOpenAerialSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapQuestOpenAerialSource.h; sourceTree = "<group>"; };
-		966A379816E2832600A55F82 /* RMMapQuestOSMSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapQuestOSMSource.h; sourceTree = "<group>"; };
-		966A379916E2832600A55F82 /* RMMapScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapScrollView.h; sourceTree = "<group>"; };
-		966A379A16E2832600A55F82 /* RMMapTiledLayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapTiledLayerView.h; sourceTree = "<group>"; };
-		966A379B16E2832600A55F82 /* RMMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapView.h; sourceTree = "<group>"; };
-		966A379C16E2832600A55F82 /* RMMapViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapViewDelegate.h; sourceTree = "<group>"; };
-		966A379D16E2832600A55F82 /* RMMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMarker.h; sourceTree = "<group>"; };
-		966A379E16E2832600A55F82 /* RMMBTilesSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMBTilesSource.h; sourceTree = "<group>"; };
-		966A379F16E2832600A55F82 /* RMMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMemoryCache.h; sourceTree = "<group>"; };
-		966A37A016E2832600A55F82 /* RMNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMNotifications.h; sourceTree = "<group>"; };
-		966A37A116E2832600A55F82 /* RMOpenCycleMapSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMOpenCycleMapSource.h; sourceTree = "<group>"; };
-		966A37A216E2832600A55F82 /* RMOpenSeaMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMOpenSeaMapLayer.h; sourceTree = "<group>"; };
-		966A37A316E2832600A55F82 /* RMOpenSeaMapSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMOpenSeaMapSource.h; sourceTree = "<group>"; };
-		966A37A416E2832600A55F82 /* RMOpenStreetMapSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMOpenStreetMapSource.h; sourceTree = "<group>"; };
-		966A37A516E2832600A55F82 /* RMPixel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMPixel.h; sourceTree = "<group>"; };
-		966A37A616E2832600A55F82 /* RMPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMPointAnnotation.h; sourceTree = "<group>"; };
-		966A37A716E2832600A55F82 /* RMPolygonAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMPolygonAnnotation.h; sourceTree = "<group>"; };
-		966A37A816E2832600A55F82 /* RMPolylineAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMPolylineAnnotation.h; sourceTree = "<group>"; };
-		966A37A916E2832600A55F82 /* RMProjection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMProjection.h; sourceTree = "<group>"; };
-		966A37AA16E2832600A55F82 /* RMQuadTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMQuadTree.h; sourceTree = "<group>"; };
-		966A37AB16E2832600A55F82 /* RMShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMShape.h; sourceTree = "<group>"; };
-		966A37AC16E2832600A55F82 /* RMShapeAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMShapeAnnotation.h; sourceTree = "<group>"; };
-		966A37AD16E2832600A55F82 /* RMStaticMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStaticMapView.h; sourceTree = "<group>"; };
-		966A37AE16E2832600A55F82 /* RMTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTile.h; sourceTree = "<group>"; };
-		966A37AF16E2832600A55F82 /* RMTileCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTileCache.h; sourceTree = "<group>"; };
-		966A37B016E2832600A55F82 /* RMTileCacheDownloadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTileCacheDownloadOperation.h; sourceTree = "<group>"; };
-		966A37B116E2832600A55F82 /* RMTileImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTileImage.h; sourceTree = "<group>"; };
-		966A37B216E2832600A55F82 /* RMTileMillSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTileMillSource.h; sourceTree = "<group>"; };
-		966A37B316E2832600A55F82 /* RMTileSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTileSource.h; sourceTree = "<group>"; };
-		966A37B416E2832600A55F82 /* RMTileSourcesContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMTileSourcesContainer.h; sourceTree = "<group>"; };
-		966A37B516E2832600A55F82 /* RMUserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMUserLocation.h; sourceTree = "<group>"; };
-		966A37B616E2832600A55F82 /* RMUserTrackingBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMUserTrackingBarButtonItem.h; sourceTree = "<group>"; };
-		966A37B916E2832600A55F82 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
-		966A37BA16E2832600A55F82 /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
-		966A37BB16E2832600A55F82 /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
-		966A37BC16E2832600A55F82 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
-		966A37BD16E2832600A55F82 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
-		966A37BE16E2832600A55F82 /* SBJsonStreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParser.h; sourceTree = "<group>"; };
-		966A37BF16E2832600A55F82 /* SBJsonStreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParser.m; sourceTree = "<group>"; };
-		966A37C016E2832600A55F82 /* SBJsonStreamParserAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAccumulator.h; sourceTree = "<group>"; };
-		966A37C116E2832600A55F82 /* SBJsonStreamParserAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAccumulator.m; sourceTree = "<group>"; };
-		966A37C216E2832600A55F82 /* SBJsonStreamParserAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAdapter.h; sourceTree = "<group>"; };
-		966A37C316E2832600A55F82 /* SBJsonStreamParserAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAdapter.m; sourceTree = "<group>"; };
-		966A37C416E2832600A55F82 /* SBJsonStreamParserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserState.h; sourceTree = "<group>"; };
-		966A37C516E2832600A55F82 /* SBJsonStreamParserState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserState.m; sourceTree = "<group>"; };
-		966A37C616E2832600A55F82 /* SBJsonStreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriter.h; sourceTree = "<group>"; };
-		966A37C716E2832600A55F82 /* SBJsonStreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriter.m; sourceTree = "<group>"; };
-		966A37C816E2832600A55F82 /* SBJsonStreamWriterAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterAccumulator.h; sourceTree = "<group>"; };
-		966A37C916E2832600A55F82 /* SBJsonStreamWriterAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterAccumulator.m; sourceTree = "<group>"; };
-		966A37CA16E2832600A55F82 /* SBJsonStreamWriterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterState.h; sourceTree = "<group>"; };
-		966A37CB16E2832600A55F82 /* SBJsonStreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterState.m; sourceTree = "<group>"; };
-		966A37CC16E2832600A55F82 /* SBJsonTokeniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonTokeniser.h; sourceTree = "<group>"; };
-		966A37CD16E2832600A55F82 /* SBJsonTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonTokeniser.m; sourceTree = "<group>"; };
-		966A37CE16E2832600A55F82 /* SBJsonUTF8Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonUTF8Stream.h; sourceTree = "<group>"; };
-		966A37CF16E2832600A55F82 /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
-		966A37D016E2832600A55F82 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
-		966A37D116E2832700A55F82 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		966A39D016E2832A00A55F82 /* mapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mapController.h; sourceTree = "<group>"; };
 		966A39D116E2832A00A55F82 /* mapController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = mapController.mm; sourceTree = "<group>"; };
-		966A39D216E2832A00A55F82 /* OSMRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSMRoute.h; sourceTree = "<group>"; };
-		966A39D316E2832A00A55F82 /* readJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = readJSON.h; sourceTree = "<group>"; };
-		966A39D416E2832A00A55F82 /* readJSON.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = readJSON.mm; sourceTree = "<group>"; };
 		966A39D516E2832A00A55F82 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		966A39D616E2832A00A55F82 /* RMMapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapKit.h; sourceTree = "<group>"; };
 		966A39D716E2832A00A55F82 /* RMMapKit.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RMMapKit.mm; sourceTree = "<group>"; };
-		966A3B4816E283AC00A55F82 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		966A3B4C16E283AC00A55F82 /* autolink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = autolink.h; sourceTree = "<group>"; };
-		966A3B4D16E283AC00A55F82 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
-		966A3B4E16E283AC00A55F82 /* features.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = features.h; sourceTree = "<group>"; };
-		966A3B4F16E283AC00A55F82 /* forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = forwards.h; sourceTree = "<group>"; };
-		966A3B5016E283AC00A55F82 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
-		966A3B5116E283AC00A55F82 /* reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reader.h; sourceTree = "<group>"; };
-		966A3B5216E283AC00A55F82 /* value.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = value.h; sourceTree = "<group>"; };
-		966A3B5316E283AC00A55F82 /* writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = writer.h; sourceTree = "<group>"; };
-		966A3B5616E283AC00A55F82 /* json_batchallocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json_batchallocator.h; sourceTree = "<group>"; };
-		966A3B5716E283AC00A55F82 /* json_internalarray.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json_internalarray.inl; sourceTree = "<group>"; };
-		966A3B5816E283AC00A55F82 /* json_internalmap.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json_internalmap.inl; sourceTree = "<group>"; };
-		966A3B5916E283AC00A55F82 /* json_reader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_reader.cpp; sourceTree = "<group>"; };
-		966A3B5A16E283AC00A55F82 /* json_value.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_value.cpp; sourceTree = "<group>"; };
-		966A3B5B16E283AC00A55F82 /* json_valueiterator.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json_valueiterator.inl; sourceTree = "<group>"; };
-		966A3B5C16E283AC00A55F82 /* json_writer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_writer.cpp; sourceTree = "<group>"; };
-		966A3B5D16E283AC00A55F82 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
-		966A3B5F16E283AC00A55F82 /* ofxJSONElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxJSONElement.cpp; sourceTree = "<group>"; };
-		966A3B6016E283AC00A55F82 /* ofxJSONElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxJSONElement.h; sourceTree = "<group>"; };
 		9802791eb3f75fe36c55d369e2bcb563 /* myAppViewController.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = myAppViewController.h; path = src/UI/myAppViewController.h; sourceTree = SOURCE_ROOT; };
 		9d72247cca22d4bc4b743aaba3d84492 /* myAppViewController.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 30; name = myAppViewController.mm; path = src/UI/myAppViewController.mm; sourceTree = SOURCE_ROOT; };
 		BB16EBD10F2B2A9500518274 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -214,10 +254,8 @@
 		E4D8936B11527B74007E1F53 /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = main.mm; path = src/main.mm; sourceTree = SOURCE_ROOT; };
 		E4D8936C11527B74007E1F53 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = testApp.h; path = src/testApp.h; sourceTree = SOURCE_ROOT; };
 		FB14BC1516F0EBC70005C91D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		FB17E0AD16F0EAFD00C416B4 /* libMapBox.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMapBox.a; sourceTree = "<group>"; };
 		FBC3CF4116F0E1A60053E385 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		FBC3CF4316F0E1AF0053E385 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		FBC3CF4816F0E2BC0053E385 /* MapBox.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MapBox.bundle; sourceTree = "<group>"; };
 		c6fb3183fe800241a844e5b8f108096e /* MapRouteApp.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 30; name = MapRouteApp.mm; path = src/Apps/MapRouteApp.mm; sourceTree = SOURCE_ROOT; };
 		d6e099cc42bfd340c5443385a6446439 /* MapRouteAppViewController.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 30; name = MapRouteAppViewController.mm; path = src/AppViewControllers/MapRouteAppViewController.mm; sourceTree = SOURCE_ROOT; };
 		e82e754d65a932f2df8b1a0f7c4bfe75 /* MapRouteAppViewController.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = MapRouteAppViewController.h; path = src/AppViewControllers/MapRouteAppViewController.h; sourceTree = SOURCE_ROOT; };
@@ -228,8 +266,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				480AE97817DDD5C00033CEC7 /* libProj4.a in Frameworks */,
 				E41D421413B3A95300A75A5D /* libofxiPhone_iphoneos_Debug.a in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				480AE97617DDD5C00033CEC7 /* libMapBox-sim.a in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				BB16EBD20F2B2A9500518274 /* OpenGLES.framework in Frameworks */,
@@ -238,13 +278,13 @@
 				53F323EB10A20EDB00E0DAE4 /* OpenAL.framework in Frameworks */,
 				5326AEA810A23A0500278DE6 /* CoreLocation.framework in Frameworks */,
 				E4A823A412561BE3002F86A2 /* CoreGraphics.framework in Frameworks */,
+				480AE97417DDD5C00033CEC7 /* libMapBox.a in Frameworks */,
 				E41D400B13B39D2100A75A5D /* AVFoundation.framework in Frameworks */,
 				E41D400C13B39D2100A75A5D /* CoreMedia.framework in Frameworks */,
 				E41D400D13B39D2100A75A5D /* CoreVideo.framework in Frameworks */,
 				E41D400E13B39D2100A75A5D /* MapKit.framework in Frameworks */,
 				FBC3CF4216F0E1A60053E385 /* libsqlite3.dylib in Frameworks */,
 				FBC3CF4416F0E1AF0053E385 /* libz.dylib in Frameworks */,
-				FB17E0AE16F0EAFD00C416B4 /* libMapBox.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +335,215 @@
 			name = "core frameworks";
 			sourceTree = "<group>";
 		};
+		480AE8CB17DDD5C00033CEC7 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				480AE8CC17DDD5C00033CEC7 /* MapBox */,
+				480AE90317DDD5C00033CEC7 /* MapBox.h */,
+				480AE90417DDD5C00033CEC7 /* proj4 */,
+				480AE90F17DDD5C00033CEC7 /* RMAbstractMercatorTileSource.h */,
+				480AE91017DDD5C00033CEC7 /* RMAbstractWebMapSource.h */,
+				480AE91117DDD5C00033CEC7 /* RMAnnotation.h */,
+				480AE91217DDD5C00033CEC7 /* RMAttributionViewController.h */,
+				480AE91317DDD5C00033CEC7 /* RMBingSource.h */,
+				480AE91417DDD5C00033CEC7 /* RMCacheObject.h */,
+				480AE91517DDD5C00033CEC7 /* RMCircle.h */,
+				480AE91617DDD5C00033CEC7 /* RMCompositeSource.h */,
+				480AE91717DDD5C00033CEC7 /* RMConfiguration.h */,
+				480AE91817DDD5C00033CEC7 /* RMCoordinateGridSource.h */,
+				480AE91917DDD5C00033CEC7 /* RMDatabaseCache.h */,
+				480AE91A17DDD5C00033CEC7 /* RMDBMapSource.h */,
+				480AE91B17DDD5C00033CEC7 /* RMFoundation.h */,
+				480AE91C17DDD5C00033CEC7 /* RMFractalTileProjection.h */,
+				480AE91D17DDD5C00033CEC7 /* RMGenericMapSource.h */,
+				480AE91E17DDD5C00033CEC7 /* RMGlobalConstants.h */,
+				480AE91F17DDD5C00033CEC7 /* RMInteractiveSource.h */,
+				480AE92017DDD5C00033CEC7 /* RMLoadingTileView.h */,
+				480AE92117DDD5C00033CEC7 /* RMMapBoxSource.h */,
+				480AE92217DDD5C00033CEC7 /* RMMapLayer.h */,
+				480AE92317DDD5C00033CEC7 /* RMMapOverlayView.h */,
+				480AE92417DDD5C00033CEC7 /* RMMapQuestOpenAerialSource.h */,
+				480AE92517DDD5C00033CEC7 /* RMMapQuestOSMSource.h */,
+				480AE92617DDD5C00033CEC7 /* RMMapScrollView.h */,
+				480AE92717DDD5C00033CEC7 /* RMMapTiledLayerView.h */,
+				480AE92817DDD5C00033CEC7 /* RMMapView.h */,
+				480AE92917DDD5C00033CEC7 /* RMMapViewDelegate.h */,
+				480AE92A17DDD5C00033CEC7 /* RMMarker.h */,
+				480AE92B17DDD5C00033CEC7 /* RMMBTilesSource.h */,
+				480AE92C17DDD5C00033CEC7 /* RMMemoryCache.h */,
+				480AE92D17DDD5C00033CEC7 /* RMNotifications.h */,
+				480AE92E17DDD5C00033CEC7 /* RMOpenCycleMapSource.h */,
+				480AE92F17DDD5C00033CEC7 /* RMOpenSeaMapLayer.h */,
+				480AE93017DDD5C00033CEC7 /* RMOpenSeaMapSource.h */,
+				480AE93117DDD5C00033CEC7 /* RMOpenStreetMapSource.h */,
+				480AE93217DDD5C00033CEC7 /* RMPixel.h */,
+				480AE93317DDD5C00033CEC7 /* RMPointAnnotation.h */,
+				480AE93417DDD5C00033CEC7 /* RMPolygonAnnotation.h */,
+				480AE93517DDD5C00033CEC7 /* RMPolylineAnnotation.h */,
+				480AE93617DDD5C00033CEC7 /* RMProjection.h */,
+				480AE93717DDD5C00033CEC7 /* RMQuadTree.h */,
+				480AE93817DDD5C00033CEC7 /* RMShape.h */,
+				480AE93917DDD5C00033CEC7 /* RMShapeAnnotation.h */,
+				480AE93A17DDD5C00033CEC7 /* RMStaticMapView.h */,
+				480AE93B17DDD5C00033CEC7 /* RMTile.h */,
+				480AE93C17DDD5C00033CEC7 /* RMTileCache.h */,
+				480AE93D17DDD5C00033CEC7 /* RMTileCacheDownloadOperation.h */,
+				480AE93E17DDD5C00033CEC7 /* RMTileImage.h */,
+				480AE93F17DDD5C00033CEC7 /* RMTileMillSource.h */,
+				480AE94017DDD5C00033CEC7 /* RMTileSource.h */,
+				480AE94117DDD5C00033CEC7 /* RMTileSourcesContainer.h */,
+				480AE94217DDD5C00033CEC7 /* RMUserLocation.h */,
+				480AE94317DDD5C00033CEC7 /* RMUserTrackingBarButtonItem.h */,
+				480AE94417DDD5C00033CEC7 /* SBJson */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		480AE8CC17DDD5C00033CEC7 /* MapBox */ = {
+			isa = PBXGroup;
+			children = (
+				480AE8CD17DDD5C00033CEC7 /* MapBox.h */,
+				480AE8CE17DDD5C00033CEC7 /* RMAbstractMercatorTileSource.h */,
+				480AE8CF17DDD5C00033CEC7 /* RMAbstractWebMapSource.h */,
+				480AE8D017DDD5C00033CEC7 /* RMAnnotation.h */,
+				480AE8D117DDD5C00033CEC7 /* RMAttributionViewController.h */,
+				480AE8D217DDD5C00033CEC7 /* RMBingSource.h */,
+				480AE8D317DDD5C00033CEC7 /* RMCacheObject.h */,
+				480AE8D417DDD5C00033CEC7 /* RMCircle.h */,
+				480AE8D517DDD5C00033CEC7 /* RMCompositeSource.h */,
+				480AE8D617DDD5C00033CEC7 /* RMConfiguration.h */,
+				480AE8D717DDD5C00033CEC7 /* RMCoordinateGridSource.h */,
+				480AE8D817DDD5C00033CEC7 /* RMDatabaseCache.h */,
+				480AE8D917DDD5C00033CEC7 /* RMDBMapSource.h */,
+				480AE8DA17DDD5C00033CEC7 /* RMFoundation.h */,
+				480AE8DB17DDD5C00033CEC7 /* RMFractalTileProjection.h */,
+				480AE8DC17DDD5C00033CEC7 /* RMGenericMapSource.h */,
+				480AE8DD17DDD5C00033CEC7 /* RMGlobalConstants.h */,
+				480AE8DE17DDD5C00033CEC7 /* RMInteractiveSource.h */,
+				480AE8DF17DDD5C00033CEC7 /* RMLoadingTileView.h */,
+				480AE8E017DDD5C00033CEC7 /* RMMapBoxSource.h */,
+				480AE8E117DDD5C00033CEC7 /* RMMapLayer.h */,
+				480AE8E217DDD5C00033CEC7 /* RMMapOverlayView.h */,
+				480AE8E317DDD5C00033CEC7 /* RMMapQuestOpenAerialSource.h */,
+				480AE8E417DDD5C00033CEC7 /* RMMapQuestOSMSource.h */,
+				480AE8E517DDD5C00033CEC7 /* RMMapScrollView.h */,
+				480AE8E617DDD5C00033CEC7 /* RMMapTiledLayerView.h */,
+				480AE8E717DDD5C00033CEC7 /* RMMapView.h */,
+				480AE8E817DDD5C00033CEC7 /* RMMapViewDelegate.h */,
+				480AE8E917DDD5C00033CEC7 /* RMMarker.h */,
+				480AE8EA17DDD5C00033CEC7 /* RMMBTilesSource.h */,
+				480AE8EB17DDD5C00033CEC7 /* RMMemoryCache.h */,
+				480AE8EC17DDD5C00033CEC7 /* RMNotifications.h */,
+				480AE8ED17DDD5C00033CEC7 /* RMOpenCycleMapSource.h */,
+				480AE8EE17DDD5C00033CEC7 /* RMOpenSeaMapLayer.h */,
+				480AE8EF17DDD5C00033CEC7 /* RMOpenSeaMapSource.h */,
+				480AE8F017DDD5C00033CEC7 /* RMOpenStreetMapSource.h */,
+				480AE8F117DDD5C00033CEC7 /* RMPixel.h */,
+				480AE8F217DDD5C00033CEC7 /* RMPointAnnotation.h */,
+				480AE8F317DDD5C00033CEC7 /* RMPolygonAnnotation.h */,
+				480AE8F417DDD5C00033CEC7 /* RMPolylineAnnotation.h */,
+				480AE8F517DDD5C00033CEC7 /* RMProjection.h */,
+				480AE8F617DDD5C00033CEC7 /* RMQuadTree.h */,
+				480AE8F717DDD5C00033CEC7 /* RMShape.h */,
+				480AE8F817DDD5C00033CEC7 /* RMShapeAnnotation.h */,
+				480AE8F917DDD5C00033CEC7 /* RMStaticMapView.h */,
+				480AE8FA17DDD5C00033CEC7 /* RMTile.h */,
+				480AE8FB17DDD5C00033CEC7 /* RMTileCache.h */,
+				480AE8FC17DDD5C00033CEC7 /* RMTileCacheDownloadOperation.h */,
+				480AE8FD17DDD5C00033CEC7 /* RMTileImage.h */,
+				480AE8FE17DDD5C00033CEC7 /* RMTileMillSource.h */,
+				480AE8FF17DDD5C00033CEC7 /* RMTileSource.h */,
+				480AE90017DDD5C00033CEC7 /* RMTileSourcesContainer.h */,
+				480AE90117DDD5C00033CEC7 /* RMUserLocation.h */,
+				480AE90217DDD5C00033CEC7 /* RMUserTrackingBarButtonItem.h */,
+			);
+			path = MapBox;
+			sourceTree = "<group>";
+		};
+		480AE90417DDD5C00033CEC7 /* proj4 */ = {
+			isa = PBXGroup;
+			children = (
+				480AE90517DDD5C00033CEC7 /* emess.h */,
+				480AE90617DDD5C00033CEC7 /* geocent.h */,
+				480AE90717DDD5C00033CEC7 /* geodesic.h */,
+				480AE90817DDD5C00033CEC7 /* nad_list.h */,
+				480AE90917DDD5C00033CEC7 /* org_proj4_Projections.h */,
+				480AE90A17DDD5C00033CEC7 /* pj_list.h */,
+				480AE90B17DDD5C00033CEC7 /* Proj4_Prefix.pch */,
+				480AE90C17DDD5C00033CEC7 /* proj_api.h */,
+				480AE90D17DDD5C00033CEC7 /* proj_config.h */,
+				480AE90E17DDD5C00033CEC7 /* projects.h */,
+			);
+			path = proj4;
+			sourceTree = "<group>";
+		};
+		480AE94417DDD5C00033CEC7 /* SBJson */ = {
+			isa = PBXGroup;
+			children = (
+				480AE94517DDD5C00033CEC7 /* Classes */,
+			);
+			path = SBJson;
+			sourceTree = "<group>";
+		};
+		480AE94517DDD5C00033CEC7 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				480AE94617DDD5C00033CEC7 /* NSObject+SBJson.h */,
+				480AE94717DDD5C00033CEC7 /* NSObject+SBJson.m */,
+				480AE94817DDD5C00033CEC7 /* SBJson.h */,
+				480AE94917DDD5C00033CEC7 /* SBJsonParser.h */,
+				480AE94A17DDD5C00033CEC7 /* SBJsonParser.m */,
+				480AE94B17DDD5C00033CEC7 /* SBJsonStreamParser.h */,
+				480AE94C17DDD5C00033CEC7 /* SBJsonStreamParser.m */,
+				480AE94D17DDD5C00033CEC7 /* SBJsonStreamParserAccumulator.h */,
+				480AE94E17DDD5C00033CEC7 /* SBJsonStreamParserAccumulator.m */,
+				480AE94F17DDD5C00033CEC7 /* SBJsonStreamParserAdapter.h */,
+				480AE95017DDD5C00033CEC7 /* SBJsonStreamParserAdapter.m */,
+				480AE95117DDD5C00033CEC7 /* SBJsonStreamParserState.h */,
+				480AE95217DDD5C00033CEC7 /* SBJsonStreamParserState.m */,
+				480AE95317DDD5C00033CEC7 /* SBJsonStreamWriter.h */,
+				480AE95417DDD5C00033CEC7 /* SBJsonStreamWriter.m */,
+				480AE95517DDD5C00033CEC7 /* SBJsonStreamWriterAccumulator.h */,
+				480AE95617DDD5C00033CEC7 /* SBJsonStreamWriterAccumulator.m */,
+				480AE95717DDD5C00033CEC7 /* SBJsonStreamWriterState.h */,
+				480AE95817DDD5C00033CEC7 /* SBJsonStreamWriterState.m */,
+				480AE95917DDD5C00033CEC7 /* SBJsonTokeniser.h */,
+				480AE95A17DDD5C00033CEC7 /* SBJsonTokeniser.m */,
+				480AE95B17DDD5C00033CEC7 /* SBJsonUTF8Stream.h */,
+				480AE95C17DDD5C00033CEC7 /* SBJsonUTF8Stream.m */,
+				480AE95D17DDD5C00033CEC7 /* SBJsonWriter.h */,
+				480AE95E17DDD5C00033CEC7 /* SBJsonWriter.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		480AE95F17DDD5C00033CEC7 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				480AE96017DDD5C00033CEC7 /* Debug-iphoneos */,
+				480AE96317DDD5C00033CEC7 /* Debug-iphonesimulator */,
+				480AE96617DDD5C00033CEC7 /* libProj4.a */,
+				480AE96717DDD5C00033CEC7 /* MapBox.bundle */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		480AE96017DDD5C00033CEC7 /* Debug-iphoneos */ = {
+			isa = PBXGroup;
+			children = (
+				480AE96117DDD5C00033CEC7 /* libMapBox.a */,
+			);
+			path = "Debug-iphoneos";
+			sourceTree = "<group>";
+		};
+		480AE96317DDD5C00033CEC7 /* Debug-iphonesimulator */ = {
+			isa = PBXGroup;
+			children = (
+				480AE96417DDD5C00033CEC7 /* libMapBox-sim.a */,
+			);
+			path = "Debug-iphonesimulator";
+			sourceTree = "<group>";
+		};
 		93f84dd1123fb4b01e0b3b30b02968dd /* AppViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,213 +564,16 @@
 		966A377E16E2832600A55F82 /* ofxMapBox */ = {
 			isa = PBXGroup;
 			children = (
-				966A377F16E2832600A55F82 /* include */,
-				966A37D216E2832700A55F82 /* libs */,
+				480AE8CB17DDD5C00033CEC7 /* include */,
+				480AE95F17DDD5C00033CEC7 /* libs */,
 				966A39D016E2832A00A55F82 /* mapController.h */,
 				966A39D116E2832A00A55F82 /* mapController.mm */,
-				966A39D216E2832A00A55F82 /* OSMRoute.h */,
-				966A39D316E2832A00A55F82 /* readJSON.h */,
-				966A39D416E2832A00A55F82 /* readJSON.mm */,
 				966A39D516E2832A00A55F82 /* README */,
 				966A39D616E2832A00A55F82 /* RMMapKit.h */,
 				966A39D716E2832A00A55F82 /* RMMapKit.mm */,
 			);
 			name = ofxMapBox;
 			path = ../../../addons/ofxMapBox;
-			sourceTree = "<group>";
-		};
-		966A377F16E2832600A55F82 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				966A378016E2832600A55F82 /* MapBox */,
-				966A37B716E2832600A55F82 /* SBJson */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		966A378016E2832600A55F82 /* MapBox */ = {
-			isa = PBXGroup;
-			children = (
-				966A378116E2832600A55F82 /* MapBox.h */,
-				966A378216E2832600A55F82 /* RMAbstractMercatorTileSource.h */,
-				966A378316E2832600A55F82 /* RMAbstractWebMapSource.h */,
-				966A378416E2832600A55F82 /* RMAnnotation.h */,
-				966A378516E2832600A55F82 /* RMAttributionViewController.h */,
-				966A378616E2832600A55F82 /* RMBingSource.h */,
-				966A378716E2832600A55F82 /* RMCacheObject.h */,
-				966A378816E2832600A55F82 /* RMCircle.h */,
-				966A378916E2832600A55F82 /* RMCompositeSource.h */,
-				966A378A16E2832600A55F82 /* RMConfiguration.h */,
-				966A378B16E2832600A55F82 /* RMCoordinateGridSource.h */,
-				966A378C16E2832600A55F82 /* RMDatabaseCache.h */,
-				966A378D16E2832600A55F82 /* RMDBMapSource.h */,
-				966A378E16E2832600A55F82 /* RMFoundation.h */,
-				966A378F16E2832600A55F82 /* RMFractalTileProjection.h */,
-				966A379016E2832600A55F82 /* RMGenericMapSource.h */,
-				966A379116E2832600A55F82 /* RMGlobalConstants.h */,
-				966A379216E2832600A55F82 /* RMInteractiveSource.h */,
-				966A379316E2832600A55F82 /* RMLoadingTileView.h */,
-				966A379416E2832600A55F82 /* RMMapBoxSource.h */,
-				966A379516E2832600A55F82 /* RMMapLayer.h */,
-				966A379616E2832600A55F82 /* RMMapOverlayView.h */,
-				966A379716E2832600A55F82 /* RMMapQuestOpenAerialSource.h */,
-				966A379816E2832600A55F82 /* RMMapQuestOSMSource.h */,
-				966A379916E2832600A55F82 /* RMMapScrollView.h */,
-				966A379A16E2832600A55F82 /* RMMapTiledLayerView.h */,
-				966A379B16E2832600A55F82 /* RMMapView.h */,
-				966A379C16E2832600A55F82 /* RMMapViewDelegate.h */,
-				966A379D16E2832600A55F82 /* RMMarker.h */,
-				966A379E16E2832600A55F82 /* RMMBTilesSource.h */,
-				966A379F16E2832600A55F82 /* RMMemoryCache.h */,
-				966A37A016E2832600A55F82 /* RMNotifications.h */,
-				966A37A116E2832600A55F82 /* RMOpenCycleMapSource.h */,
-				966A37A216E2832600A55F82 /* RMOpenSeaMapLayer.h */,
-				966A37A316E2832600A55F82 /* RMOpenSeaMapSource.h */,
-				966A37A416E2832600A55F82 /* RMOpenStreetMapSource.h */,
-				966A37A516E2832600A55F82 /* RMPixel.h */,
-				966A37A616E2832600A55F82 /* RMPointAnnotation.h */,
-				966A37A716E2832600A55F82 /* RMPolygonAnnotation.h */,
-				966A37A816E2832600A55F82 /* RMPolylineAnnotation.h */,
-				966A37A916E2832600A55F82 /* RMProjection.h */,
-				966A37AA16E2832600A55F82 /* RMQuadTree.h */,
-				966A37AB16E2832600A55F82 /* RMShape.h */,
-				966A37AC16E2832600A55F82 /* RMShapeAnnotation.h */,
-				966A37AD16E2832600A55F82 /* RMStaticMapView.h */,
-				966A37AE16E2832600A55F82 /* RMTile.h */,
-				966A37AF16E2832600A55F82 /* RMTileCache.h */,
-				966A37B016E2832600A55F82 /* RMTileCacheDownloadOperation.h */,
-				966A37B116E2832600A55F82 /* RMTileImage.h */,
-				966A37B216E2832600A55F82 /* RMTileMillSource.h */,
-				966A37B316E2832600A55F82 /* RMTileSource.h */,
-				966A37B416E2832600A55F82 /* RMTileSourcesContainer.h */,
-				966A37B516E2832600A55F82 /* RMUserLocation.h */,
-				966A37B616E2832600A55F82 /* RMUserTrackingBarButtonItem.h */,
-			);
-			path = MapBox;
-			sourceTree = "<group>";
-		};
-		966A37B716E2832600A55F82 /* SBJson */ = {
-			isa = PBXGroup;
-			children = (
-				966A37B816E2832600A55F82 /* Classes */,
-			);
-			path = SBJson;
-			sourceTree = "<group>";
-		};
-		966A37B816E2832600A55F82 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				966A37B916E2832600A55F82 /* NSObject+SBJson.h */,
-				966A37BA16E2832600A55F82 /* NSObject+SBJson.m */,
-				966A37BB16E2832600A55F82 /* SBJson.h */,
-				966A37BC16E2832600A55F82 /* SBJsonParser.h */,
-				966A37BD16E2832600A55F82 /* SBJsonParser.m */,
-				966A37BE16E2832600A55F82 /* SBJsonStreamParser.h */,
-				966A37BF16E2832600A55F82 /* SBJsonStreamParser.m */,
-				966A37C016E2832600A55F82 /* SBJsonStreamParserAccumulator.h */,
-				966A37C116E2832600A55F82 /* SBJsonStreamParserAccumulator.m */,
-				966A37C216E2832600A55F82 /* SBJsonStreamParserAdapter.h */,
-				966A37C316E2832600A55F82 /* SBJsonStreamParserAdapter.m */,
-				966A37C416E2832600A55F82 /* SBJsonStreamParserState.h */,
-				966A37C516E2832600A55F82 /* SBJsonStreamParserState.m */,
-				966A37C616E2832600A55F82 /* SBJsonStreamWriter.h */,
-				966A37C716E2832600A55F82 /* SBJsonStreamWriter.m */,
-				966A37C816E2832600A55F82 /* SBJsonStreamWriterAccumulator.h */,
-				966A37C916E2832600A55F82 /* SBJsonStreamWriterAccumulator.m */,
-				966A37CA16E2832600A55F82 /* SBJsonStreamWriterState.h */,
-				966A37CB16E2832600A55F82 /* SBJsonStreamWriterState.m */,
-				966A37CC16E2832600A55F82 /* SBJsonTokeniser.h */,
-				966A37CD16E2832600A55F82 /* SBJsonTokeniser.m */,
-				966A37CE16E2832600A55F82 /* SBJsonUTF8Stream.h */,
-				966A37CF16E2832600A55F82 /* SBJsonUTF8Stream.m */,
-				966A37D016E2832600A55F82 /* SBJsonWriter.h */,
-				966A37D116E2832700A55F82 /* SBJsonWriter.m */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		966A37D216E2832700A55F82 /* libs */ = {
-			isa = PBXGroup;
-			children = (
-				FB17E0AD16F0EAFD00C416B4 /* libMapBox.a */,
-				FBC3CF4816F0E2BC0053E385 /* MapBox.bundle */,
-			);
-			path = libs;
-			sourceTree = "<group>";
-		};
-		966A3B4716E283AC00A55F82 /* ofxJSON */ = {
-			isa = PBXGroup;
-			children = (
-				966A3B4816E283AC00A55F82 /* .gitignore */,
-				966A3B4916E283AC00A55F82 /* lib */,
-				966A3B5D16E283AC00A55F82 /* README */,
-				966A3B5E16E283AC00A55F82 /* src */,
-			);
-			name = ofxJSON;
-			path = ../../../addons/ofxJSON;
-			sourceTree = "<group>";
-		};
-		966A3B4916E283AC00A55F82 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				966A3B4A16E283AC00A55F82 /* include */,
-				966A3B5416E283AC00A55F82 /* src */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
-		966A3B4A16E283AC00A55F82 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				966A3B4B16E283AC00A55F82 /* json */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		966A3B4B16E283AC00A55F82 /* json */ = {
-			isa = PBXGroup;
-			children = (
-				966A3B4C16E283AC00A55F82 /* autolink.h */,
-				966A3B4D16E283AC00A55F82 /* config.h */,
-				966A3B4E16E283AC00A55F82 /* features.h */,
-				966A3B4F16E283AC00A55F82 /* forwards.h */,
-				966A3B5016E283AC00A55F82 /* json.h */,
-				966A3B5116E283AC00A55F82 /* reader.h */,
-				966A3B5216E283AC00A55F82 /* value.h */,
-				966A3B5316E283AC00A55F82 /* writer.h */,
-			);
-			path = json;
-			sourceTree = "<group>";
-		};
-		966A3B5416E283AC00A55F82 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				966A3B5516E283AC00A55F82 /* lib_json */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		966A3B5516E283AC00A55F82 /* lib_json */ = {
-			isa = PBXGroup;
-			children = (
-				966A3B5616E283AC00A55F82 /* json_batchallocator.h */,
-				966A3B5716E283AC00A55F82 /* json_internalarray.inl */,
-				966A3B5816E283AC00A55F82 /* json_internalmap.inl */,
-				966A3B5916E283AC00A55F82 /* json_reader.cpp */,
-				966A3B5A16E283AC00A55F82 /* json_value.cpp */,
-				966A3B5B16E283AC00A55F82 /* json_valueiterator.inl */,
-				966A3B5C16E283AC00A55F82 /* json_writer.cpp */,
-			);
-			path = lib_json;
-			sourceTree = "<group>";
-		};
-		966A3B5E16E283AC00A55F82 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				966A3B5F16E283AC00A55F82 /* ofxJSONElement.cpp */,
-				966A3B6016E283AC00A55F82 /* ofxJSONElement.h */,
-			);
-			path = src;
 			sourceTree = "<group>";
 		};
 		BB16E9930F2B1E5900518274 /* libs */ = {
@@ -535,7 +587,6 @@
 		BB16F26B0F2B646B00518274 /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				966A3B4716E283AC00A55F82 /* ofxJSON */,
 				966A377E16E2832600A55F82 /* ofxMapBox */,
 			);
 			name = addons;
@@ -629,6 +680,8 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "mapRouterExample" */;
 			compatibilityVersion = "Xcode 3.1";
 			developmentRegion = English;
@@ -673,11 +726,8 @@
 				E41D3ED713B38FB500A75A5D /* Project.xcconfig in Resources */,
 				E41D3EE613B3906D00A75A5D /* CoreOF.xcconfig in Resources */,
 				966A3B2416E2832A00A55F82 /* README in Resources */,
-				966A3B6216E283AC00A55F82 /* json_internalarray.inl in Resources */,
-				966A3B6316E283AC00A55F82 /* json_internalmap.inl in Resources */,
-				966A3B6616E283AC00A55F82 /* json_valueiterator.inl in Resources */,
+				480AE97917DDD5C00033CEC7 /* MapBox.bundle in Resources */,
 				961F308116E28CCC00C22676 /* map.mbtiles in Resources */,
-				FBC3CF4916F0E2BC0053E385 /* MapBox.bundle in Resources */,
 				FB14BC1616F0EBC70005C91D /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -705,30 +755,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				480AE97017DDD5C00033CEC7 /* SBJsonStreamWriterState.m in Sources */,
+				480AE96E17DDD5C00033CEC7 /* SBJsonStreamWriter.m in Sources */,
 				E4D8936E11527B74007E1F53 /* main.mm in Sources */,
 				6e463de882372a0c94e26f83dcdab6ff /* MapRouteAppViewController.mm in Sources */,
+				480AE96B17DDD5C00033CEC7 /* SBJsonStreamParserAccumulator.m in Sources */,
 				a174c6d42676e95effe6cf975bd859f8 /* MapRouteApp.mm in Sources */,
 				27a862d478af45e4ceed1b6e0e02b163 /* myAppViewController.mm in Sources */,
+				480AE96F17DDD5C00033CEC7 /* SBJsonStreamWriterAccumulator.m in Sources */,
 				a55613c24c4db9a6dc49d77252278811 /* MyAppDelegate.mm in Sources */,
-				966A39D816E2832A00A55F82 /* NSObject+SBJson.m in Sources */,
-				966A39D916E2832A00A55F82 /* SBJsonParser.m in Sources */,
-				966A39DA16E2832A00A55F82 /* SBJsonStreamParser.m in Sources */,
-				966A39DB16E2832A00A55F82 /* SBJsonStreamParserAccumulator.m in Sources */,
-				966A39DC16E2832A00A55F82 /* SBJsonStreamParserAdapter.m in Sources */,
-				966A39DD16E2832A00A55F82 /* SBJsonStreamParserState.m in Sources */,
-				966A39DE16E2832A00A55F82 /* SBJsonStreamWriter.m in Sources */,
-				966A39DF16E2832A00A55F82 /* SBJsonStreamWriterAccumulator.m in Sources */,
-				966A39E016E2832A00A55F82 /* SBJsonStreamWriterState.m in Sources */,
-				966A39E116E2832A00A55F82 /* SBJsonTokeniser.m in Sources */,
-				966A39E216E2832A00A55F82 /* SBJsonUTF8Stream.m in Sources */,
-				966A39E316E2832A00A55F82 /* SBJsonWriter.m in Sources */,
+				480AE97117DDD5C00033CEC7 /* SBJsonTokeniser.m in Sources */,
+				480AE96817DDD5C00033CEC7 /* NSObject+SBJson.m in Sources */,
+				480AE96C17DDD5C00033CEC7 /* SBJsonStreamParserAdapter.m in Sources */,
 				966A3B2216E2832A00A55F82 /* mapController.mm in Sources */,
-				966A3B2316E2832A00A55F82 /* readJSON.mm in Sources */,
+				480AE97317DDD5C00033CEC7 /* SBJsonWriter.m in Sources */,
+				480AE97217DDD5C00033CEC7 /* SBJsonUTF8Stream.m in Sources */,
+				480AE96917DDD5C00033CEC7 /* SBJsonParser.m in Sources */,
 				966A3B2516E2832A00A55F82 /* RMMapKit.mm in Sources */,
-				966A3B6416E283AC00A55F82 /* json_reader.cpp in Sources */,
-				966A3B6516E283AC00A55F82 /* json_value.cpp in Sources */,
-				966A3B6716E283AC00A55F82 /* json_writer.cpp in Sources */,
-				966A3B6916E283AC00A55F82 /* ofxJSONElement.cpp in Sources */,
+				480AE96A17DDD5C00033CEC7 /* SBJsonStreamParser.m in Sources */,
+				480AE96D17DDD5C00033CEC7 /* SBJsonStreamParserState.m in Sources */,
 				961F308516E2923000C22676 /* testApp.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -754,7 +799,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../addons/ofxMapBox/libs\"",
+					"\\\"$(SRCROOT)/../../../addons/ofxMapBox/libs\\\"",
+					"$(SRCROOT)/../libs/Debug-iphoneos",
+					"$(SRCROOT)/../libs/Debug-iphonesimulator",
+					"$(SRCROOT)/../libs",
 				);
 				PRODUCT_NAME = "${TARGET_NAME}";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -771,7 +819,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../addons/ofxMapBox/libs\"",
+					"\\\"$(SRCROOT)/../../../addons/ofxMapBox/libs\\\"",
+					"$(SRCROOT)/../libs/Debug-iphoneos",
+					"$(SRCROOT)/../libs/Debug-iphonesimulator",
+					"$(SRCROOT)/../libs",
 				);
 				PRODUCT_NAME = "${TARGET_NAME}";
 				TARGETED_DEVICE_FAMILY = "1,2";

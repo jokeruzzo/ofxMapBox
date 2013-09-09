@@ -127,7 +127,7 @@ bool isRetina;
     
          
          [self.mapView setZoom:17];
-         if(isInProduction())
+        
          [self.mapView setMinZoom:17];
          
          [self.view endEditing:YES];

@@ -5,6 +5,8 @@
 
 #import "MyAppDelegate.h"
 #import "MyAppViewController.h"
+#include "ofxiPhone.h"
+#include "ofxiPhoneExtras.h"
 
 @implementation MyAppDelegate
 
@@ -37,6 +39,42 @@
     self.navigationController.navigationBar.topItem.title = @"Home";
     
     return YES;
+}
+
+#pragma mark Prevents crashing
+
+
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+    
+    
+    NSLog(@"stop animation");
+    
+    [ ofxiPhoneGetGLView()  stopAnimation];
+    glFinish();
+    
+    
+}
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+    NSLog(@"start animation");
+    
+	[ ofxiPhoneGetGLView()  startAnimation];
+}
+- (void)applicationWillResignActive:(UIApplication *)application
+{
+    NSLog(@"pause animation");
+    
+	[ ofxiPhoneGetGLView()  stopAnimation];
+    
+    
+}
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    NSLog(@"resume animation");
+    
+	[ ofxiPhoneGetGLView()  startAnimation];
+    
 }
 
 - (void) dealloc {

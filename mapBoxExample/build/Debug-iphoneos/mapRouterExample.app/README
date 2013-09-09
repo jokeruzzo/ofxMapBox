@@ -1,0 +1,35 @@
+
+Mapbox for Openframeworks IOS
+
+I've been struggeling with the limitations of the MapKit library in openframeworks so 
+I had  to modify MapBox to work together with Openframeworks. This is an early
+release. See the testMap.mm for examples.
+
+Wat is possible right now:
+
+- top layer EaglView
+- add custom MBTiles with offlineMap(string map)
+- online maps onlineMap("URL") // tilemap server reccomended.. see tilestream for your own map.
+- YOUR route system from Open Steet Maps
+
+What is going to come:
+
+- cycle map layer
+- sea map layers
+- other stuff
+
+Related links:
+
+https://github.com/mapbox/mapbox-ios-sdk
+http://www.openframeworks.cc
+martijnmellema.com
+
+//  *
+//   \
+//    \
+//     \
+//      \
+//       \
+//        *
+// made by Martijn Mellema
+// Interaction Designer from The Netherlands

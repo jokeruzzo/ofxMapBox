@@ -59,7 +59,7 @@ typedef enum : NSUInteger {
 /** An RMMapView object provides an embeddable map interface, similar to the one provided by Apple's MapKit. You use this class to display map information and to manipulate the map contents from your application. You can center the map on a given coordinate, specify the size of the area you want to display, and annotate the map with custom information.
 *
 *   @warning Please note that you are responsible for getting permission to use the map data, and for ensuring your use adheres to the relevant terms of use. */
-@interface RMMapView : UIView
+@interface RMMapView : UIView <UITableViewDelegate>
 
 /** @name Accessing the Delegate */
 

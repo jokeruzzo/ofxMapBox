@@ -28,6 +28,8 @@ public:
 	void gotMemoryWarning();
 	void deviceOrientationChanged(int newOrientation);
     
+    void gotMessage(ofMessage& msg);
+    
     // font for writing latitude longitude info
     ofTrueTypeFont font;
     //GPS
@@ -38,7 +40,9 @@ public:
     // all MapKit related functionality is through this object
     RMMapKit mapKit;
     bool hasGPS;
-
+    
+    ofPoint tap;
+    int rotateCounter = 0;
 };
 
 

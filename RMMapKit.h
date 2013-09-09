@@ -20,7 +20,7 @@
 #include "ofxLocation.h"
 
 
-
+#define IS_RETINA ([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] && ([UIScreen mainScreen].scale == 2.0))
 
 
 @class readJSON;

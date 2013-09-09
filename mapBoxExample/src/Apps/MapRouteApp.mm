@@ -19,6 +19,8 @@ MapRouteApp :: ~MapRouteApp () {
 void MapRouteApp::setup() {
     ofBackground(0, 0);
     
+    ofRegisterGetMessages(this);
+    
 	// initialize the accelerometer
 	ofxAccelerometer.setup();
     
@@ -45,20 +47,28 @@ void MapRouteApp::setup() {
     mapKit.rotateUser(UserTrackingModeNone);
      ofxiPhoneSendGLViewToFront();
 
+    rotateCounter +=90;
+    mapKit.rotateMap(rotateCounter);
 }
 
 //--------------------------------------------------------------
 void MapRouteApp::update(){
 
     userGPSLocation = CLLocationCoordinate2DMake( coreLocation->getLatitude(), coreLocation->getLongitude());
-   
+//    cout<<(int)ofGetFrameRa<<endl;
+    if ( (int)ofGetFrameNum()%100 == 99)
+    {
+        rotateCounter +=90;
+        cout<<"rotate::"<<rotateCounter<<endl;
+         mapKit.rotateMap(rotateCounter);
+    }
 }
 
 //--------------------------------------------------------------
 void MapRouteApp::draw() {
     
     // to get transparent view
-    ofBackground(0,20);
+    ofBackground(0,0);
     ofRect(10, 10, 0, 10, 10);
     ofFill();
     ofPushMatrix();
@@ -69,7 +79,7 @@ void MapRouteApp::draw() {
     ofSetColor(255, 0, 0);
     ofRect(position.x-15, position.y-15, 30,30);
     
-    
+    ofRect(ofGetWidth()/2,ofGetHeight()/2,100,100);
     ofPopMatrix();
 }
 
@@ -124,5 +134,20 @@ void MapRouteApp::deviceOrientationChanged(int newOrientation){
 //--------------------------------------------------------------
 void MapRouteApp::touchCancelled(ofTouchEventArgs& args){
 
+}
+
+
+//--------------------------------------------------------------
+void MapRouteApp::gotMessage(ofMessage& msg) {
+    
+    
+    if(ofIsStringInString(msg.message, "TAP:")){
+        vector<string> sp = ofSplitString(msg.message, ":");
+        tap = ofPoint(ofGetWidth()+ (ofToFloat(sp[1]) * ((IS_RETINA)? 2:1)),
+                      ofGetHeight()+(ofToFloat(sp[2]) * ((IS_RETINA)? 2:1)));
+        
+    }
+    
+    
 }
 

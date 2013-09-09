@@ -30,7 +30,7 @@
 
 @class RMMapScrollView;
 
-@protocol RMMapScrollViewDelegate <NSObject>
+@protocol RMMapScrollViewDelegate <NSObject, UITableViewDelegate>
 
 - (void)scrollView:(RMMapScrollView *)aScrollView correctedContentOffset:(inout CGPoint *)aContentOffset;
 - (void)scrollView:(RMMapScrollView *)aScrollView correctedContentSize:(inout CGSize *)aContentSize;

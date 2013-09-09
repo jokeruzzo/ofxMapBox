@@ -44,5 +44,6 @@ Thumbs.db
 *.build
 Build
 examples
-
+build
+*.app
 

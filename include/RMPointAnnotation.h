@@ -1,8 +1,8 @@
 //
-//  RMMapTiledLayerView.h
+//  RMPointAnnotation.h
 //  MapView
 //
-// Copyright (c) 2008-2013, Route-Me Contributors
+// Copyright (c) 2008-2012, Route-Me Contributors
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -26,16 +26,11 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 
-#import "RMTileSource.h"
+#import "RMAnnotation.h"
 
-@class RMMapView;
-
-@interface RMMapTiledLayerView : UIView
-
-@property (nonatomic, assign) BOOL useSnapshotRenderer;
-
-@property (nonatomic, readonly) id <RMTileSource> tileSource;
-
-- (id)initWithFrame:(CGRect)frame mapView:(RMMapView *)aMapView forTileSource:(id <RMTileSource>)aTileSource;
+/** An RMPointAnnotation is used to represent a single point on a map. The annotation will automatically have a layer created when needed that displays an RMMarker with a default point icon. 
+*
+*   If you wish to customize the appearance, you should instead create an RMAnnotation and configure its layer directly. Providing a layer manually for instances of RMPointAnnotation will not have any effect. */
+@interface RMPointAnnotation : RMAnnotation
 
 @end

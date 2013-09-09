@@ -516,4 +516,6 @@ typedef enum : NSUInteger {
 
 @property(nonatomic, retain)  RMMapScrollView *_mapScrollView;
 @property(nonatomic, retain)  UIView *_tiledLayersSuperview;
+
+- (void) rotateUser :(float) degrees  rotationTime:(float) seconds;
 @end

@@ -1,8 +1,7 @@
 //
-//  RMMapTiledLayerView.h
-//  MapView
+//  RMTileImage.h
 //
-// Copyright (c) 2008-2013, Route-Me Contributors
+// Copyright (c) 2008-2009, Route-Me Contributors
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -26,16 +25,12 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 
-#import "RMTileSource.h"
+@interface RMTileImage : NSObject
 
-@class RMMapView;
++ (UIImage *)errorTile;
++ (UIImage *)missingTile;
 
-@interface RMMapTiledLayerView : UIView
-
-@property (nonatomic, assign) BOOL useSnapshotRenderer;
-
-@property (nonatomic, readonly) id <RMTileSource> tileSource;
-
-- (id)initWithFrame:(CGRect)frame mapView:(RMMapView *)aMapView forTileSource:(id <RMTileSource>)aTileSource;
++ (void)setErrorTile:(UIImage *)newErrorTile;
++ (void)setMissingTile:(UIImage *)newMissingTile;
 
 @end

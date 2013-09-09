@@ -69,7 +69,7 @@
 			break;
 			
 		case SBJsonStreamParserWaitingForData:
-		    self.error = @"Unexpected end of input";
+		   // self.error = @"Unexpected end of input";
 			break;
 
 		case SBJsonStreamParserError:

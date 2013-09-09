@@ -10,38 +10,33 @@
 // www.martijnmellema.nl
 
 #import "mapController.h"
-#import "RMFoundation.h"
 
 
-
-#import "RMAnnotation.h"
-#import "RMMBTilesSource.h"
 
 #include "map.h"
 
 
-@interface mapController()
+@interface mapController(){
+   
+
+}
 
 @property (nonatomic, strong) IBOutlet UISegmentedControl *segmentedControl;
 
 @end
 
 
-@implementation mapController 
+@implementation mapController
 
 @synthesize setZoom;
 @synthesize mapView;
-@synthesize freeze;
-@synthesize bMovingMap;
+
+
 @synthesize valueZoom;
 @synthesize tapping;
-@synthesize permissions;
-@synthesize timer;
+@synthesize tapGestureRecognizer;
 
 
-@synthesize              startLocation;
-@synthesize              currentLocation;
-@synthesize              endLocation;
 
 
 
@@ -62,7 +57,10 @@ bool isRetina;
 }
 
 
-
+-(bool)allowZoom{
+    
+    return setZoom;
+}
 
 -(bool)setZoom:(bool) value
 {
@@ -87,15 +85,19 @@ bool isRetina;
 {
     self = [super init];
     setZoom = true;
-    tapping = false;
+  
+
      if (self) {
+         
          [self.mapView._mapScrollView setContentOffset:CGPointZero];
          [self.segmentedControl addTarget:self action:@selector(toggleMode:) forControlEvents:UIControlEventValueChanged];
          [self.segmentedControl setSelectedSegmentIndex:0];
          
     [[[ofxiPhoneGetAppDelegate() glViewController] glView] removeFromSuperview];
-    self.mapView= [[RMMapView  alloc] initWithFrame: frame  andTilesource:source];
          
+         self.mapView= [[RMMapView  alloc] initWithFrame: frame  andTilesource:source];
+         
+      
          // detects if there's a retina screen
          
          if ([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] &&
@@ -103,8 +105,7 @@ bool isRetina;
              isRetina = true;
              
              self.mapView.adjustTilesForRetinaDisplay = YES;
-           //  CGRect rect =  CGRectMake(0,0,self.view.bounds.size.width, self.view.bounds.size.height);
-             [self.mapView setFrame:frame];
+         
              self.mapView.frame = self.view.bounds;
              self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
          
@@ -113,25 +114,64 @@ bool isRetina;
              isRetina = false;
          }
 
-    eagleScrollView = iPhoneGetGLView();
+     
+      
          
-   
-         
-    [self.mapView._mapScrollView addSubview: eagleScrollView ];
-    [self.mapView._mapScrollView bringSubviewToFront: eagleScrollView]; 
-
+         iPhoneGetGLView().userInteractionEnabled = NO;
+         [self.mapView._mapScrollView addSubview: iPhoneGetGLView() ];
+         [self.mapView._mapScrollView bringSubviewToFront:  iPhoneGetGLView()]; 
+        
          self.mapView._mapScrollView.delegate = self;
          self.mapView._mapScrollView.userInteractionEnabled=YES;
-        // ofxiPhoneGetGLView().delegate = self;
+         [self.mapView setShowsUserLocation:false];
+    
          
          [self.mapView setZoom:17];
-         [eagleScrollView release];
+         if(isInProduction())
+         [self.mapView setMinZoom:17];
+         
+         [self.view endEditing:YES];
+         [self.mapView endEditing:YES];
+         
+         
+         // tap gestures
+         
+         /* Create the Tap Gesture Recognizer */
+         self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTaps:)];
+         
+         /* The number of fingers that must be on the screen */
+         self.tapGestureRecognizer.numberOfTouchesRequired = 1;
+         /* The total number of taps to be performed before the gesture is recognized */
+         self.tapGestureRecognizer.numberOfTapsRequired = 1;
+         
+         /* Add this gesture recognizer to our view */
+         [self.view addGestureRecognizer:self.tapGestureRecognizer];
+         
+       
      }
     NSLog(@"loading map");
-    
+ 
+  
     return self;
 }
 
+
+
+
+
+- (void) handleTaps:(UITapGestureRecognizer*)paramSender{
+    NSUInteger touchCounter = 0;
+    for (touchCounter = 0; touchCounter < paramSender.numberOfTouchesRequired; touchCounter++)
+    {
+        CGPoint touchPoint = [paramSender locationOfTouch:touchCounter inView:paramSender.view];
+        NSLog(@"Touch #%lu: %@", (unsigned long)touchCounter+1, NSStringFromCGPoint(touchPoint));
+    }
+}
+
+
+
+
+//--------------------------------------------------------------
 #pragma mark Configuration
 
 
@@ -139,9 +179,23 @@ bool isRetina;
 {
     cout<<"VIEW DID APPEAR"<<endl;
     [super viewDidAppear:animated];
+  
     
+    [super viewWillAppear:animated];
    
 }
+
+//--------------------------------------------------------------
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+  
+    
+    [super viewWillDisappear:animated];
+}
+
+
+//--------------------------------------------------------------
 
 
 
@@ -153,41 +207,48 @@ bool isRetina;
 }
 
 
--(void)handleTap:(UIGestureRecognizer *) gr{
-  
-    if([gr state] == UIGestureRecognizerStateRecognized){
-        NSLog(@"tap!");
-        tapping = TRUE;
-        startLocation = [gr locationInView:self.mapView];
-        cout<<startLocation.x<<endl;
-         cout<<startLocation.y<<endl;
-    }
-    
-}
+
 
 
 #pragma mark - MapView stuff
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
-    [eagleScrollView  drawView];
+       UIApplicationState appState = [[UIApplication sharedApplication] applicationState];
+       if( (appState != UIApplicationStateBackground) && (appState != UIApplicationStateInactive))
+        {
+    [ iPhoneGetGLView()  drawView];
+            
+        }
     return YES;
 }
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
-    [eagleScrollView  drawView];
+    UIApplicationState appState = [[UIApplication sharedApplication] applicationState];
+    if( (appState != UIApplicationStateBackground) && (appState != UIApplicationStateInactive))
+    {
+    [ iPhoneGetGLView()  drawView];
+    }
     return YES;
 }
 
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    [eagleScrollView  drawView];
+    UIApplicationState appState = [[UIApplication sharedApplication] applicationState];
+    if( (appState != UIApplicationStateBackground) && (appState != UIApplicationStateInactive))
+    {
+    [ iPhoneGetGLView()  drawView];
+    }
     return YES;
 }
 
 
-- (UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView{  
-    [eagleScrollView  drawView];
-    
+- (UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView{
+    UIApplicationState appState = [[UIApplication sharedApplication] applicationState];
+    if( (appState != UIApplicationStateBackground) && (appState != UIApplicationStateInactive))
+    {
+    if ( iPhoneGetGLView())
+    [ iPhoneGetGLView() drawView];
+    }
     if (setZoom == true){
         return mapView._tiledLayersSuperview;
     } else{
@@ -208,110 +269,85 @@ bool isRetina;
    // [eagleScrollView  drawView];
     
   
-   //   ofSendMessage("scrollViewStop");
+   //  ofSendMessage("scrollViewStop");
 }
 
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+
     if (isRetina){
         CGRect screenBounds = [[UIScreen mainScreen] bounds];
-        eagleScrollView.center = CGPointMake(mapView._mapScrollView.contentOffset.x + screenBounds.size.width/2,
+         iPhoneGetGLView().center = CGPointMake(mapView._mapScrollView.contentOffset.x + screenBounds.size.width/2,
                                               mapView._mapScrollView.contentOffset.y + screenBounds.size.height/2);
     }
     else{
-        eagleScrollView.center = CGPointMake(mapView._mapScrollView.contentOffset.x + ((float)ofGetWidth())/2, mapView._mapScrollView.contentOffset.y + ((float)ofGetHeight())/2);
+         iPhoneGetGLView().center = CGPointMake(mapView._mapScrollView.contentOffset.x + ((float)ofGetWidth())/2, mapView._mapScrollView.contentOffset.y + ((float)ofGetHeight())/2);
     }
     
   
 }
+#pragma  mark Annotations
 
-
-// Override
-- (void)setContentOffset:(CGPoint)contentOffset {
-    // UIScrollView uses UITrackingRunLoopMode.
-	// NSLog([[NSRunLoop currentRunLoop] currentMode]);
-    
-	// If we're dragging, mainLoop is going to freeze.
-	if (self.mapView._mapScrollView.dragging && !self.mapView._mapScrollView.decelerating) {
-      
-		// Make sure we haven't already created our timer.
-		if (timer == nil) {
-//            CCDirector* director = [CCDirector sharedDirector];
-//            director.animationInterval = director.animationInterval * 2.0f;
-//			// Schedule a new UITrackingRunLoopModes timer, to fill in for CCDirector while we drag.
-//			timer = [NSTimer scheduledTimerWithTimeInterval:[eagleScrollView animationInterval] target:self selector:@selector(animateWhileDragging) userInfo:nil repeats:YES];
-//            
-//            // This could also be NSRunLoopCommonModes
-//			[[NSRunLoop currentRunLoop] addTimer:timer forMode:UITrackingRunLoopModes];
-		}
-	}
-    
-	// If we're decelerating, mainLoop is going to stutter.
-	if (self.mapView._mapScrollView.dragging && !self.mapView._mapScrollView.decelerating) {
-            cout<<"DRAGGING"<<endl;
-            cout<<"decelating"<<endl;
-		// Make sure we haven't already created our timer.
-		if (timer == nil) {
-//            
-//			// Schedule a new UITrackingRunLoopMode timer, to fill in for CCDirector while we decellerate.
-//			timer = [NSTimer scheduledTimerWithTimeInterval:[[CCDirector sharedDirector] animationInterval] target:self selector:@selector(animateWhileDecellerating) userInfo:nil repeats:YES];
-//			[[NSRunLoop currentRunLoop] addTimer:timer forMode:UITrackingRunLoopMode];
-		}
-	}
-    
-	[super setContentOffset:contentOffset];
-}
-
-- (void)animateWhileDragging {
-    
-	// Draw.
-	//[[CCDirector sharedDirector] drawScene];
-    
-	if (!self.mapView._mapScrollView.dragging) {
-        
-		// Don't need this timer anymore.
-		[timer invalidate];
-		timer = nil;
-	}
-}
-
-- (void)animateWhileDecellerating {
-    
-	// Draw.
-	//[[CCDirector sharedDirector] drawScene];
-    
-	if (!self.mapView._mapScrollView.decelerating) {
-        
-		// Don't need this timer anymore.
-		[timer invalidate];
-		timer = nil;
-	}
-}
-
-
-- (void)scrollViewDidZoom:(UIScrollView *)scrollView{
-    [eagleScrollView  drawView];
-    
-   
-   //   ofSendMessage("isZooming");
- //   [self.mapView correctPositionOfAllAnnotations];
-    
-    if (self.mapView._delegateHasAfterMapZoom)
-   //     [self.mapView._delegate afterMapZoom:self.mapView];
-    [self.mapView scrollViewDidZoom:scrollView];
-    
-    
-    
-}
-
-// this delegate is called when the app successfully finds your current location
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+// TODO annotation layer, check this stuff
+- (RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation
 {
-    // this creates a MKReverseGeocoder to find a placemark using the found coordinates
-    MKReverseGeocoder *geoCoder = [[MKReverseGeocoder alloc] initWithCoordinate:newLocation.coordinate];
-    self.mapView._mapScrollView.delegate = self;
-    [geoCoder start];
+                
+    
+    return  nil;
 }
+
+
+//--------------------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------------------------
+// when difficulties receiving taps on map, use ofGetMessage
+
+- (void)singleTapOnMap:(RMMapView *)map at:(CGPoint)point
+{
+        RMMBTilesSource *tileSource = (RMMBTilesSource *)map.tileSource;
+        string msg = "TAP:"+ofToString(point.x)+":"+ofToString(point.y);
+    
+        ofSendMessage(msg);
+
+    if ([tileSource respondsToSelector:@selector(supportsInteractivity)] && [tileSource supportsInteractivity])
+    {
+        NSString *content = [tileSource formattedOutputOfType:RMInteractiveSourceOutputTypeTeaser forPoint:point inMapView:map];
+        NSLog(@" YAAY");
+        [map deselectAnnotation:map.selectedAnnotation animated:(content == nil)];
+        [map removeAllAnnotations];
+        
+        if (content)
+        {
+            NSString *title = [[content componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] objectAtIndex:0];
+            
+            RMAnnotation *annotation = [RMAnnotation annotationWithMapView:map coordinate:[map pixelToCoordinate:point] andTitle:title];
+            
+            annotation.userInfo = content;
+            
+            [map addAnnotation:annotation];
+            
+            [map selectAnnotation:annotation animated:YES];
+        }
+    }
+}
+
+
+//------------------------------------------
+
+- (void)tapOnLabelForAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map{
+    
+  
+
+}
+
+
+
+
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView {
+    [ iPhoneGetGLView()  drawView];
+
+}
+
+
 
 // this delegate method is called if an error occurs in locating your current location
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -319,22 +355,6 @@ bool isRetina;
     NSLog(@"locationManager:%@ didFailWithError:%@", manager, error);
 }
 
-
-// this delegate is called when the reverseGeocoder finds a placemark
-- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark
-{
-    MKPlacemark * myPlacemark = placemark;
-    // with the placemark you can now retrieve the city name
-   // NSString *city = [myPlacemark.addressDictionary objectForKey:(NSString*) kABPersonAddressCityKey];
-}
-
-
-
-// this delegate is called when the reversegeocoder fails to find a placemark
-- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error
-{
-    NSLog(@"reverseGeocoder:%@ didFailWithError:%@", geocoder, error);
-}
 
 
 
@@ -348,13 +368,13 @@ bool isRetina;
 -(void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale
 
 {
-    ofSendMessage("stopsZooming");
+   // ofSendMessage("stopsZooming");
     
 }
 
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    bMovingMap = false;
+ 
     
       //ofSendMessage("scrollViewStop");
     
@@ -363,17 +383,6 @@ bool isRetina;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return NO;
-}
-
-
-#pragma mark - rotation user
-
-
-
-
--(bool)isMoving{
-    
-    return bMovingMap;
 }
 
 

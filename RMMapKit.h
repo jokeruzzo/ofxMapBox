@@ -17,13 +17,10 @@
 
 #include "mapController.h"
 
+#include "ofxLocation.h"
 
-#define CLCOORDINATES_EQUAL( coord1, coord2 ) ((coord1.latitude == coord2.latitude && coord1.longitude == coord2.longitude))
 
-#define CLCOORDINATES_LARGE( coord ) ((coord.latitude > 3  && coord.longitude < 55)
 
-static mapController * mapViewController = nil ;
-static RMMapView * mapView = nil ;
 
 
 @class readJSON;
@@ -64,7 +61,7 @@ public:
     
     float metersPerPixel();
     // returns .longitude .latitude
-    CLLocationCoordinate2D projectedPointToCoordinate(ofPoint projectedPoint);
+    ofxLocation projectedPointToCoordinate(ofPoint projectedPoint);
 	
 	// latitude is south/north (-90...90)
 	// longitude is east/west (-180...180)
@@ -73,7 +70,7 @@ public:
 	void setCenter(double latitude, double longitude, bool animated = true);
 
 	// set whether user is allowed to zoom in or not
-	void setMapZoom(float zoomLevel);
+	void setMapZoom(float zoomLevel,bool animated);
     
     // needs to be fixed
     void setMinZoom (float minZoom);
@@ -89,14 +86,15 @@ public:
 	bool isUserOnScreen();
 	
 	// return current center of map (latitude, longitude)
-	ofxMapKitLocation getCenterLocation();
+	ofxLocation getCenterLocation();
 	
 	
 	// convert location (latitude, longitude) to screen coordinates (i.e. pixels)
 	ofPoint getScreenCoordinatesForLocation(double latitude, double longitude);
+    ofPoint getScreenCoordinatesForLocation(CLLocationCoordinate2D loc);
 	
 	// convert screen coordinates (i.e. pixels) to location (latitude, longitude)
-	ofxMapKitLocation getLocationForScreenCoordinates(float x, float y);
+	ofxLocation getLocationForScreenCoordinates(float x, float y);
 
 	
 	
@@ -118,31 +116,68 @@ public:
     
    	RMMapView	*getMKMapView();
     
-     
-    // add locations first
-    void addRoute(CLLocationCoordinate2D value);
-    // start search
-    void startRoute();
+    /*
+    For drawing a route 
+    */
+    void addAnnotation(vector<ofxLocation> coordinates, string routeId);
     
-    bool finishRoute();
-    vector<CLLocationCoordinate2D> routeData();
-    void cleanRoute();
+    // not finished yet
+    void addImageMarker(ofxLocation coordinate, string routeId, UIImage* image);
+    
+    
+    // just a standard marker
+    void addMarker(ofxLocation coordinates, string routeId);
+    
+    
+    // creates route from GEOJSON
+    void addGeoJSON(string data);
+
+    // enable/disable annotation
+    void setAnnotation(string routeId, bool b);
+    
+    
+    void updateAnnotation(ofxLocation coordinates, string routeId);
+    
+    // returns if it's possible to zoom
+    bool bZoom();
+    
+    // returns zoom level
     float getZoom();
+    // returns if scrolling is enabled
+    bool bisScrollEnabled();
+    // sets scrolling
     void setScrollEnabled(bool b);
-     bool isMoving();
+    
+    
     void detectRetina();
-    double distance(double lat1, double lon1, double lat2, double lon2, char unit);
+    double distance(ofxLocation  locBegin, ofxLocation  locEnd);
     
    
     
     
     // projectionPoint converter
-    CLLocationCoordinate2D customProjectionPoint(string EPSG,  ofPoint location);
-    // rotates 
+    ofxLocation customProjectionPoint(string EPSG,  ofPoint location);
+
+  
+    
+    bool isUserLocationUpdating();
+    ofxLocation getUserLocation();
+    void setUserPosition( double degrees, float zoom);
+    void setUserPosition( double degrees, ofxLocation loc);
+    
+    void hideButtons();
+    void showButtons();
+    
+ 
+    /*
+    Rotating the map 
+    */
+    void rotateMap(double degrees, float seconds);
+
     void rotateUser(UserTrackingMode mode);
     void rotateMap(double degrees);
-    
-    
+    BOOL isRotating();
+
 protected:
     
     vector <CLLocationCoordinate2D> locationData;
@@ -152,24 +187,8 @@ protected:
     RMMapBoxSource *onlineSource;
     bool offline;
     bool initRoute;
-    void designatedMap(string map,CLLocationCoordinate2D centerCoordinate, float zoomLevel,
-                       float setMaxZoomLevel,
-                       float setMinZoomLevel,
-                       UIImage * backgroundImage);
     
-    
-  
-    
-	
-	CLLocationCoordinate2D makeCLLocation(double latitude, double longitude);
-    
-    UIWebView * webView;
-    
-    bool bIsRetina;
- 
-    
-   
-    
-  
+    CLLocationCoordinate2D makeCLLocation(double latitude, double longitude);
+
 };
 
